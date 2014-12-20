@@ -1,0 +1,10 @@
+{
+	"title": "$:/plugins/bj/small/mdplusdemo",
+	"description": "demo tw with md",
+	"author": "JeffreyWilkinson",
+	"version": "0.0.1",
+	"list": "readme license",
+	"core-version": ">=5.1.5",
+	"source": "https://github.com/buggyj/TW5-small",
+	"plugin-type": "plugin"
+}

@@ -1,0 +1,13 @@
+{
+	"plugins": [
+		"bj/small/tagmanglextra"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+		"doNotSave": [
+	],
+	"includeWikis": [
+	]
+}

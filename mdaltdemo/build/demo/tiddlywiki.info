@@ -1,0 +1,13 @@
+{
+	"plugins": [
+		"bj/small/mdaltdemo"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+		"doNotSave": [
+	],
+	"includeWikis": [
+	]
+}

@@ -1,9 +1,10 @@
+
 /*\
-title: $:/bj/modules/widgets/msgcatcher.js
+title: $:/bj/modules/widgets/refresh.js
 type: application/javascript
 module-type: widget
 
-MsgCatcherWiget - root of msg action widget - 	1 
+refreshWiget - 
 
 \*/
 (function(){
@@ -14,19 +15,19 @@ MsgCatcherWiget - root of msg action widget - 	1
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
-var MsgCatcherWiget = function(parseTreeNode,options) {
+var refreshWiget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
 
 /*
 Inherit from the base widget class
 */
-MsgCatcherWiget.prototype = new Widget();
+refreshWiget.prototype = new Widget();
 
 /*
 Render this widget into the DOM
 */
-MsgCatcherWiget.prototype.render = function(parent,nextSibling) {
+refreshWiget.prototype.render = function(parent,nextSibling) {
 	this.parentDomNode = parent;
 	this.computeAttributes();
 	this.execute();
@@ -36,13 +37,13 @@ MsgCatcherWiget.prototype.render = function(parent,nextSibling) {
 /*
 Compute the internal state of the widget
 */
-MsgCatcherWiget.prototype.execute = function() {
+refreshWiget.prototype.execute = function() {
 	// Get our parameters
     this.msg=this.getAttribute("msg");
     if (this.msg) {
 		this.eventListeners = {};
 		this.addEventListeners([
-			{type: this.msg, handler: "handleEvent"}
+			{type: this.msg, handler: "handleRefreshEvent"}
 		]);
 	}
     // Construct the child widgets
@@ -52,7 +53,7 @@ MsgCatcherWiget.prototype.execute = function() {
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
-MsgCatcherWiget.prototype.refresh = function(changedTiddlers) {
+refreshWiget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
 	if(changedAttributes["msg"] ) {
 		this.refreshSelf();
@@ -63,23 +64,21 @@ MsgCatcherWiget.prototype.refresh = function(changedTiddlers) {
 	}
 };
 
-MsgCatcherWiget.prototype.handleEvent = function(event) {
-	this.invokeMsgActions(event);
+refreshWiget.prototype.handleRefreshEvent = function(event) {
+	var list = {},additionalFields,title;
+		if(typeof event.paramObject === "object") {
+			additionalFields = event.paramObject;
+			title = additionalFields.title;
+		}
+		if (title) {
+			list[title] =  {};
+			list[title]["modified"] = true;
+		}
+		this.refreshChildren(list);
+
 	return false;//always consume event
 };
 
-/*Invoke any action widgets that are immediate children of this widget
-*/
-MsgCatcherWiget.prototype.invokeMsgActions = function(event) {
-	for(var t=0; t<this.children.length; t++) {
-		var child = this.children[t];
-		var params = {event:event,continue:false};
-		if(child.invokeMsgAction) params = child.invokeMsgAction(params)) 
-	}
-	if(params.continue && this.parentWidget) {
-		this.parentWidget.dispatchEvent(params.event);
-	}
-};
-exports.msgcatcher = MsgCatcherWiget;
+exports.refresh = refreshWiget;
 
 })();

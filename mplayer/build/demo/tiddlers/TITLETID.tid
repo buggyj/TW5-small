@@ -1,0 +1,17 @@
+created: 20140920125217908
+modified: 20141211011524670
+tags: [[Tc Local Rules]]
+title: TITLETID
+type: application/json
+
+[
+  {
+    "#rule": "/[\\s\\S]*\\/(.*?)$/g"
+  },
+  {
+    "#term": "$1"
+  },
+  {
+    "$title": "((*@linkURL/#rule/#term*))"
+  }
+]

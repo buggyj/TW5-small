@@ -1,11 +1,3 @@
-/*\
-title: $:/plugins/bj/small/mdaltdemo/parsers/PostMd.js
-type: application/javascript
-module-type: library
-
-to support inclusions
-\*/
-
 /**
  * marked - a markdown parser
  * Copyright (c) 2011-2014, Christopher Jeffrey. (MIT Licensed)

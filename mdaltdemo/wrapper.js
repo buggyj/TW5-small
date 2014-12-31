@@ -15,14 +15,14 @@ var marked = require("$:/plugins/bj/small/mdaltdemo/markdown.js");
 "use strict";
 
 var PostMd = function(type,text,options) {
-
-
+	var opts;
+	if (!!options) {opts = options.parserrules;}
 	this.tree = [{
 		type: "element",
 		tag: "pre",
 		children: [{
 			type: "text",
-			text: marked(text)
+			text: marked(text,opts)
 		}]
 	}];
 };

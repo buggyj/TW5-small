@@ -16,9 +16,10 @@ var PostMd = function(type,text,options) {
 	if (!!options.parserrules) {
 		var leftreg =  new RegExp(options.parserrules.leftOfMacro||left,"mg");
 		var rightreg =  new RegExp(options.parserrules.rightOfMacro||right,"mg");
-		text = 	text.replace(leftreg,"<<").replace(rightreg,">>");
 	}
-
+	text = 	text.replace(/\[\=\[([\S\s]*?)\]\=\]/g,function(m,key,offset,str){ 
+		return "<<"+ $tw.utils.htmlDecode(key)+">>";
+	});
 	this.tree = [{
 		type: "element",
 		tag: "pre",

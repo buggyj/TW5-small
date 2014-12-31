@@ -1,0 +1,12 @@
+created: 20141223190543675
+modified: 20141224153426946
+tags: 
+title: New Tiddler
+type: text/vnd.tiddlywiki
+
+<span style="visibility: hidden;"/><$mplayer startTime="4.0"><$action-mplaylist filter="[tag[SpanishPodM/Clips]]">
+
+<$button>
+<$action-sendmessage $message="tm-mply-next" />
+Next
+</$button>vv</$action-mplaylist></$mplayer>

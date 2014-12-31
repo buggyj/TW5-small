@@ -1,0 +1,12 @@
+created: 20141222214111884
+modified: 20141222221441093
+tags: 
+title: MDflex
+type: application/json
+
+{
+  "parserrules": {
+    "tables": true
+  },
+  "preparser": null
+}

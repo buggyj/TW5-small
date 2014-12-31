@@ -1,0 +1,37 @@
+created: 20141228130943967
+list: [[05 River Man.m4a]] spanishpod_0430pr.mp3 spanishpod_C0353pr.mp3 [[01 Freak Like Me.m4a]] spanishpod_B0635pr.mp3
+modified: 20141231011544850
+tags: music
+title: l1
+type: text/vnd.tiddlywiki
+
+<$refresh msg="tm-bj-playerRfresh"><$mplayer startTime="4.0"  ><$action-mplaylist syntid="$:/temp/priv/playing"  mode="dynamic">
+
+<$button>
+<$action-sendmessage $message="tm-mvdwn" />
+-
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mvup" />
++
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mrw" />
+<-
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mff" />
+->
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mply-prev" />
+<<
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mply-next" />
+>></$button>
+<$linkcatcher message="tm-mply-move">
+<$taglist class="btn btn-primary"  template=TocTemplate></$taglist>
+</$linkcatcher>
+</$action-mplaylist></$mplayer>
+</$refresh>

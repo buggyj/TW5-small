@@ -1,0 +1,12 @@
+created: 20140731170756774
+draft.of: musicTemplate2
+draft.title: musicTemplate2
+modified: 20150106171704765
+title: Draft of 'musicTemplate2'
+type: text/vnd.tiddlywiki
+
+<$reveal state="$:/temp/list" text={{!!title}} type="nomatch"><$fieldmangler><$button  param= <<currentTag>> message="tm-remove-tag" class="tc-btn-invisible">{{$:/core/images/cancel-button}}</$button></$fieldmangler>
+<$link><span class="tc-taglistplain"><$view field="title"/></span></$link>
+</$reveal>
+<$reveal state="$:/temp/list" text={{!!title}} type="match"><$fieldmangler><$button  param= <<currentTag>> message="tm-remove-tag" class="tc-btn-invisible">{{$:/core/images/cancel-button}}</$button></$fieldmangler>
+<$link><span class="tc-taglist"><$view field="title"/></span></$link></$reveal>

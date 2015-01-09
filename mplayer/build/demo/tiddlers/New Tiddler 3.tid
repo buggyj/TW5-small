@@ -1,0 +1,44 @@
+created: 20150106171057177
+modified: 20150106171117372
+tags: 
+title: New Tiddler 3
+type: text/vnd.tiddlywiki
+
+\define player(name)
+<$refresh msg="tm-bj-playerRfresh"><$mplayer><$action-mplaylist filter="[tag[$name$]]" syntid="$:/temp/priv/playing"  mode="dynamic">
+<$button>
+<$action-sendmessage $message="tm-mvdwn" />
+-
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mvup" />
++
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mrw" />
+<-
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mff" />
+->
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mply-prev" />
+<<
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mply-next" />
+>></$button>
+<$linkcatcher message="tm-mply-move">
+<$set name=currentTag value="$name$">
+<$taglist class="btn btn-primary" targeTtag="$name$" template=musicTemplate></$taglist>
+</$set>
+</$linkcatcher>
+</$action-mplaylist></$mplayer>
+</$refresh>
+
+
+\end
+<$edit-text tiddler="$:/temp/x" tag="input" type="text"/>
+<$macrocall $name="player" name={{$:/temp/x}}/>
+

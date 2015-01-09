@@ -1,11 +1,13 @@
 created: 20141223232111227
-modified: 20141231011532256
+modified: 20150102160957864
 tags: 
 title: New Tiddler 2
 type: text/vnd.tiddlywiki
 
 \define player(name)
-<$refresh msg="tm-bj-playerRfresh"><$mplayer><$action-mplaylist filter="[tag[$name$]]" syntid="$:/temp/priv1/playing"  mode="dynamic">
+<$refresh msg="tm-bj-playerRfresh">
+<$mplayer>
+<$action-mplaylist filter="[tag[$name$]]" syntid="$:/temp/priv/playing"  mode="dynamic">
 <$button>
 <$action-sendmessage $message="tm-mvdwn" />
 -
@@ -28,15 +30,19 @@ type: text/vnd.tiddlywiki
 </$button>
 <$button>
 <$action-sendmessage $message="tm-mply-next" />
->></$button>
+>>
+</$button>
 <$linkcatcher message="tm-mply-move">
-<$taglist class="btn btn-primary" targeTtag="$name$" template=TocTemplate></$taglist>
+<$set name=currentTag value="$name$">
+<$taglist class="btn btn-primary" targeTtag="$name$" template=musicTemplate></$taglist>
+</$set>
 </$linkcatcher>
-</$action-mplaylist></$mplayer>
+</$action-mplaylist>
+</$mplayer>
 </$refresh>
 
 
 \end
-<$edit-text tiddler="$:/temp/priv/x" tag="input" type="text"/>
-<$macrocall $name="player" name={{$:/temp/priv/x}}/>
+<$edit-text tiddler="$:/temp/x" tag="input" type="text"/>
+<$macrocall $name="player" name={{$:/temp/x}}/>
 

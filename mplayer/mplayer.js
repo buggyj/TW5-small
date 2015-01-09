@@ -71,8 +71,9 @@ Compute the internal state of the widget
 */
 MPlayerWidget.prototype.execute = function() {
 	// Get our parameters
+	this.volume = 1.0;
     this.deltas =this.getAttribute("deltas",10);
-    this.startTime =this.getAttribute("startTime");
+    this.startTime =this.getAttribute("startTime",0.0);
     // Construct the child widgets
 	this.makeChildWidgets();
 };
@@ -94,75 +95,90 @@ MPlayerWidget.prototype.handleStartEvent = function(event) {
 	var player = this.audiodomNode;
 	var self = this,additionalFields,track;
 
-		if(typeof event.paramObject === "object") {
-			additionalFields = event.paramObject;
-			track = additionalFields.track
-		}
-		player.src = track;
-		player.controls ="controls";
-	    
-		player.load();
-		player.play();
-		if (this.startTime) {
-			player.addEventListener("canplay",(function() { 
-				player.currentTime =  parseFloat(self.startTime);
-				player.removeEventListener('canplay', arguments.callee);
-			}));
-		}
-
+	if(typeof event.paramObject === "object") {
+		additionalFields = event.paramObject;
+		track = additionalFields.track;
+		self.equalize = additionalFields.equalize || 1.0;
+	}
+	try {
+	player.src = track;
+	player.controls ="controls";
+	
+	player.load();
+	player.play();
+	if (true) {
+		player.addEventListener("canplay",(function() { 
+			player.currentTime =  parseFloat(self.startTime);
+			player.removeEventListener('canplay', arguments.callee);
+			player.volume =  self.volume * self.equalize;
+		}));
+	}
+	} catch(e) {};
+	
 
 	return false;//always consume event
 };
 MPlayerWidget.prototype.handleStopEvent = function(event) {
 	var player = this.audiodomNode;
-	var self = this,additionalFields,track;
+	try {
 	player.pause();
     player.currentTime = 0;	
+    } catch(e) {};
 	return false;//always consume event
 };
 MPlayerWidget.prototype.handlePlayEvent = function(event) {
 	var player = this.audiodomNode;
-	var self = this,additionalFields,track;
+	try {	
 	if (player.paused) {
 		player.play();
 	}
+    } catch(e) {};
 	return false;//always consume event
 };
 MPlayerWidget.prototype.handlePauseEvent = function(event) {
 	var player = this.audiodomNode;
-	var self = this,additionalFields,track;
+	try {
 	if (!player.paused) {
 		player.pause();
 	}
+	} catch(e) {};
 	return false;//always consume event
 };
 
 MPlayerWidget.prototype.handleVolUpEvent = function(event) {
 	var player = this.audiodomNode;
 	var self = this,additionalFields,track;
-
-	if (player.volume < 0.91) player.volume+=0.1;
-	
+	try {
+	if (this.volume < 0.91) {
+		this.volume+=0.1;
+		player.volume = this.volume * this.equalize;
+	}
+	} catch(e) {};
 	return false;//always consume event
 };
 MPlayerWidget.prototype.handleVolDwnEvent = function(event) {
 	var player = this.audiodomNode;
 	var self = this,additionalFields,track;
-
-	if (player.volume>0.1) player.volume-=0.1;
-	
+	try {
+	if (this.volume>0.1) {
+		this.volume-=0.1;
+		player.volume = this.volume * this.equalize;
+	}
+	} catch(e) {};
 	return false;//always consume event
 };
 MPlayerWidget.prototype.handleFFEvent = function(event) {
 	var player = this.audiodomNode;
-
+	try {
 	player.currentTime += this.deltas;
+	} catch(e) {};
 	return false;//always consume event
 };
 MPlayerWidget.prototype.handleRWEvent = function(event) {
 	var player = this.audiodomNode;
-
+	try {
 	player.currentTime -= this.deltas;
+	} catch(e) {};
 	return false;//always consume event
 };
 exports.mplayer = MPlayerWidget;

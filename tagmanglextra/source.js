@@ -74,7 +74,7 @@ MsgCatcherWiget.prototype.invokeMsgActions = function(event) {
 	for(var t=0; t<this.children.length; t++) {
 		var child = this.children[t];
 		var params = {event:event,continue:false};
-		if(child.invokeMsgAction) params = child.invokeMsgAction(params)) 
+		if(child.invokeMsgAction) params = child.invokeMsgAction(params); 
 	}
 	if(params.continue && this.parentWidget) {
 		this.parentWidget.dispatchEvent(params.event);

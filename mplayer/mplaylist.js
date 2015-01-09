@@ -96,7 +96,7 @@ MPlayListWidget.prototype.doMove = function(loc) {
 				uri = tid.fields._canonical_uri;
 				this.dispatchEvent({
 					type: "tm-mstart",
-					paramObject : {track: uri}
+					paramObject : {track: uri,equalize : tid.fields.equalize}
 				});
 				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 				
@@ -119,13 +119,16 @@ MPlayListWidget.prototype.doStart = function() {
 		//do nothing
 	} else {
 		var tid,uri,i;
-		if (this.n == this.list.length -1) return;
+		if (this.n == this.list.length -1) {
+			self.invokeActions(event);
+			return;
+		};
 		for (i = this.n + 1; i < this.list.length; i++) {
 			if ((tid = this.wiki.getTiddler(this.list[i])) && (tid.hasField("_canonical_uri"))) {
 				uri = tid.fields._canonical_uri;
 				this.dispatchEvent({
 					type: "tm-mstart",
-					paramObject : {track: uri}
+					paramObject : {track: uri,equalize : tid.fields.equalize}
 				});
 				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 				
@@ -147,13 +150,16 @@ MPlayListWidget.prototype.doNext = function() {
 		//do nothing
 	} else {
 		var tid,uri,i;
-		if (this.n == this.list.length -1) return;
+		if (this.n == this.list.length -1) {
+			this.invokeActions();
+			return;
+		}
 		for (i = this.n + 1; i < this.list.length; i++) {
 			if ((tid = this.wiki.getTiddler(this.list[i])) && (tid.hasField("_canonical_uri"))) {
 				uri = tid.fields._canonical_uri;
 				this.dispatchEvent({
 					type: "tm-mstart",
-					paramObject : {track: uri}
+					paramObject : {track: uri,equalize : tid.fields.equalize}
 				});
 				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 				
@@ -181,7 +187,7 @@ MPlayListWidget.prototype.doPrev = function() {
 				uri = tid.fields._canonical_uri;
 				this.dispatchEvent({
 					type: "tm-mstart",
-					paramObject : {track: uri}
+					paramObject : {track : uri,equalize : tid.fields.equalize}
 				});
 				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 				

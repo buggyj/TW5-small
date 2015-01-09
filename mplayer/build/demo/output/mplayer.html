@@ -123,29 +123,27 @@ Error message and password prompt
 
 <li>$:/core</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/plugins/bj/small/mplayer</li>
+
+<li>$:/plugins/bj/small/tagmangleplus</li>
+
+<li>$:/plugins/bj/smalltools</li>
 
 <li>$:/plugins/bj/taglist</li>
 
 <li>$:/plugins/bj/tiddlyclip</li>
 
-<li>$:/state/tab-1749438307</li>
-
 <li>$:/state/tab/sidebar--1835078512</li>
 
 <li>$:/StoryList</li>
 
-<li>$:/temp/bj/x</li>
-
 <li>$:/temp/info-plugin</li>
 
-<li>$:/temp/priv/playing</li>
+<li>$:/temp/list</li>
 
-<li>$:/temp/priv/x</li>
+<li>$:/temp/priv/playing</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -153,9 +151,27 @@ Error message and password prompt
 
 <li>01 Freak Like Me.m4a</li>
 
+<li>02 Paranoid Android.mp3</li>
+
+<li>03 Subterranean Homesick Alien.mp3</li>
+
+<li>04 Exit Music (For A Film).mp3</li>
+
 <li>05 River Man.m4a</li>
 
+<li>06 Karma Police.mp3</li>
+
 <li>ControlPlayList</li>
+
+<li>Draft of 'musicTemplate2'</li>
+
+<li>Draft of 'New Tiddler 1'</li>
+
+<li>Draft of 'New Tiddler 2 1'</li>
+
+<li>Draft of 'New Tiddler 3'</li>
+
+<li>Draft of 'PlayLists 1'</li>
 
 <li>l1</li>
 
@@ -167,9 +183,19 @@ Error message and password prompt
 
 <li>localtwpng</li>
 
+<li>music</li>
+
+<li>musicTemplate</li>
+
+<li>musicTemplate2</li>
+
 <li>New Tiddler</li>
 
 <li>New Tiddler 2</li>
+
+<li>New Tiddler 2 1</li>
+
+<li>New Tiddler 3</li>
 
 <li>nirvana</li>
 
@@ -183,6 +209,8 @@ Error message and password prompt
 
 <li>Nirvana - In Bloom.mp3</li>
 
+<li>Nirvana - Lithium.mp3</li>
+
 <li>Nirvana - Pennyroyal Tea [Single Mix][#].mp3</li>
 
 <li>Nirvana - Rape Me.mp3</li>
@@ -190,6 +218,14 @@ Error message and password prompt
 <li>Nirvana - Smells Like Teen Spirit.mp3</li>
 
 <li>Nirvana - The Man Who Sold the World [Live].mp3</li>
+
+<li>PlayLists</li>
+
+<li>PlayLists 1</li>
+
+<li>PlayLists 2</li>
+
+<li>RadioHead</li>
 
 <li>spanishpod_0430pr.mp3</li>
 
@@ -5481,15 +5517,34 @@ width:100%;
     }
 }</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[$:/plugins/bj/taglist]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
 <div author="JeffreyWilkinson" core-version="&gt;=5.1.5" dependents="" description="music player" list="readme license" plugin-type="plugin" source="https://github.com/buggyj/TW5-small" title="$:/plugins/bj/small/mplayer" type="application/json" version="0.0.1">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/bj/modules/widgets/mplayer.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/bj/modules/widgets/mplayer.js\ntype: application/javascript\nmodule-type: widget\n\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar MPlayerWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n\tthis.addEventListeners([\n\t{type: \&quot;tm-mff\&quot;, handler: \&quot;handleFFEvent\&quot;},\n\t{type: \&quot;tm-mrw\&quot;, handler: \&quot;handleRWEvent\&quot;},\n\t{type: \&quot;tm-mstart\&quot;, handler: \&quot;handleStartEvent\&quot;},\n\t{type: \&quot;tm-mstop\&quot;, handler: \&quot;handleStopEvent\&quot;},\n\t{type: \&quot;tm-mpause\&quot;, handler: \&quot;handlePauseEvent\&quot;},\n\t{type: \&quot;tm-mvup\&quot;, handler: \&quot;handleVolUpEvent\&quot;},\n\t{type: \&quot;tm-mvdwn\&quot;, handler: \&quot;handleVolDwnEvent\&quot;},\n\t{type: \&quot;tm-mply\&quot;, handler: \&quot;handlePlayEvent\&quot;}]);\n};\n\n/*\nInherit from the base widget class\n*/\nMPlayerWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nMPlayerWidget.prototype.render = function(parent,nextSibling) {\n\tvar self = this;\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.pNode = this.document.createElement(\&quot;div\&quot;);\n\tthis.audiodomNode = this.document.createElement(\&quot;audio\&quot;);\n\tthis.audiodomNode.addEventListener(\&quot;ended\&quot;,function (event) {\n\t\tvar handled = false;\n\t\tif(self.invokeActions(event)) {\n\t\t\thandled = true;\n\t\t}\n\t});\n\tthis.pNode.appendChild(this.audiodomNode);\t\n\tthis.cNode = this.document.createElement(\&quot;div\&quot;);\n\tthis.pNode.appendChild(this.cNode);\n\t// Insert element\n\tparent.insertBefore(this.pNode,nextSibling);\n\t\tthis.renderChildren(this.cNode,null);\n\tthis.domNodes.push(this.pNode);\n\tvar player = this.audiodomNode;\n\tself.invokeActions({type:\&quot;start\&quot;});\n\t/*function run(uri, player){\n\t\tplayer.src = \&quot;file:///media/buggyj/FIRELITE/iTunes/iTunes%20Music/The%20Velvet%20Underground/The%20Velvet%20Underground%20&amp;%20Nico/01%20Sunday%20Morning.mp3\&quot;\n        player.controls =\&quot;controls\&quot;;\n\t\tplayer.load();\n\t\tplayer.play();\n\t//}*/\n\n};\n\n/*\nCompute the internal state of the widget\n*/\nMPlayerWidget.prototype.execute = function() {\n\t// Get our parameters\n\tthis.volume = 1.0;\n    this.deltas =this.getAttribute(\&quot;deltas\&quot;,10);\n    this.startTime =this.getAttribute(\&quot;startTime\&quot;,0.0);\n    // Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nMPlayerWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes[\&quot;startTime\&quot;] ) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\telse {\n\t\treturn this.refreshChildren(changedTiddlers);\n\t}\n};\nMPlayerWidget.prototype.handleStartEvent = function(event) {\n\tvar player = this.audiodomNode;\n\tvar self = this,additionalFields,track;\n\n\tif(typeof event.paramObject === \&quot;object\&quot;) {\n\t\tadditionalFields = event.paramObject;\n\t\ttrack = additionalFields.track;\n\t\tself.equalize = additionalFields.equalize || 1.0;\n\t}\n\ttry {\n\tplayer.src = track;\n\tplayer.controls =\&quot;controls\&quot;;\n\t\n\tplayer.load();\n\tplayer.play();\n\tif (true) {\n\t\tplayer.addEventListener(\&quot;canplay\&quot;,(function() { \n\t\t\tplayer.currentTime =  parseFloat(self.startTime);\n\t\t\tplayer.removeEventListener('canplay', arguments.callee);\n\t\t\tplayer.volume =  self.volume * self.equalize;\n\t\t}));\n\t}\n\t} catch(e) {};\n\t\n\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handleStopEvent = function(event) {\n\tvar player = this.audiodomNode;\n\ttry {\n\tplayer.pause();\n    player.currentTime = 0;\t\n    } catch(e) {};\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handlePlayEvent = function(event) {\n\tvar player = this.audiodomNode;\n\ttry {\t\n\tif (player.paused) {\n\t\tplayer.play();\n\t}\n    } catch(e) {};\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handlePauseEvent = function(event) {\n\tvar player = this.audiodomNode;\n\ttry {\n\tif (!player.paused) {\n\t\tplayer.pause();\n\t}\n\t} catch(e) {};\n\treturn false;//always consume event\n};\n\nMPlayerWidget.prototype.handleVolUpEvent = function(event) {\n\tvar player = this.audiodomNode;\n\tvar self = this,additionalFields,track;\n\ttry {\n\tif (this.volume &lt; 0.91) {\n\t\tthis.volume+=0.1;\n\t\tplayer.volume = this.volume * this.equalize;\n\t}\n\t} catch(e) {};\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handleVolDwnEvent = function(event) {\n\tvar player = this.audiodomNode;\n\tvar self = this,additionalFields,track;\n\ttry {\n\tif (this.volume&gt;0.1) {\n\t\tthis.volume-=0.1;\n\t\tplayer.volume = this.volume * this.equalize;\n\t}\n\t} catch(e) {};\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handleFFEvent = function(event) {\n\tvar player = this.audiodomNode;\n\ttry {\n\tplayer.currentTime += this.deltas;\n\t} catch(e) {};\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handleRWEvent = function(event) {\n\tvar player = this.audiodomNode;\n\ttry {\n\tplayer.currentTime -= this.deltas;\n\t} catch(e) {};\n\treturn false;//always consume event\n};\nexports.mplayer = MPlayerWidget;\n\n})();\n&quot;,
+            &quot;title&quot;: &quot;$:/bj/modules/widgets/mplayer.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;
+        },
+        &quot;$:/bj/modules/widgets/mplylist.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/bj/modules/widgets/mplylist.js\ntype: application/javascript\nmodule-type: widget\n\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar MPlayListWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n\t\tthis.addEventListeners([\n\t{type: \&quot;tm-mply-next\&quot;, handler: \&quot;handleNextEvent\&quot;},\n\t{type: \&quot;tm-mply-move\&quot;, handler: \&quot;handleMoveEvent\&quot;},\n\t{type: \&quot;tm-mply-prev\&quot;, handler: \&quot;handlePrevEvent\&quot;}]);\n};\n/*\nInherit from the base widget class\n*/\nMPlayListWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nMPlayListWidget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nMPlayListWidget.prototype.execute = function() {\n\t// Compose the list elements\n\tthis.list = this.getTiddlerList();\n\tthis.n =-1;\n    this.syntid = this.getAttribute(\&quot;syntid\&quot;);\n    this.mode = this.getAttribute(\&quot;mode\&quot;);\n\t\t// Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\nMPlayListWidget.prototype.getTiddlerList = function() {\n\tvar defaultFilter = \&quot;[tag[\&quot;+this.getVariable(\&quot;currentTiddler\&quot;)+\&quot;]]\&quot;;\n\treturn this.wiki.filterTiddlers(this.getAttribute(\&quot;filter\&quot;,defaultFilter),this);\n};\n/*\nRefresh the widget by ensuring our attributes are up to date\n*/\nMPlayListWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\t//alert(this.attributes.filter);\n\tif(changedAttributes.filter || changedAttributes[\&quot;$tiddler\&quot;]) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\treturn this.refreshChildren(changedTiddlers);\n};\n\n/*\nInvoke the action associated with this widget\n*/\nMPlayListWidget.prototype.invokeAction = function(triggeringWidget,event) {\n\tif (event.type == \&quot;start\&quot;) this.doStart();\n\telse this.doNext();\n\treturn true; // Action was invoked\n};\nMPlayListWidget.prototype.updatelist = function() {\n\tvar list,n,i,curr = this.list[this.n];\n\tlist = this.getTiddlerList();\n\tfor ( i = 0; i &lt; list.length; i++) {\n\t\tif (list[i] === curr) break;\n\t}\n\tif (i === list.length) i = 0;\n\tthis.n = i;\n\tthis.list = list;\n}\n\t\nMPlayListWidget.prototype.doMove = function(loc) {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tfor (i = 0; i &lt; this.list.length; i++) {\n\t\t\tif ((loc == this.list[i]) &amp;&amp; (tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track: uri,equalize : tid.fields.equalize}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doStart = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tthis.n = -1;\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) {\n\t\t\tself.invokeActions(event);\n\t\t\treturn;\n\t\t};\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track: uri,equalize : tid.fields.equalize}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doNext = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) {\n\t\t\tthis.invokeActions();\n\t\t\treturn;\n\t\t}\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track: uri,equalize : tid.fields.equalize}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doPrev = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\t\n\t\tfor (i = this.n - 1 ; i &gt;=0; i--) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track : uri,equalize : tid.fields.equalize}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == -1? 0 : i);\n\t}\n}\nMPlayListWidget.prototype.handleNextEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doNext();\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handleMoveEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doMove(event.navigateTo);\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handlePrevEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doPrev();\n\treturn false; // dont propegate\n\t\n\t\n}\nexports[\&quot;action-mplaylist\&quot;] = MPlayListWidget;\n\n})();\n&quot;,
+            &quot;title&quot;: &quot;$:/bj/modules/widgets/mplylist.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;
+        },
+        &quot;$:/bj/modules/widgets/plylist.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/bj/modules/widgets/plylist.js\ntype: application/javascript\nmodule-type: widget\n\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar MPlayListWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n\t\tthis.addEventListeners([\n\t{type: \&quot;tm-ply-next\&quot;, handler: \&quot;handleNextEvent\&quot;},\n\t{type: \&quot;tm-ply-move\&quot;, handler: \&quot;handleMoveEvent\&quot;},\n\t{type: \&quot;tm-ply-prev\&quot;, handler: \&quot;handlePrevEvent\&quot;}]);\n};\n/*\nInherit from the base widget class\n*/\nMPlayListWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nMPlayListWidget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nMPlayListWidget.prototype.execute = function() {\n\t// Compose the list elements\n\tthis.list = this.getTiddlerList();\n\tthis.n =-1;\n    this.syntid = this.getAttribute(\&quot;syntid\&quot;);\n    this.mode = this.getAttribute(\&quot;mode\&quot;);\n\t\t// Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\nMPlayListWidget.prototype.getTiddlerList = function() {\n\tvar defaultFilter = \&quot;[tag[\&quot;+this.getVariable(\&quot;currentTiddler\&quot;)+\&quot;]]\&quot;;\n\treturn this.wiki.filterTiddlers(this.getAttribute(\&quot;filter\&quot;,defaultFilter),this);\n};\n/*\nRefresh the widget by ensuring our attributes are up to date\n*/\nMPlayListWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\t//alert(this.attributes.filter);\n\tif(changedAttributes.filter || changedAttributes[\&quot;$tiddler\&quot;]) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\treturn this.refreshChildren(changedTiddlers);\n};\n\n/*\nInvoke the action associated with this widget\n*/\nMPlayListWidget.prototype.invokeMsgAction = function(param) {\n\tthis.doNext();\n\treturn param;\n};\nMPlayListWidget.prototype.updatelist = function() {\n\tvar list,n,i,curr = this.list[this.n];\n\tlist = this.getTiddlerList();\n\tfor ( i = 0; i &lt; list.length; i++) {\n\t\tif (list[i] === curr) break;\n\t}\n\tif (i === list.length) i = 0;\n\tthis.n = i;\n\tthis.list = list;\n}\n\t\nMPlayListWidget.prototype.doMove = function(loc) {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tfor (i = 0; i &lt; this.list.length; i++) {\n\t\t\tif ((loc == this.list[i])) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doStart = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tthis.n = -1;\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) {\n\t\t\tself.invokeActions(event);\n\t\t\treturn;\n\t\t};\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) ) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doNext = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) {\n\t\t\tself.invokeActions(event);\n\t\t\treturn;\n\t\t}\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i]))) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doPrev = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\t\n\t\tfor (i = this.n - 1 ; i &gt;=0; i--) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track : uri,equalize : tid.fields.equalize}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == -1? 0 : i);\n\t}\n}\nMPlayListWidget.prototype.handleNextEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doNext();\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handleMoveEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doMove(event.navigateTo);\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handlePrevEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doPrev();\n\treturn false; // dont propegate\n\t\n\t\n}\nexports[\&quot;action-playlist2\&quot;] = MPlayListWidget;\n\n})();\n&quot;,
+            &quot;title&quot;: &quot;$:/bj/modules/widgets/plylist.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;
+        }
+    }
+}</pre>
+</div>
+<div author="JeffreyWilkinson" core-version="&gt;=5.1.5" created="20150106212358042" dependents="" description="demo tw with md" list="readme license" plugin-type="plugin" source="https://github.com/buggyj/TW5-small" title="$:/plugins/bj/small/tagmangleplus" type="application/json" version="0.0.1">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/bj/modules/widgets/mangletagsextra.js&quot;: {
@@ -5498,27 +5553,15 @@ width:100%;
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;widget&quot;
         },
-        &quot;$:/bj/modules/widgets/mplayer.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\ntitle: $:/bj/modules/widgets/mplayer.js\ntype: application/javascript\nmodule-type: widget\n\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar MPlayerWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n\tthis.addEventListeners([\n\t{type: \&quot;tm-mff\&quot;, handler: \&quot;handleFFEvent\&quot;},\n\t{type: \&quot;tm-mrw\&quot;, handler: \&quot;handleRWEvent\&quot;},\n\t{type: \&quot;tm-mstart\&quot;, handler: \&quot;handleStartEvent\&quot;},\n\t{type: \&quot;tm-mstop\&quot;, handler: \&quot;handleStopEvent\&quot;},\n\t{type: \&quot;tm-mpause\&quot;, handler: \&quot;handlePauseEvent\&quot;},\n\t{type: \&quot;tm-mvup\&quot;, handler: \&quot;handleVolUpEvent\&quot;},\n\t{type: \&quot;tm-mvdwn\&quot;, handler: \&quot;handleVolDwnEvent\&quot;},\n\t{type: \&quot;tm-mply\&quot;, handler: \&quot;handlePlayEvent\&quot;}]);\n};\n\n/*\nInherit from the base widget class\n*/\nMPlayerWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nMPlayerWidget.prototype.render = function(parent,nextSibling) {\n\tvar self = this;\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.pNode = this.document.createElement(\&quot;div\&quot;);\n\tthis.audiodomNode = this.document.createElement(\&quot;audio\&quot;);\n\tthis.audiodomNode.addEventListener(\&quot;ended\&quot;,function (event) {\n\t\tvar handled = false;\n\t\tif(self.invokeActions(event)) {\n\t\t\thandled = true;\n\t\t}\n\t});\n\tthis.pNode.appendChild(this.audiodomNode);\t\n\tthis.cNode = this.document.createElement(\&quot;div\&quot;);\n\tthis.pNode.appendChild(this.cNode);\n\t// Insert element\n\tparent.insertBefore(this.pNode,nextSibling);\n\t\tthis.renderChildren(this.cNode,null);\n\tthis.domNodes.push(this.pNode);\n\tvar player = this.audiodomNode;\n\tself.invokeActions({type:\&quot;start\&quot;});\n\t/*function run(uri, player){\n\t\tplayer.src = \&quot;file:///media/buggyj/FIRELITE/iTunes/iTunes%20Music/The%20Velvet%20Underground/The%20Velvet%20Underground%20&amp;%20Nico/01%20Sunday%20Morning.mp3\&quot;\n        player.controls =\&quot;controls\&quot;;\n\t\tplayer.load();\n\t\tplayer.play();\n\t//}*/\n\n};\n\n/*\nCompute the internal state of the widget\n*/\nMPlayerWidget.prototype.execute = function() {\n\t// Get our parameters\n    this.deltas =this.getAttribute(\&quot;deltas\&quot;,10);\n    this.startTime =this.getAttribute(\&quot;startTime\&quot;);\n    // Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nMPlayerWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes[\&quot;startTime\&quot;] ) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\telse {\n\t\treturn this.refreshChildren(changedTiddlers);\n\t}\n};\nMPlayerWidget.prototype.handleStartEvent = function(event) {\n\tvar player = this.audiodomNode;\n\tvar self = this,additionalFields,track;\n\n\t\tif(typeof event.paramObject === \&quot;object\&quot;) {\n\t\t\tadditionalFields = event.paramObject;\n\t\t\ttrack = additionalFields.track\n\t\t}\n\t\tplayer.src = track;\n\t\tplayer.controls =\&quot;controls\&quot;;\n\t    \n\t\tplayer.load();\n\t\tplayer.play();\n\t\tif (this.startTime) {\n\t\t\tplayer.addEventListener(\&quot;canplay\&quot;,(function() { \n\t\t\t\tplayer.currentTime =  parseFloat(self.startTime);\n\t\t\t\tplayer.removeEventListener('canplay', arguments.callee);\n\t\t\t}));\n\t\t}\n\n\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handleStopEvent = function(event) {\n\tvar player = this.audiodomNode;\n\tvar self = this,additionalFields,track;\n\tplayer.pause();\n    player.currentTime = 0;\t\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handlePlayEvent = function(event) {\n\tvar player = this.audiodomNode;\n\tvar self = this,additionalFields,track;\n\tif (player.paused) {\n\t\tplayer.play();\n\t}\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handlePauseEvent = function(event) {\n\tvar player = this.audiodomNode;\n\tvar self = this,additionalFields,track;\n\tif (!player.paused) {\n\t\tplayer.pause();\n\t}\n\treturn false;//always consume event\n};\n\nMPlayerWidget.prototype.handleVolUpEvent = function(event) {\n\tvar player = this.audiodomNode;\n\tvar self = this,additionalFields,track;\n\n\tif (player.volume &lt; 0.91) player.volume+=0.1;\n\t\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handleVolDwnEvent = function(event) {\n\tvar player = this.audiodomNode;\n\tvar self = this,additionalFields,track;\n\n\tif (player.volume&gt;0.1) player.volume-=0.1;\n\t\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handleFFEvent = function(event) {\n\tvar player = this.audiodomNode;\n\n\tplayer.currentTime += this.deltas;\n\treturn false;//always consume event\n};\nMPlayerWidget.prototype.handleRWEvent = function(event) {\n\tvar player = this.audiodomNode;\n\n\tplayer.currentTime -= this.deltas;\n\treturn false;//always consume event\n};\nexports.mplayer = MPlayerWidget;\n\n})();\n&quot;,
-            &quot;title&quot;: &quot;$:/bj/modules/widgets/mplayer.js&quot;,
+        &quot;$:/bj/modules/widgets/plylist.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/bj/modules/widgets/plylist.js\ntype: application/javascript\nmodule-type: widget\n\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar MPlayListWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n\t\tthis.addEventListeners([\n\t{type: \&quot;tm-ply-next\&quot;, handler: \&quot;handleNextEvent\&quot;},\n\t{type: \&quot;tm-ply-move\&quot;, handler: \&quot;handleMoveEvent\&quot;},\n\t{type: \&quot;tm-ply-prev\&quot;, handler: \&quot;handlePrevEvent\&quot;}]);\n};\n/*\nInherit from the base widget class\n*/\nMPlayListWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nMPlayListWidget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nMPlayListWidget.prototype.execute = function() {\n\t// Compose the list elements\n\tthis.list = this.getTiddlerList();\n\tthis.n =-1;\n    this.syntid = this.getAttribute(\&quot;syntid\&quot;);\n    this.mode = this.getAttribute(\&quot;mode\&quot;);\n\t\t// Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\nMPlayListWidget.prototype.getTiddlerList = function() {\n\tvar defaultFilter = \&quot;[tag[\&quot;+this.getVariable(\&quot;currentTiddler\&quot;)+\&quot;]]\&quot;;\n\treturn this.wiki.filterTiddlers(this.getAttribute(\&quot;filter\&quot;,defaultFilter),this);\n};\n/*\nRefresh the widget by ensuring our attributes are up to date\n*/\nMPlayListWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\t//alert(this.attributes.filter);\n\tif(changedAttributes.filter || changedAttributes[\&quot;$tiddler\&quot;]) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\treturn this.refreshChildren(changedTiddlers);\n};\n\n/*\nInvoke the action associated with this widget\n*/\nMPlayListWidget.prototype.invokeMsgAction = function(param) {\n\tthis.doNext();\n\treturn param;\n};\nMPlayListWidget.prototype.updatelist = function() {\n\tvar list,n,i,curr = this.list[this.n];\n\tlist = this.getTiddlerList();\n\tfor ( i = 0; i &lt; list.length; i++) {\n\t\tif (list[i] === curr) break;\n\t}\n\tif (i === list.length) i = 0;\n\tthis.n = i;\n\tthis.list = list;\n}\n\t\nMPlayListWidget.prototype.doMove = function(loc) {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tfor (i = 0; i &lt; this.list.length; i++) {\n\t\t\tif ((loc == this.list[i])) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doStart = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tthis.n = -1;\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) {\n\t\t\tthis.invokeActions();\n\t\t\treturn;\n\t\t};\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) ) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doNext = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) {\n\t\t\tthis.invokeActions();\n\t\t\treturn;\n\t\t}\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i]))) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doPrev = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\t\n\t\tfor (i = this.n - 1 ; i &gt;=0; i--) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track : uri,equalize : tid.fields.equalize}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == -1? 0 : i);\n\t}\n}\nMPlayListWidget.prototype.handleNextEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doNext();\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handleMoveEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doMove(event.navigateTo);\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handlePrevEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doPrev();\n\treturn false; // dont propegate\n\t\n\t\n}\nexports[\&quot;action-playlist\&quot;] = MPlayListWidget;\n\n})();\n&quot;,
+            &quot;title&quot;: &quot;$:/bj/modules/widgets/plylist.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;widget&quot;
         },
-        &quot;$:/bj/modules/widgets/mplylist.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\ntitle: $:/bj/modules/widgets/mplylist.js\ntype: application/javascript\nmodule-type: widget\n\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar MPlayListWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n\t\tthis.addEventListeners([\n\t{type: \&quot;tm-mply-next\&quot;, handler: \&quot;handleNextEvent\&quot;},\n\t{type: \&quot;tm-mply-move\&quot;, handler: \&quot;handleMoveEvent\&quot;},\n\t{type: \&quot;tm-mply-prev\&quot;, handler: \&quot;handlePrevEvent\&quot;}]);\n};\n/*\nInherit from the base widget class\n*/\nMPlayListWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nMPlayListWidget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nMPlayListWidget.prototype.execute = function() {\n\t// Compose the list elements\n\tthis.list = this.getTiddlerList();\n\tthis.n =-1;\n    this.syntid = this.getAttribute(\&quot;syntid\&quot;);\n    this.mode = this.getAttribute(\&quot;mode\&quot;);\n\t\t// Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\nMPlayListWidget.prototype.getTiddlerList = function() {\n\tvar defaultFilter = \&quot;[tag[\&quot;+this.getVariable(\&quot;currentTiddler\&quot;)+\&quot;]]\&quot;;\n\treturn this.wiki.filterTiddlers(this.getAttribute(\&quot;filter\&quot;,defaultFilter),this);\n};\n/*\nRefresh the widget by ensuring our attributes are up to date\n*/\nMPlayListWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\t//alert(this.attributes.filter);\n\tif(changedAttributes.filter || changedAttributes[\&quot;$tiddler\&quot;]) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\treturn this.refreshChildren(changedTiddlers);\n};\n\n/*\nInvoke the action associated with this widget\n*/\nMPlayListWidget.prototype.invokeAction = function(triggeringWidget,event) {\n\tif (event.type == \&quot;start\&quot;) this.doStart();\n\telse this.doNext();\n\treturn true; // Action was invoked\n};\nMPlayListWidget.prototype.updatelist = function() {\n\tvar list,n,i,curr = this.list[this.n];\n\tlist = this.getTiddlerList();\n\tfor ( i = 0; i &lt; list.length; i++) {\n\t\tif (list[i] === curr) break;\n\t}\n\tif (i === list.length) i = 0;\n\tthis.n = i;\n\tthis.list = list;\n}\n\t\nMPlayListWidget.prototype.doMove = function(loc) {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tfor (i = 0; i &lt; this.list.length; i++) {\n\t\t\tif ((loc == this.list[i]) &amp;&amp; (tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track: uri}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doStart = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tthis.n = -1;\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) return;\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track: uri}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doNext = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) return;\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track: uri}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doPrev = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\t\n\t\tfor (i = this.n - 1 ; i &gt;=0; i--) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track: uri}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == -1? 0 : i);\n\t}\n}\nMPlayListWidget.prototype.handleNextEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doNext();\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handleMoveEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doMove(event.navigateTo);\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handlePrevEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doPrev();\n\treturn false; // dont propegate\n\t\n\t\n}\nexports[\&quot;action-mplaylist\&quot;] = MPlayListWidget;\n\n})();\n&quot;,
-            &quot;title&quot;: &quot;$:/bj/modules/widgets/mplylist.js&quot;,
-            &quot;type&quot;: &quot;application/javascript&quot;,
-            &quot;module-type&quot;: &quot;widget&quot;
-        },
-        &quot;$:/bj/modules/widgets/refresh.js&quot;: {
-            &quot;text&quot;: &quot;\n/*\\\ntitle: $:/bj/modules/widgets/refresh.js\ntype: application/javascript\nmodule-type: widget\n\nrefreshWiget - \n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar refreshWiget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nrefreshWiget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nrefreshWiget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nrefreshWiget.prototype.execute = function() {\n\t// Get our parameters\n    this.msg=this.getAttribute(\&quot;msg\&quot;);\n    if (this.msg) {\n\t\tthis.eventListeners = {};\n\t\tthis.addEventListeners([\n\t\t\t{type: this.msg, handler: \&quot;handleRefreshEvent\&quot;}\n\t\t]);\n\t}\n    // Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nrefreshWiget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes[\&quot;msg\&quot;] ) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\telse {\n\t\treturn this.refreshChildren(changedTiddlers);\n\t}\n};\n\nrefreshWiget.prototype.handleRefreshEvent = function(event) {\n\tvar list = {},additionalFields,title;\n\t\tif(typeof event.paramObject === \&quot;object\&quot;) {\n\t\t\tadditionalFields = event.paramObject;\n\t\t\ttitle = additionalFields.title;\n\t\t}\n\t\tif (title) {\n\t\t\tlist[title] =  {};\n\t\t\tlist[title][\&quot;modified\&quot;] = true;\n\t\t}\n\t\tthis.refreshChildren(list);\n\n\treturn false;//always consume event\n};\n\nexports.refresh = refreshWiget;\n\n})();\n&quot;,
-            &quot;title&quot;: &quot;$:/bj/modules/widgets/refresh.js&quot;,
-            &quot;type&quot;: &quot;application/javascript&quot;,
-            &quot;module-type&quot;: &quot;widget&quot;
-        },
-        &quot;$:/bj/modules/widgets/setvar.js&quot;: {
-            &quot;text&quot;: &quot;\n/*\\\ntitle: $:/bj/modules/widgets/setvar.js\ntype: application/javascript\nmodule-type: widget\n\nrefreshWiget - \n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar refreshWiget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nrefreshWiget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nrefreshWiget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nrefreshWiget.prototype.execute = function() {\n\t// Get our parameters\n    this.msg=this.getAttribute(\&quot;msg\&quot;);\n    if (this.msg) {\n\t\tthis.eventListeners = {};\n\t\tthis.addEventListeners([\n\t\t\t{type: this.msg, handler: \&quot;handleSetvarEvent\&quot;}\n\t\t]);\n\t}\n    // Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nrefreshWiget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes[\&quot;msg\&quot;] ) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\telse {\n\t\treturn this.refreshChildren(changedTiddlers);\n\t}\n};\n\nrefreshWiget.prototype.handleSetvarEvent = function(event) {\n\tvar additionalFields,setvar,setval;\n\t\tif(typeof event.paramObject === \&quot;object\&quot;) {\n\t\t\tadditionalFields = event.paramObject;\n\t\t\tsetvar = additionalFields.setvar;\n\t\t\tsetval = additionalFields.setval;\n\t\t}\n\t\tif (setvar &amp;&amp; setval) \n\t\tthis.setVariable(setvar,setval);\n\treturn true;\n};\n\nexports.setvar = refreshWiget;\n\n})();\n&quot;,
-            &quot;title&quot;: &quot;$:/bj/modules/widgets/setvar.js&quot;,
+        &quot;$:/bj/modules/widgets/msgcatcher.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/bj/modules/widgets/msgcatcher.js\ntype: application/javascript\nmodule-type: widget\n\nMsgCatcherWiget - root of msg action widget - \t1 \n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar MsgCatcherWiget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nMsgCatcherWiget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nMsgCatcherWiget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nMsgCatcherWiget.prototype.execute = function() {\n\t// Get our parameters\n    this.msg=this.getAttribute(\&quot;msg\&quot;);\n    if (this.msg) {\n\t\tthis.eventListeners = {};\n\t\tthis.addEventListeners([\n\t\t\t{type: this.msg, handler: \&quot;handleEvent\&quot;}\n\t\t]);\n\t}\n    // Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nMsgCatcherWiget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes[\&quot;msg\&quot;] ) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\telse {\n\t\treturn this.refreshChildren(changedTiddlers);\n\t}\n};\n\nMsgCatcherWiget.prototype.handleEvent = function(event) {\n\tthis.invokeMsgActions(event);\n\treturn false;//always consume event\n};\n\n/*Invoke any action widgets that are immediate children of this widget\n*/\nMsgCatcherWiget.prototype.invokeMsgActions = function(event) {\n\tfor(var t=0; t&lt;this.children.length; t++) {\n\t\tvar child = this.children[t];\n\t\tvar params = {event:event,continue:false};\n\t\tif(child.invokeMsgAction) params = child.invokeMsgAction(params); \n\t}\n\tif(params.continue &amp;&amp; this.parentWidget) {\n\t\tthis.parentWidget.dispatchEvent(params.event);\n\t}\n};\nexports.msgcatcher = MsgCatcherWiget;\n\n})();\n&quot;,
+            &quot;title&quot;: &quot;$:/bj/modules/widgets/msgcatcher.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;widget&quot;
         },
@@ -5527,17 +5570,54 @@ width:100%;
             &quot;title&quot;: &quot;$:/bj/modules/widgets/local.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;widget&quot;
-        },
+        }
+    }
+}</pre>
+</div>
+<div author="JeffreyWilkinson" core-version="&gt;=5.0.17" created="20150104221208343" dependents="" description="Includes 'click trigger' macro" list="readme license" plugin-type="plugin" source="https://github.com/buggyj/TW5-smalltools" title="$:/plugins/bj/smalltools" type="application/json" version="0.0.1">
+<pre>{
+    &quot;tiddlers&quot;: {
         &quot;$:/bj/modules/widgets/wikiadapter.js&quot;: {
             &quot;text&quot;: &quot;/*\\\ntitle: $:/bj/modules/widgets/wikiadapter.js\ntype: application/javascript\nmodule-type: global\n\noverrides for wiki.js\n\n\\*/\n(function(){\nvar wiki = require(\&quot;$:/core/modules/wiki.js\&quot;);\n wiki.oldenqueueTiddlerEvent = wiki.enqueueTiddlerEvent;\nwiki.enqueueTiddlerEvent = function(title,isDeleted) {\n\tif (title.substring(0,13) !== \&quot;$:/temp/priv/\&quot;) this.oldenqueueTiddlerEvent(title,isDeleted);\n};\n})();\n&quot;,
             &quot;title&quot;: &quot;$:/bj/modules/widgets/wikiadapter.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;global&quot;
+        },
+        &quot;$:/plugins/bj/smalltools/click.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/bj/smalltools/click.js\ntype: application/javascript\nmodule-type: widget\n\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar clickWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nclickWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nclickWidget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n};\n\n/*\nCompute the internal state of the widget\n*/\nclickWidget.prototype.execute = function() {\n\tthis.stateTitle = this.getAttribute(\&quot;state\&quot;);\n\tthis.text = this.getAttribute(\&quot;text\&quot;);\n};\nclickWidget.prototype.readState = function() {\n\t// Read the information from the state tiddler\n\tif(this.stateTitle) {\n\t\tvar state = this.wiki.getTextReference(this.stateTitle,this[\&quot;default\&quot;],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\tif (state === this.text) {\n\t\t\tthis.parentDomNode.click();\n\t\treturn false;\t\n\t\t}\n\n\t}\n};\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nclickWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\t// Completely rerender if any of our attributes have changed\n\tif(changedAttributes.text || changedAttributes.state) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t} else if(this.stateTitle &amp;&amp; changedTiddlers[this.stateTitle]) {\n\t\tthis.readState();\n\t\treturn true;\n\t}\n\treturn false;\n};\n\t\n\n\nexports[\&quot;click\&quot;] = clickWidget;\n\n})();\n&quot;,
+            &quot;title&quot;: &quot;$:/plugins/bj/smalltools/click.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;
+        },
+        &quot;$:/plugins/bj/smalltools/license&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/bj/smalltools/license&quot;,
+            &quot;text&quot;: &quot;The MIT License (MIT)\n\nCopyright (c) 2014 Jeffrey Wikinson aka buggyj\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \&quot;Software\&quot;), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \&quot;AS IS\&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n&quot;
+        },
+        &quot;$:/plugins/bj/smalltools/macrosuniversal&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/bj/smalltools/macrosuniversal&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Macro&quot;,
+            &quot;text&quot;: &quot;\\define openAllTaggedInner(state)\n&lt;$button set=&lt;&lt;qualify \&quot;$state$\&quot;&gt;&gt; setTo=\&quot;open\&quot;&gt;Open all tagged&lt;/$button&gt; \n&lt;$edit-text tiddler=\&quot;&lt;&lt;qualify $(usertagopen)$&gt;&gt;\&quot; tag=\&quot;input\&quot; type=\&quot;text\&quot;/&gt;\n&lt;$list filter=\&quot;\&quot;\&quot;[!has[draft.of]tag{&lt;&lt;qualify $(usertagopen)$&gt;&gt;}sort[created]]\&quot;\&quot;\&quot;&gt;\n&lt;$link&gt;&lt;$click type=\&quot;match\&quot; state=&lt;&lt;qualify \&quot;$state$\&quot;&gt;&gt; text=\&quot;open\&quot;/&gt; &lt;/$link&gt;\n&lt;/$list&gt;\n\\end\n\n\\define openAllTagged(userparam:\&quot;$:/temp/openall\&quot; state:\&quot;$:/state/opentagged\&quot; )\n&lt;$set name=\&quot;usertagopen\&quot; value=&lt;&lt;qualify \&quot;$userparam$\&quot;&gt;&gt;&gt;\n&lt;&lt;openAllTaggedInner $state$&gt;&gt;\n\\end\n\n\\define closeAllTaggedInner( state:\&quot;$:/state/closetagged\&quot; )\n&lt;$button set=&lt;&lt;qualify \&quot;$state$\&quot;&gt;&gt; setTo=\&quot;close\&quot;&gt;close all tagged&lt;/$button&gt; \n&lt;$edit-text tiddler=\&quot;&lt;&lt;qualify $(usertagclose)$&gt;&gt;\&quot; tag=\&quot;input\&quot; type=\&quot;text\&quot;/&gt;\n&lt;$linkcatcher message=tm-close-tiddler&gt;\n&lt;$list filter=\&quot;\&quot;\&quot;[!has[draft.of]tag{&lt;&lt;qualify $(usertagclose)$&gt;&gt;}sort[created]]\&quot;\&quot;\&quot;&gt;\n&lt;$link&gt;&lt;$click type=\&quot;match\&quot; state=&lt;&lt;qualify \&quot;$state$\&quot;&gt;&gt; text=\&quot;close\&quot;/&gt; &lt;/$link&gt;\n&lt;/$list&gt;\n&lt;/$linkcatcher&gt;\n\\end\n\n\\define closeAllTagged(userparam:\&quot;$:/temp/closeeall\&quot; state:\&quot;$:/state/closetagged\&quot; )\n&lt;$set name=\&quot;usertagclose\&quot; value=&lt;&lt;qualify \&quot;$userparam$\&quot;&gt;&gt;&gt;\n&lt;&lt;closeAllTaggedInner $state$&gt;&gt;\n\\end\n\n\n\n&quot;
+        },
+        &quot;$:/plugins/bj/smalltools/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/bj/smalltools/readme&quot;,
+            &quot;text&quot;: &quot;\n!!The Click Widget\nwatches for writes to tiddler specified in 'state' and clicks when the it sees the contents matches that specified by'text'\n\n!!Usage\ncan be used to click all items on a list \n\n!!Example open all tiddlers with the same tag:\n\n`\n&lt;$button set=&lt;&lt;qualify \&quot;$:/state\&quot;&gt;&gt; setTo=\&quot;open\&quot;&gt;Open all tagged&lt;/$button&gt; \n&lt;$edit-text tiddler=\&quot;$:/temp/openall\&quot; tag=\&quot;input\&quot; type=\&quot;text\&quot;/&gt;\n\n\n&lt;$list filter=\&quot;[!has[draft.of]tag{$:/temp/openall}sort[created]]\&quot;&gt;\n\n&lt;$link&gt;&lt;$click state=&lt;&lt;qualify \&quot;$:/state\&quot;&gt;&gt; text=\&quot;open\&quot;/&gt; &lt;/$link&gt;\n\n&lt;/$list&gt;\n`\n&quot;
+        },
+        &quot;$:/bj/modules/widgets/refresh.js&quot;: {
+            &quot;text&quot;: &quot;\n/*\\\ntitle: $:/bj/modules/widgets/refresh.js\ntype: application/javascript\nmodule-type: widget\n\nrefreshWiget - \n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar refreshWiget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nrefreshWiget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nrefreshWiget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nrefreshWiget.prototype.execute = function() {\n\t// Get our parameters\n    this.msg=this.getAttribute(\&quot;msg\&quot;);\n    if (this.msg) {\n\t\tthis.eventListeners = {};\n\t\tthis.addEventListeners([\n\t\t\t{type: this.msg, handler: \&quot;handleRefreshEvent\&quot;}\n\t\t]);\n\t}\n    // Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nrefreshWiget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes[\&quot;msg\&quot;] ) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\telse {\n\t\treturn this.refreshChildren(changedTiddlers);\n\t}\n};\n\nrefreshWiget.prototype.handleRefreshEvent = function(event) {\n\tvar list = {},additionalFields,title;\n\t\tif(typeof event.paramObject === \&quot;object\&quot;) {\n\t\t\tadditionalFields = event.paramObject;\n\t\t\ttitle = additionalFields.title;\n\t\t}\n\t\tif (title) {\n\t\t\tlist[title] =  {};\n\t\t\tlist[title][\&quot;modified\&quot;] = true;\n\t\t}\n\t\tthis.refreshChildren(list);\n\n\treturn false;//always consume event\n};\n\nexports.refresh = refreshWiget;\n\n})();\n&quot;,
+            &quot;title&quot;: &quot;$:/bj/modules/widgets/refresh.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;
+        },
+        &quot;$:/bj/modules/widgets/setvar.js&quot;: {
+            &quot;text&quot;: &quot;\n/*\\\ntitle: $:/bj/modules/widgets/setvar.js\ntype: application/javascript\nmodule-type: widget\n\nsetvarWiget - \n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar setvarWiget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nsetvarWiget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nsetvarWiget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nsetvarWiget.prototype.execute = function() {\n\t// Get our parameters\n    this.msg=this.getAttribute(\&quot;msg\&quot;);\n    if (this.msg) {\n\t\tthis.eventListeners = {};\n\t\tthis.addEventListeners([\n\t\t\t{type: this.msg, handler: \&quot;handleSetvarEvent\&quot;}\n\t\t]);\n\t}\n    // Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nsetvarWiget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes[\&quot;msg\&quot;] ) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\telse {\n\t\treturn this.refreshChildren(changedTiddlers);\n\t}\n};\n\nsetvarWiget.prototype.handleSetvarEvent = function(event) {\n\tvar additionalFields,setvar,setval;\n\t\tif(typeof event.paramObject === \&quot;object\&quot;) {\n\t\t\tadditionalFields = event.paramObject;\n\t\t\tsetvar = additionalFields.setvar;\n\t\t\tsetval = additionalFields.setval;\n\t\t}\n\t\tif (setvar &amp;&amp; setval) \n\t\tthis.setVariable(setvar,setval);\n\treturn true;\n};\n\nexports.setvar = setvarWiget;\n\n})();\n&quot;,
+            &quot;title&quot;: &quot;$:/bj/modules/widgets/setvar.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;
         }
     }
 }</pre>
 </div>
-<div author="Jeffrey Wilkinson" core-version="&gt;=5.1.0" dependents="" description="(re-orderable) list on a tag" plugin-type="plugin" source="https://github.com/buggyj/TW5-taglist" title="$:/plugins/bj/taglist" type="application/json" version="0.0.6">
+<div author="Jeffrey Wilkinson" core-version="&gt;=5.1.0" created="20141228172407037" dependents="" description="(re-orderable) list on a tag" plugin-type="plugin" source="https://github.com/buggyj/TW5-taglist" title="$:/plugins/bj/taglist" type="application/json" version="0.0.6">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/core/modules/widgets/button-dragover-extend.js&quot;: {
@@ -5664,17 +5744,11 @@ width:100%;
     }
 }</pre>
 </div>
-<div modified="20141231123051749" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Plugins</pre>
-</div>
-<div modified="20141231031354684" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150106231259944" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="[[New Tiddler 2]] GettingStarted" title="$:/StoryList">
+<div list="[[PlayLists 2]] GettingStarted" title="$:/StoryList">
 <pre></pre>
-</div>
-<div created="20141231122138756" modified="20141231123229379" title="$:/temp/bj/x">
-<pre>nirvana1</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -5690,11 +5764,11 @@ width:100%;
     }
 }</pre>
 </div>
-<div modified="20141231123226612" title="$:/temp/priv/playing">
-<pre>Nirvana - Dumb.mp3</pre>
+<div modified="20150106231338149" title="$:/temp/list">
+<pre>nirvana</pre>
 </div>
-<div created="20141231031402935" modified="20141231122100374" title="$:/temp/priv/x">
-<pre></pre>
+<div modified="20150106231812689" title="$:/temp/priv/playing">
+<pre>Nirvana - About a Girl.mp3</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.5">
 <pre>{
@@ -5776,7 +5850,19 @@ width:100%;
 <div _canonical_uri="file:///media/buggyj/FIRELITE/iTunes/iTunes Music/Sugababes/Angels With Dirty Faces/01 Freak Like Me.m4a" created="20141229222212117" modified="20141229222238250" title="01 Freak Like Me.m4a" type="audio/m4a">
 <pre></pre>
 </div>
+<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Radiohead/OK Computer/02 Paranoid Android.mp3" created="20150102160822204" modified="20150102160822204" tags="RadioHead" title="02 Paranoid Android.mp3" type="audio/mp3">
+<pre></pre>
+</div>
+<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Radiohead/OK Computer/03 Subterranean Homesick Alien.mp3" created="20150102160818189" modified="20150102160818189" tags="RadioHead" title="03 Subterranean Homesick Alien.mp3" type="audio/mp3">
+<pre></pre>
+</div>
+<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Radiohead/OK Computer/04 Exit Music (For A Film).mp3" created="20150102160831121" modified="20150102160831121" tags="RadioHead" title="04 Exit Music (For A Film).mp3" type="audio/mp3">
+<pre></pre>
+</div>
 <div _canonical_uri="file:///media/buggyj/FIRELITE/iTunes/iTunes Music/Nick Drake/Way To Blue (An Introduction To Nick Dra/05 River Man.m4a" created="20141230011407995" modified="20141230011407995" title="05 River Man.m4a" type="audio/mp3">
+<pre></pre>
+</div>
+<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Radiohead/OK Computer/06 Karma Police.mp3" created="20150102160837078" modified="20150102160837078" tags="RadioHead" title="06 Karma Police.mp3" type="audio/mp3">
 <pre></pre>
 </div>
 <div created="20140731142658233" modified="20141228180607076" tags="$:/tags/SideBar" title="ControlPlayList" type="text/vnd.tiddlywikilist">
@@ -5798,7 +5884,185 @@ width:100%;
 
 </pre>
 </div>
-<div created="20141228130943967" list="[[05 River Man.m4a]] spanishpod_0430pr.mp3 spanishpod_C0353pr.mp3 [[01 Freak Like Me.m4a]] spanishpod_B0635pr.mp3" modified="20141231011544850" tags="music" title="l1" type="text/vnd.tiddlywiki">
+<div created="20140731170756774" draft.of="musicTemplate2" draft.title="musicTemplate2" modified="20150106171704765" title="Draft of 'musicTemplate2'" type="text/vnd.tiddlywiki">
+<pre>&lt;$reveal state=&quot;$:/temp/list&quot; text={{!!title}} type=&quot;nomatch&quot;&gt;&lt;$fieldmangler&gt;&lt;$button  param= &lt;&lt;currentTag&gt;&gt; message=&quot;tm-remove-tag&quot; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;&lt;/$fieldmangler&gt;
+&lt;$link&gt;&lt;span class=&quot;tc-taglistplain&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/span&gt;&lt;/$link&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state=&quot;$:/temp/list&quot; text={{!!title}} type=&quot;match&quot;&gt;&lt;$fieldmangler&gt;&lt;$button  param= &lt;&lt;currentTag&gt;&gt; message=&quot;tm-remove-tag&quot; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;&lt;/$fieldmangler&gt;
+&lt;$link&gt;&lt;span class=&quot;tc-taglist&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/span&gt;&lt;/$link&gt;&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150105214540458" draft.of="New Tiddler 1" draft.title="New Tiddler 1" modified="20150105232018008" tags="" title="Draft of 'New Tiddler 1'" type="text/vnd.tiddlywiki">
+<pre>&lt;$action-mplaylist filter=&quot;[tag[$name$]]&quot; syntid=&quot;$:/temp/priv/list&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;$name$&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=musicTemplate2&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;/$action-mplaylist&gt;</pre>
+</div>
+<div created="20150105214422770" draft.of="New Tiddler 2 1" draft.title="New Tiddler 2 1" modified="20150105215107306" tags="" title="Draft of 'New Tiddler 2 1'" type="text/vnd.tiddlywiki">
+<pre>\define player(name)
+&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;
+&lt;$mplayer&gt;
+&lt;$action-mplaylist filter=&quot;[tag[$name$]]&quot; syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$action-mplaylist filter=&quot;music&quot; syntid=&quot;$:/temp/priv/list&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;music&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;music&quot; template=musicTemplate2&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;/$action-mplaylist&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvdwn&quot; /&gt;
+-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvup&quot; /&gt;
++
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mrw&quot; /&gt;
+&lt;-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mff&quot; /&gt;
+-&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-next&quot; /&gt;
+&gt;&gt;
+&lt;/$button&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;$name$&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=musicTemplate&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;/$action-mplaylist&gt;
+&lt;/$mplayer&gt;
+&lt;/$refresh&gt;
+
+
+\end
+&lt;$edit-text tiddler=&quot;$:/temp/x&quot; tag=&quot;input&quot; type=&quot;text&quot;/&gt;
+&lt;$macrocall $name=&quot;player&quot; name={{$:/temp/x}}/&gt;
+
+</pre>
+</div>
+<div created="20150106171057177" draft.of="New Tiddler 3" draft.title="New Tiddler 3" modified="20150106171409990" tags="" title="Draft of 'New Tiddler 3'" type="text/vnd.tiddlywiki">
+<pre>\define player(name)
+&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;&lt;$mplayer&gt;&lt;$action-mplaylist filter=&quot;[tag[$name$]]&quot; syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvdwn&quot; /&gt;
+-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvup&quot; /&gt;
++
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mrw&quot; /&gt;
+&lt;-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mff&quot; /&gt;
+-&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-next&quot; /&gt;
+&gt;&gt;&lt;/$button&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;$name$&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=musicTemplate&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;/$action-mplaylist&gt;&lt;/$mplayer&gt;
+&lt;/$refresh&gt;
+
+
+\end
+&lt;$edit-text tiddler=&quot;$:/temp/x&quot; tag=&quot;input&quot; type=&quot;text&quot;/&gt;
+&lt;$macrocall $name=&quot;player&quot; name={{$:/temp/x}}/&gt;
+
+</pre>
+</div>
+<div created="20150106214046149" draft.of="PlayLists 1" draft.title="PlayLists 1" modified="20150106225438597" tags="$:/tags/SideBar" title="Draft of 'PlayLists 1'" type="text/vnd.tiddlywikilist">
+<pre>\define player(name) 
+&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;
+&lt;$mplayer&gt;
+&lt;$action-mplaylist filter=&quot;[tag[$name$]]&quot; syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvdwn&quot; /&gt;
+-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvup&quot; /&gt;
++
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mrw&quot; /&gt;
+&lt;-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mff&quot; /&gt;
+-&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-next&quot; /&gt;
+&gt;&gt;
+&lt;/$button&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;$name$&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=musicTemplate&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;$action-sendmessage $message=&quot;tm-ply-next&quot; /&gt;
+&lt;/$action-mplaylist&gt;
+
+&lt;/$mplayer&gt;
+&lt;/$refresh&gt;
+\end
+
+
+!Control order of Playlist 
+
+&lt;$action-playlist filter=&quot;[tag[music]]&quot; syntid=&quot;$:/temp/list&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-ply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-ply-next&quot; /&gt;
+&gt;&gt;
+&lt;/$button&gt;
+&lt;$linkcatcher message=&quot;tm-ply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;music&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;music&quot; template=musicTemplate2&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+
+&lt;$macrocall $name=&quot;player&quot; name={{$:/temp/list}}/&gt;
+&lt;/$action-playlist&gt;
+
+&lt;hr&gt;
+
+
+
+
+</pre>
+</div>
+<div created="20141228130943967" list="[[05 River Man.m4a]] spanishpod_0430pr.mp3 spanishpod_C0353pr.mp3 [[01 Freak Like Me.m4a]] spanishpod_B0635pr.mp3" modified="20150106231323958" tags="music" title="l1" type="text/vnd.tiddlywiki">
 <pre>&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;&lt;$mplayer startTime=&quot;4.0&quot;  &gt;&lt;$action-mplaylist syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
 
 &lt;$button&gt;
@@ -5837,11 +6101,11 @@ width:100%;
 |[[TITLETID]]||||{&quot;$_canonical_uri&quot;:&quot;((*@sublink(@linkURL)*))&quot;},{&quot;$type&quot;:&quot;image/jpeg&quot;}||
 </pre>
 </div>
-<div created="20141202232207484" modified="20141211011343240" tags="[[Tc Local Rules]]" title="localtwmp3" type="text/vnd.tiddlywiki">
+<div created="20141202232207484" modified="20150106133101374" tags="[[Tc Local Rules]]" title="localtwmp3" type="text/vnd.tiddlywiki">
 <pre>\rules only table wikilink prettylink
 
 |!Title|!Body|!Tags|!Fields modifiers|!field initials|!Modes|
-|[[TITLETID]]||||{&quot;$_canonical_uri&quot;:&quot;((*@sublink(@linkURL)*))&quot;},{&quot;$type&quot;:&quot;audio/mp3&quot;}||
+|[[TITLETID]]||||{&quot;$_canonical_uri&quot;:&quot;((*@sublink(@linkURL)*))&quot;},{&quot;$type&quot;:&quot;audio/mp3&quot;}|inc add|
 </pre>
 </div>
 <div created="20141205031929939" modified="20141211011305249" tags="[[Tc Local Rules]]" title="localtwpdf" type="text/vnd.tiddlywiki">
@@ -5858,6 +6122,23 @@ width:100%;
 |[[TITLETID]]||||{&quot;$_canonical_uri&quot;:&quot;((*@sublink(@linkURL)*))&quot;},{&quot;$type&quot;:&quot;image/png&quot;}||
 </pre>
 </div>
+<div created="20150105232718780" list="l1 SpanishPodM/Clips nirvana" modified="20150105232718780" title="music" type="text/vnd.tiddlywiki">
+<pre></pre>
+</div>
+<div created="20150106171715815" modified="20150106171829298" tags="" title="musicTemplate" type="text/vnd.tiddlywiki">
+<pre>&lt;$reveal state=&quot;$:/temp/priv/playing&quot; text={{!!title}} type=&quot;nomatch&quot;&gt;&lt;$fieldmangler&gt;&lt;$button  param= &lt;&lt;currentTag&gt;&gt; message=&quot;tm-remove-tag&quot; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;&lt;/$fieldmangler&gt;
+&lt;$link&gt;&lt;span class=&quot;tc-taglistplain&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/span&gt;&lt;/$link&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state=&quot;$:/temp/priv/playing&quot; text={{!!title}} type=&quot;match&quot;&gt;&lt;$fieldmangler&gt;&lt;$button  param= &lt;&lt;currentTag&gt;&gt; message=&quot;tm-remove-tag&quot; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;&lt;/$fieldmangler&gt;
+&lt;$link&gt;&lt;span class=&quot;tc-taglist&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/span&gt;&lt;/$link&gt;&lt;/$reveal&gt;</pre>
+</div>
+<div created="20140731170756774" modified="20150105232043655" title="musicTemplate2" type="text/vnd.tiddlywiki">
+<pre>&lt;$reveal state=&quot;$:/temp/list&quot; text={{!!title}} type=&quot;nomatch&quot;&gt;&lt;$fieldmangler&gt;&lt;$button  param= &lt;&lt;currentTag&gt;&gt; message=&quot;tm-remove-tag&quot; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;&lt;/$fieldmangler&gt;
+&lt;$link&gt;&lt;span class=&quot;tc-taglistplain&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/span&gt;&lt;/$link&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state=&quot;$:/temp/list&quot; text={{!!title}} type=&quot;match&quot;&gt;&lt;$fieldmangler&gt;&lt;$button  param= &lt;&lt;currentTag&gt;&gt; message=&quot;tm-remove-tag&quot; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;&lt;/$fieldmangler&gt;
+&lt;$link&gt;&lt;span class=&quot;tc-taglist&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/span&gt;&lt;/$link&gt;&lt;/$reveal&gt;</pre>
+</div>
 <div created="20141223190543675" modified="20141224153426946" tags="" title="New Tiddler" type="text/vnd.tiddlywiki">
 <pre>&lt;span style=&quot;visibility: hidden;&quot;/&gt;&lt;$mplayer startTime=&quot;4.0&quot;&gt;&lt;$action-mplaylist filter=&quot;[tag[SpanishPodM/Clips]]&quot;&gt;
 
@@ -5866,7 +6147,104 @@ width:100%;
 Next
 &lt;/$button&gt;vv&lt;/$action-mplaylist&gt;&lt;/$mplayer&gt;</pre>
 </div>
-<div created="20141223232111227" modified="20141231123456445" tags="" title="New Tiddler 2" type="text/vnd.tiddlywiki">
+<div created="20141223232111227" modified="20150102160957864" tags="" title="New Tiddler 2" type="text/vnd.tiddlywiki">
+<pre>\define player(name)
+&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;
+&lt;$mplayer&gt;
+&lt;$action-mplaylist filter=&quot;[tag[$name$]]&quot; syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvdwn&quot; /&gt;
+-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvup&quot; /&gt;
++
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mrw&quot; /&gt;
+&lt;-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mff&quot; /&gt;
+-&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-next&quot; /&gt;
+&gt;&gt;
+&lt;/$button&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;$name$&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=musicTemplate&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;/$action-mplaylist&gt;
+&lt;/$mplayer&gt;
+&lt;/$refresh&gt;
+
+
+\end
+&lt;$edit-text tiddler=&quot;$:/temp/x&quot; tag=&quot;input&quot; type=&quot;text&quot;/&gt;
+&lt;$macrocall $name=&quot;player&quot; name={{$:/temp/x}}/&gt;
+
+</pre>
+</div>
+<div created="20150105214422770" modified="20150105215031174" tags="" title="New Tiddler 2 1" type="text/vnd.tiddlywiki">
+<pre>\define player(name)
+&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;
+&lt;$mplayer&gt;
+&lt;$action-mplaylist filter=&quot;[tag[$name$]]&quot; syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$action-mplaylist filter=&quot;music&quot; syntid=&quot;$:/temp/priv/list&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;music&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;music&quot; template=musicTemplate2&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;/$action-mplaylist&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvdwn&quot; /&gt;
+-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvup&quot; /&gt;
++
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mrw&quot; /&gt;
+&lt;-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mff&quot; /&gt;
+-&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-next&quot; /&gt;
+&gt;&gt;
+&lt;/$button&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;$name$&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=musicTemplate&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;/$action-mplaylist&gt;
+&lt;/$mplayer&gt;
+&lt;/$refresh&gt;
+
+
+\end
+&lt;$edit-text tiddler=&quot;$:/temp/x&quot; tag=&quot;input&quot; type=&quot;text&quot;/&gt;
+&lt;$macrocall $name=&quot;player&quot; name={{$:/temp/x}}/&gt;
+
+</pre>
+</div>
+<div created="20150106171057177" modified="20150106171117372" tags="" title="New Tiddler 3" type="text/vnd.tiddlywiki">
 <pre>\define player(name)
 &lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;&lt;$mplayer&gt;&lt;$action-mplaylist filter=&quot;[tag[$name$]]&quot; syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
 &lt;$button&gt;
@@ -5893,21 +6271,22 @@ Next
 &lt;$action-sendmessage $message=&quot;tm-mply-next&quot; /&gt;
 &gt;&gt;&lt;/$button&gt;
 &lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
-
-&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=TocTemplate emptyMessage=&quot;drop here to start playlist&quot;&gt;&lt;/$taglist&gt;
+&lt;$set name=currentTag value=&quot;$name$&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=musicTemplate&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
 &lt;/$linkcatcher&gt;
 &lt;/$action-mplaylist&gt;&lt;/$mplayer&gt;
 &lt;/$refresh&gt;
 
 
 \end
-&lt;$edit-text tiddler=&quot;$:/temp/bj/x&quot; tag=&quot;input&quot; type=&quot;text&quot;/&gt;
-&lt;$macrocall $name=&quot;player&quot; name={{$:/temp/bj/x}}/&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/x&quot; tag=&quot;input&quot; type=&quot;text&quot;/&gt;
+&lt;$macrocall $name=&quot;player&quot; name={{$:/temp/x}}/&gt;
 
 </pre>
 </div>
-<div created="20141231011549807" list="[[Nirvana - Dumb.mp3]] [[Nirvana - All Apologies [Live].mp3]] [[Nirvana - Smells Like Teen Spirit.mp3]] [[Nirvana - Pennyroyal Tea [Single Mix][#].mp3]] [[Nirvana - Come as You Are.mp3]] [[Nirvana - In Bloom.mp3]] [[Nirvana - About a Girl.mp3]] [[Nirvana - Rape Me.mp3]] [[Nirvana - The Man Who Sold the World [Live].mp3]]" modified="20141231031514943" tags="music" title="nirvana" type="text/vnd.tiddlywiki">
-<pre>&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;&lt;$mplayer startTime=&quot;4.0&quot;  &gt;&lt;$action-mplaylist syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
+<div created="20141231011549807" list="[[05 River Man.m4a]] spanishpod_0430pr.mp3 spanishpod_C0353pr.mp3 [[01 Freak Like Me.m4a]] spanishpod_B0635pr.mp3" modified="20150106231328317" tags="music" title="nirvana" type="text/vnd.tiddlywiki">
+<pre>&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;&lt;$mplayer &gt;&lt;$action-mplaylist syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
 
 &lt;$button&gt;
 &lt;$action-sendmessage $message=&quot;tm-mvdwn&quot; /&gt;
@@ -5936,12 +6315,13 @@ Next
 &lt;$taglist class=&quot;btn btn-primary&quot;  template=TocTemplate&gt;&lt;/$taglist&gt;
 &lt;/$linkcatcher&gt;
 &lt;/$action-mplaylist&gt;&lt;/$mplayer&gt;
-&lt;/$refresh&gt;</pre>
+&lt;/$refresh&gt;
+</pre>
 </div>
 <div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - About a Girl.mp3" created="20141231005018879" modified="20141231005018879" tags="nirvana" title="Nirvana - About a Girl.mp3" type="audio/mp3">
 <pre></pre>
 </div>
-<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - All Apologies [Live].mp3" created="20141231005022163" modified="20141231005022163" tags="nirvana" title="Nirvana - All Apologies [Live].mp3" type="audio/mp3">
+<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - All Apologies [Live].mp3" created="20141231005022163" modified="20150101152203980" title="Nirvana - All Apologies [Live].mp3" type="audio/mp3">
 <pre></pre>
 </div>
 <div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - Come as You Are.mp3" created="20141231005028866" modified="20141231005028866" tags="nirvana" title="Nirvana - Come as You Are.mp3" type="audio/mp3">
@@ -5950,10 +6330,13 @@ Next
 <div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - Dumb.mp3" created="20141231005033512" modified="20141231005033513" tags="nirvana" title="Nirvana - Dumb.mp3" type="audio/mp3">
 <pre></pre>
 </div>
-<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - In Bloom.mp3" created="20141231005038993" modified="20141231005038993" tags="nirvana" title="Nirvana - In Bloom.mp3" type="audio/mp3">
+<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - In Bloom.mp3" created="20141231005038993" modified="20150101152450917" title="Nirvana - In Bloom.mp3" type="audio/mp3">
 <pre></pre>
 </div>
-<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - Pennyroyal Tea [Single Mix][#].mp3" created="20141231005043383" modified="20141231005043384" tags="nirvana" title="Nirvana - Pennyroyal Tea [Single Mix][#].mp3" type="audio/mp3">
+<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - Lithium.mp3" created="20150106131334259" modified="20150106131334364" tags="nirvana" title="Nirvana - Lithium.mp3" type="audio/mp3">
+<pre></pre>
+</div>
+<div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - Pennyroyal Tea.mp3" created="20141231005043383" modified="20141231005043384" tags="nirvana" title="Nirvana - Pennyroyal Tea [Single Mix][#].mp3" type="audio/mp3">
 <pre></pre>
 </div>
 <div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - Rape Me.mp3" created="20141231005047233" modified="20141231005047234" tags="nirvana" title="Nirvana - Rape Me.mp3" type="audio/mp3">
@@ -5965,6 +6348,207 @@ Next
 <div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/mp3s/Rock/Nirvana/Nirvana/Nirvana - The Man Who Sold the World [Live].mp3" created="20141231005056039" modified="20141231005056039" tags="nirvana" title="Nirvana - The Man Who Sold the World [Live].mp3" type="audio/mp3">
 <pre></pre>
 </div>
+<div created="20150105195836318" modified="20150105200226056" tags="$:/tags/SideBar" title="PlayLists" type="text/vnd.tiddlywikilist">
+<pre>\define player(name)
+&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;
+&lt;$mplayer&gt;
+&lt;$action-mplaylist filter=&quot;[tag[$name$]]&quot; syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvdwn&quot; /&gt;
+-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvup&quot; /&gt;
++
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mrw&quot; /&gt;
+&lt;-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mff&quot; /&gt;
+-&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-next&quot; /&gt;
+&gt;&gt;
+&lt;/$button&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;$name$&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=musicTemplate&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;/$action-mplaylist&gt;
+&lt;/$mplayer&gt;
+&lt;/$refresh&gt;
+\end
+\define controltcc(var1)
+&lt;$linkcatcher  set=tcc1 setTo={{!!title}} &gt;
+&lt;$reveal state=tcc1 text={{!!title}} type=&quot;match&quot;&gt;&lt;$button class=&quot;tw-taglist&quot; set=tcc1 setTo=&quot;&quot;&gt;[x]&lt;/$button&gt;&lt;/$reveal&gt;
+&lt;$link  dragoverclic=&quot;yes&quot;&gt;&lt;span class=&quot;tw-taglist&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/span&gt;&lt;/$link&gt;&lt;/$linkcatcher&gt;
+&lt;$fieldmangler&gt;&lt;$button  param=ToC message=&quot;tm-remove-tag&quot; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;&lt;/$fieldmangler&gt;
+\end
+
+!Control order of Playlist 
+
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;music&quot; &gt;&lt;&lt;controltcc null&gt;&gt;&lt;/$taglist&gt;
+
+&lt;hr&gt;
+&lt;$macrocall $name=&quot;player&quot; name={{tcc1}}/&gt;
+
+
+
+</pre>
+</div>
+<div created="20150106214046149" modified="20150106225111813" tags="$:/tags/SideBar" title="PlayLists 1" type="text/vnd.tiddlywikilist">
+<pre>\define player(name) 
+&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;
+&lt;$mplayer&gt;
+&lt;$action-mplaylist filter=&quot;[tag[$name$]]&quot; syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvdwn&quot; /&gt;
+-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvup&quot; /&gt;
++
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mrw&quot; /&gt;
+&lt;-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mff&quot; /&gt;
+-&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-next&quot; /&gt;
+&gt;&gt;
+&lt;/$button&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;$name$&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=musicTemplate&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;$action-sendmessage $message=&quot;tm-ply-next&quot; /&gt;
+&lt;/$action-mplaylist&gt;
+
+&lt;/$mplayer&gt;
+&lt;/$refresh&gt;
+\end
+
+
+!Control order of Playlist 
+
+&lt;$action-playlist filter=&quot;[tag[music]]&quot; syntid=&quot;$:/temp/list&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-ply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-ply-next&quot; /&gt;
+&gt;&gt;
+&lt;/$button&gt;
+&lt;$linkcatcher message=&quot;tm-ply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;music&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;music&quot; template=musicTemplate2&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+
+&lt;$macrocall $name=&quot;player&quot; name={{$:/temp/list}}/&gt;
+&lt;/$action-playlist&gt;
+
+&lt;hr&gt;
+
+
+
+
+</pre>
+</div>
+<div created="20150105214403166" modified="20150106231850574" tags="$:/tags/SideBar" title="PlayLists 2" type="text/vnd.tiddlywikilist">
+<pre>\define player(name) 
+&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;
+&lt;$mplayer&gt;
+&lt;$action-mplaylist filter=&quot;[tag[$name$]]&quot; syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvdwn&quot; /&gt;
+-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mvup&quot; /&gt;
++
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mrw&quot; /&gt;
+&lt;-
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mff&quot; /&gt;
+-&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-mply-next&quot; /&gt;
+&gt;&gt;
+&lt;/$button&gt;
+&lt;$linkcatcher message=&quot;tm-mply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;$name$&quot;&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;$name$&quot; template=musicTemplate&gt;&lt;/$taglist&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+&lt;$action-sendmessage $message=&quot;tm-ply-next&quot; /&gt;
+&lt;/$action-mplaylist&gt;
+
+&lt;/$mplayer&gt;
+&lt;/$refresh&gt;
+\end
+
+
+!Control order of Playlist 
+
+&lt;$action-playlist filter=&quot;[tag[music]]&quot; syntid=&quot;$:/temp/list&quot;  mode=&quot;dynamic&quot;&gt;
+
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-ply-prev&quot; /&gt;
+&lt;&lt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-ply-next&quot; /&gt;
+&gt;&gt;
+&lt;/$button&gt;
+
+&lt;$linkcatcher message=&quot;tm-ply-move&quot;&gt;
+&lt;$set name=currentTag value=&quot;music&quot;&gt;
+&lt;$ondrop targeTtag=&quot;music&quot; tagAction=&quot;addtag&quot; &gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;music&quot; template=musicTemplate2 emptyMessage=&quot;drop here to create new list&quot;&gt;&lt;/$taglist&gt;
+&lt;/$ondrop&gt;
+&lt;/$set&gt;
+&lt;/$linkcatcher&gt;
+
+&lt;$macrocall $name=&quot;player&quot; name={{$:/temp/list}}/&gt;
+&lt;/$action-playlist&gt;
+
+&lt;hr&gt;
+
+
+
+
+</pre>
+</div>
+<div created="20150104221317934" list="[[03 Subterranean Homesick Alien.mp3]] [[02 Paranoid Android.mp3]] [[04 Exit Music (For A Film).mp3]] [[06 Karma Police.mp3]]" modified="20150105195627369" title="RadioHead" type="text/vnd.tiddlywiki">
+<pre></pre>
+</div>
 <div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/spanish/intermid/spanishpod_0430pr.mp3" created="20141228130134652" modified="20141228130202351" tags="l1" title="spanishpod_0430pr.mp3" type="audio/mp3">
 <pre></pre>
 </div>
@@ -5974,13 +6558,13 @@ Next
 <div _canonical_uri="file:///media/buggyj/6E9C0F319C0EF2FF/data/spanish/intermid/spanishpod_C0353pr.mp3" created="20141228130143499" modified="20141228130216054" tags="l1" title="spanishpod_C0353pr.mp3" type="audio/mp3">
 <pre></pre>
 </div>
-<div created="20141228125408189" list="track01.mp3 track05.mp3 track06.mp3 track02.mp3 track04.mp3 track03.mp3" modified="20141228125901137" tags="music" title="SpanishPodM/Clips" type="text/vnd.tiddlywiki">
+<div created="20141228125408189" list="track01.mp3 nirvana track05.mp3 track06.mp3 track02.mp3 track04.mp3 track03.mp3" modified="20150106230047684" title="SpanishPodM/Clips" type="text/vnd.tiddlywiki">
 <pre></pre>
 </div>
 <div created="20141228125430673" title="tcc1" type="text/vnd.tiddlywiki">
-<pre>l1</pre>
+<pre>nirvana</pre>
 </div>
-<div created="20140920195158911" modified="20141231004717424" title="TiddlyClipConfig" type="text/vnd.tiddlywiki">
+<div created="20140920195158911" modified="20150106131155845" title="TiddlyClipConfig" type="text/vnd.tiddlywiki">
 <pre>!default
 |!Category|!Tip|!Tags|!Rule Tid|!Modes|
 |Issues|covert issues||[[issue2TW2]]||
@@ -6034,7 +6618,7 @@ Next
 <div _canonical_uri="file:///media/buggyj/FIRELITE/mp3s/Simon and Garfunkel/Bridge Over Troubled Water/track05.mp3" created="20141224153257953" modified="20141224153312016" tags="SpanishPodM/Clips" title="track05.mp3" type="audio/mp3">
 <pre></pre>
 </div>
-<div _canonical_uri="file:///media/buggyj/FIRELITE/mp3s/Simon and Garfunkel/Bridge Over Troubled Water/track06.mp3" created="20141224153314453" modified="20141224153328387" tags="SpanishPodM/Clips" title="track06.mp3" type="audio/mp3">
+<div _canonical_uri="file:///media/buggyj/FIRELITE/mp3s/Simon and Garfunkel/Bridge Over Troubled Water/track06.mp3" created="20141224153314453" modified="20150106230337533" title="track06.mp3" type="audio/mp3">
 <pre></pre>
 </div>
 <div created="20141228125635803" modified="20141230013947138" title="x" type="text/vnd.tiddlywiki">

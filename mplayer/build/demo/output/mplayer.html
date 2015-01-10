@@ -117,8 +117,6 @@ Error message and password prompt
 
 <p>This <a class='tc-tiddlylink-external' href='http://tiddlywiki.com' target='_blank'>TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
-<li>$:_stylesheettaglist</li>
-
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/clone</li>
 
 <li>$:/core</li>
@@ -135,19 +133,15 @@ Error message and password prompt
 
 <li>$:/plugins/bj/tiddlyclip</li>
 
-<li>$:/state/tab/sidebar--1835078512</li>
-
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
 
-<li>$:/temp/list</li>
-
-<li>$:/temp/priv/playing</li>
-
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
+
+<li>$:_stylesheettaglist</li>
 
 <li>01 Freak Like Me.m4a</li>
 
@@ -267,58 +261,6 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div created="20140314121725119" modified="20141229215146466" tags="$:/tags/Stylesheet" title="$:_stylesheettaglist" type="text/plain">
-<pre>.tc-taglist { 
-   background-color    : #DDB0DD; 
-     -webkit-border-top-left-radius: 0.3em;
-     -webkit-border-bottom-left-radius: 0.3em;
-     -moz-border-radius-topleft: 0.3em;
-     -moz-border-radius-bottomleft: 0.3em;
-     border-top-left-radius: 0.3em;
-     border-bottom-left-radius: 0.3em;
-width:100%;
-     -webkit-border-top-right-radius: 0.3em;
-     -webkit-border-bottom-right-radius: 0.3em;
-     -moz-border-radius-topright: 0.3em;
-     -moz-border-radius-bottomright: 0.3em;
-     border-top-right-radius: 0.3em;
-     border-bottom-right-radius: 0.3em;
-
-}
-
-.tc-taglist:dragover {
-    background: red;
-}
-.tc-taglist:hover {
-     background-color: yellow;
-}
-
-.tc-taglistplain { 
-   background-color    : #ffffff 
-     -webkit-border-top-left-radius: 0.3em;
-     -webkit-border-bottom-left-radius: 0.3em;
-     -moz-border-radius-topleft: 0.3em;
-     -moz-border-radius-bottomleft: 0.3em;
-     border-top-left-radius: 0.3em;
-     border-bottom-left-radius: 0.3em;
-width:100%;
-     -webkit-border-top-right-radius: 0.3em;
-     -webkit-border-bottom-right-radius: 0.3em;
-     -moz-border-radius-topright: 0.3em;
-     -moz-border-radius-bottomright: 0.3em;
-     border-top-right-radius: 0.3em;
-     border-bottom-right-radius: 0.3em;
-
-}
-
-.tc-taglistplain:dragover {
-    background: red;
-}
-.tc-taglistplain:hover {
-     background-color: yellow;
-}
-</pre>
-</div>
 <div created="20141224153157175" modified="20141224153155869" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/clone" type="text/vnd.tiddlywiki">
 <pre>show</pre>
 </div>
@@ -5544,7 +5486,7 @@ width:100%;
     }
 }</pre>
 </div>
-<div author="JeffreyWilkinson" core-version="&gt;=5.1.5" created="20150106212358042" dependents="" description="demo tw with md" list="readme license" plugin-type="plugin" source="https://github.com/buggyj/TW5-small" title="$:/plugins/bj/small/tagmangleplus" type="application/json" version="0.0.1">
+<div author="JeffreyWilkinson" core-version="&gt;=5.1.5" created="20150110003759496" dependents="" description="demo tw with md" list="readme license" plugin-type="plugin" source="https://github.com/buggyj/TW5-small" title="$:/plugins/bj/small/tagmangleplus" type="application/json" version="0.0.1">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/bj/modules/widgets/mangletagsextra.js&quot;: {
@@ -5554,7 +5496,7 @@ width:100%;
             &quot;module-type&quot;: &quot;widget&quot;
         },
         &quot;$:/bj/modules/widgets/plylist.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\ntitle: $:/bj/modules/widgets/plylist.js\ntype: application/javascript\nmodule-type: widget\n\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar MPlayListWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n\t\tthis.addEventListeners([\n\t{type: \&quot;tm-ply-next\&quot;, handler: \&quot;handleNextEvent\&quot;},\n\t{type: \&quot;tm-ply-move\&quot;, handler: \&quot;handleMoveEvent\&quot;},\n\t{type: \&quot;tm-ply-prev\&quot;, handler: \&quot;handlePrevEvent\&quot;}]);\n};\n/*\nInherit from the base widget class\n*/\nMPlayListWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nMPlayListWidget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nMPlayListWidget.prototype.execute = function() {\n\t// Compose the list elements\n\tthis.list = this.getTiddlerList();\n\tthis.n =-1;\n    this.syntid = this.getAttribute(\&quot;syntid\&quot;);\n    this.mode = this.getAttribute(\&quot;mode\&quot;);\n\t\t// Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\nMPlayListWidget.prototype.getTiddlerList = function() {\n\tvar defaultFilter = \&quot;[tag[\&quot;+this.getVariable(\&quot;currentTiddler\&quot;)+\&quot;]]\&quot;;\n\treturn this.wiki.filterTiddlers(this.getAttribute(\&quot;filter\&quot;,defaultFilter),this);\n};\n/*\nRefresh the widget by ensuring our attributes are up to date\n*/\nMPlayListWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\t//alert(this.attributes.filter);\n\tif(changedAttributes.filter || changedAttributes[\&quot;$tiddler\&quot;]) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\treturn this.refreshChildren(changedTiddlers);\n};\n\n/*\nInvoke the action associated with this widget\n*/\nMPlayListWidget.prototype.invokeMsgAction = function(param) {\n\tthis.doNext();\n\treturn param;\n};\nMPlayListWidget.prototype.updatelist = function() {\n\tvar list,n,i,curr = this.list[this.n];\n\tlist = this.getTiddlerList();\n\tfor ( i = 0; i &lt; list.length; i++) {\n\t\tif (list[i] === curr) break;\n\t}\n\tif (i === list.length) i = 0;\n\tthis.n = i;\n\tthis.list = list;\n}\n\t\nMPlayListWidget.prototype.doMove = function(loc) {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tfor (i = 0; i &lt; this.list.length; i++) {\n\t\t\tif ((loc == this.list[i])) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doStart = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tthis.n = -1;\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) {\n\t\t\tthis.invokeActions();\n\t\t\treturn;\n\t\t};\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) ) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doNext = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) {\n\t\t\tthis.invokeActions();\n\t\t\treturn;\n\t\t}\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i]))) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doPrev = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\t\n\t\tfor (i = this.n - 1 ; i &gt;=0; i--) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) &amp;&amp; (tid.hasField(\&quot;_canonical_uri\&quot;))) {\n\t\t\t\turi = tid.fields._canonical_uri;\n\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\ttype: \&quot;tm-mstart\&quot;,\n\t\t\t\t\tparamObject : {track : uri,equalize : tid.fields.equalize}\n\t\t\t\t});\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\t\n\t\t\t\tif (this.syntid.substring(0,13) === \&quot;$:/temp/priv/\&quot;) {\n\t\t\t\t\tthis.dispatchEvent({\n\t\t\t\t\t\ttype: \&quot;tm-bj-playerRfresh\&quot;,\n\t\t\t\t\t\tparamObject : {title: this.syntid}\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == -1? 0 : i);\n\t}\n}\nMPlayListWidget.prototype.handleNextEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doNext();\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handleMoveEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doMove(event.navigateTo);\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handlePrevEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doPrev();\n\treturn false; // dont propegate\n\t\n\t\n}\nexports[\&quot;action-playlist\&quot;] = MPlayListWidget;\n\n})();\n&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/bj/modules/widgets/plylist.js\ntype: application/javascript\nmodule-type: widget\n\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar MPlayListWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n\t\tthis.addEventListeners([\n\t{type: \&quot;tm-ply-next\&quot;, handler: \&quot;handleNextEvent\&quot;},\n\t{type: \&quot;tm-ply-move\&quot;, handler: \&quot;handleMoveEvent\&quot;},\n\t{type: \&quot;tm-ply-prev\&quot;, handler: \&quot;handlePrevEvent\&quot;}]);\n};\n/*\nInherit from the base widget class\n*/\nMPlayListWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nMPlayListWidget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nMPlayListWidget.prototype.execute = function() {\n\t// Compose the list elements\n\tthis.list = this.getTiddlerList();\n\tthis.n =-1;\n    this.syntid = this.getAttribute(\&quot;syntid\&quot;);\n    this.mode = this.getAttribute(\&quot;mode\&quot;);\n\t\t// Construct the child widgets\n\tthis.makeChildWidgets();\n};\n\nMPlayListWidget.prototype.getTiddlerList = function() {\n\tvar defaultFilter = \&quot;[tag[\&quot;+this.getVariable(\&quot;currentTiddler\&quot;)+\&quot;]]\&quot;;\n\treturn this.wiki.filterTiddlers(this.getAttribute(\&quot;filter\&quot;,defaultFilter),this);\n};\n/*\nRefresh the widget by ensuring our attributes are up to date\n*/\nMPlayListWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\t//alert(this.attributes.filter);\n\tif(changedAttributes.filter || changedAttributes[\&quot;$tiddler\&quot;]) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\treturn this.refreshChildren(changedTiddlers);\n};\n\n/*\nInvoke the action associated with this widget\n*/\nMPlayListWidget.prototype.invokeMsgAction = function(param) {\n\tthis.doNext();\n\treturn param;\n};\nMPlayListWidget.prototype.updatelist = function() {\n\tvar list,n,i,curr = this.list[this.n];\n\tlist = this.getTiddlerList();\n\tfor ( i = 0; i &lt; list.length; i++) {\n\t\tif (list[i] === curr) break;\n\t}\n\tif (i === list.length) i = 0;\n\tthis.n = i;\n\tthis.list = list;\n}\n\t\nMPlayListWidget.prototype.doMove = function(loc) {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tfor (i = 0; i &lt; this.list.length; i++) {\n\t\t\tif ((loc == this.list[i])) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doStart = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tthis.n = -1;\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) {\n\t\t\tthis.invokeActions();\n\t\t\treturn;\n\t\t};\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i])) ) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doNext = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,uri,i;\n\t\tif (this.n == this.list.length -1) {\n\t\t\tthis.invokeActions();\n\t\t\treturn;\n\t\t}\n\t\tfor (i = this.n + 1; i &lt; this.list.length; i++) {\n\t\t\tif ((tid = this.wiki.getTiddler(this.list[i]))) {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == this.list.length ? this.list.length - 1 : i);\n\t}\n}\nMPlayListWidget.prototype.doPrev = function() {\n\tif (this.mode == \&quot;dynamic\&quot;) this.updatelist();\n\tif(this.list.length === 0) {\n\t\t//do nothing\n\t} else {\n\t\tvar tid,i;\n\t\t\n\t\tfor (i = this.n - 1; i &gt;=0; i--) {\n\t\t\tif (tid = this.wiki.getTiddler(this.list[i]))  {\n\t\t\t\tthis.wiki.setTextReference(this.syntid,this.list[i],this.getVariable(\&quot;currentTiddler\&quot;));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tthis.n = (i == -1? 0 : i);\n\t}\n}\nMPlayListWidget.prototype.handleNextEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doNext();\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handleMoveEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doMove(event.navigateTo);\n\treturn false; // dont propegate\n}\nMPlayListWidget.prototype.handlePrevEvent = function(event) {\n\t\t// Check for an empty list\n\tthis.doPrev();\n\treturn false; // dont propegate\n\t\n\t\n}\nexports[\&quot;action-playlist\&quot;] = MPlayListWidget;\n\n})();\n&quot;,
             &quot;title&quot;: &quot;$:/bj/modules/widgets/plylist.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;widget&quot;
@@ -5744,10 +5686,7 @@ width:100%;
     }
 }</pre>
 </div>
-<div modified="20150106231259944" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Recent</pre>
-</div>
-<div list="[[PlayLists 2]] GettingStarted" title="$:/StoryList">
+<div list="GettingStarted" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5755,20 +5694,14 @@ width:100%;
     &quot;tiddlers&quot;: {
         &quot;$:/info/browser&quot;: {
             &quot;title&quot;: &quot;$:/info/browser&quot;,
-            &quot;text&quot;: &quot;yes&quot;
+            &quot;text&quot;: &quot;no&quot;
         },
         &quot;$:/info/node&quot;: {
             &quot;title&quot;: &quot;$:/info/node&quot;,
-            &quot;text&quot;: &quot;no&quot;
+            &quot;text&quot;: &quot;yes&quot;
         }
     }
 }</pre>
-</div>
-<div modified="20150106231338149" title="$:/temp/list">
-<pre>nirvana</pre>
-</div>
-<div modified="20150106231812689" title="$:/temp/priv/playing">
-<pre>Nirvana - About a Girl.mp3</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.5">
 <pre>{
@@ -5846,6 +5779,58 @@ width:100%;
         }
     }
 }</pre>
+</div>
+<div created="20140314121725119" modified="20141229215146466" tags="$:/tags/Stylesheet" title="$:_stylesheettaglist" type="text/plain">
+<pre>.tc-taglist { 
+   background-color    : #DDB0DD; 
+     -webkit-border-top-left-radius: 0.3em;
+     -webkit-border-bottom-left-radius: 0.3em;
+     -moz-border-radius-topleft: 0.3em;
+     -moz-border-radius-bottomleft: 0.3em;
+     border-top-left-radius: 0.3em;
+     border-bottom-left-radius: 0.3em;
+width:100%;
+     -webkit-border-top-right-radius: 0.3em;
+     -webkit-border-bottom-right-radius: 0.3em;
+     -moz-border-radius-topright: 0.3em;
+     -moz-border-radius-bottomright: 0.3em;
+     border-top-right-radius: 0.3em;
+     border-bottom-right-radius: 0.3em;
+
+}
+
+.tc-taglist:dragover {
+    background: red;
+}
+.tc-taglist:hover {
+     background-color: yellow;
+}
+
+.tc-taglistplain { 
+   background-color    : #ffffff 
+     -webkit-border-top-left-radius: 0.3em;
+     -webkit-border-bottom-left-radius: 0.3em;
+     -moz-border-radius-topleft: 0.3em;
+     -moz-border-radius-bottomleft: 0.3em;
+     border-top-left-radius: 0.3em;
+     border-bottom-left-radius: 0.3em;
+width:100%;
+     -webkit-border-top-right-radius: 0.3em;
+     -webkit-border-bottom-right-radius: 0.3em;
+     -moz-border-radius-topright: 0.3em;
+     -moz-border-radius-bottomright: 0.3em;
+     border-top-right-radius: 0.3em;
+     border-bottom-right-radius: 0.3em;
+
+}
+
+.tc-taglistplain:dragover {
+    background: red;
+}
+.tc-taglistplain:hover {
+     background-color: yellow;
+}
+</pre>
 </div>
 <div _canonical_uri="file:///media/buggyj/FIRELITE/iTunes/iTunes Music/Sugababes/Angels With Dirty Faces/01 Freak Like Me.m4a" created="20141229222212117" modified="20141229222238250" title="01 Freak Like Me.m4a" type="audio/m4a">
 <pre></pre>
@@ -6062,7 +6047,7 @@ width:100%;
 
 </pre>
 </div>
-<div created="20141228130943967" list="[[05 River Man.m4a]] spanishpod_0430pr.mp3 spanishpod_C0353pr.mp3 [[01 Freak Like Me.m4a]] spanishpod_B0635pr.mp3" modified="20150106231323958" tags="music" title="l1" type="text/vnd.tiddlywiki">
+<div created="20141228130943967" list="[[05 River Man.m4a]] spanishpod_0430pr.mp3 spanishpod_C0353pr.mp3 [[01 Freak Like Me.m4a]] spanishpod_B0635pr.mp3" modified="20150110003822306" tags="music" title="l1" type="text/vnd.tiddlywiki">
 <pre>&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;&lt;$mplayer startTime=&quot;4.0&quot;  &gt;&lt;$action-mplaylist syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
 
 &lt;$button&gt;
@@ -6122,7 +6107,7 @@ width:100%;
 |[[TITLETID]]||||{&quot;$_canonical_uri&quot;:&quot;((*@sublink(@linkURL)*))&quot;},{&quot;$type&quot;:&quot;image/png&quot;}||
 </pre>
 </div>
-<div created="20150105232718780" list="l1 SpanishPodM/Clips nirvana" modified="20150105232718780" title="music" type="text/vnd.tiddlywiki">
+<div created="20150105232718780" list="l1 nirvana" modified="20150110003822311" title="music" type="text/vnd.tiddlywiki">
 <pre></pre>
 </div>
 <div created="20150106171715815" modified="20150106171829298" tags="" title="musicTemplate" type="text/vnd.tiddlywiki">
@@ -6285,7 +6270,7 @@ Next
 
 </pre>
 </div>
-<div created="20141231011549807" list="[[05 River Man.m4a]] spanishpod_0430pr.mp3 spanishpod_C0353pr.mp3 [[01 Freak Like Me.m4a]] spanishpod_B0635pr.mp3" modified="20150106231328317" tags="music" title="nirvana" type="text/vnd.tiddlywiki">
+<div created="20141231011549807" list="[[05 River Man.m4a]] spanishpod_0430pr.mp3 spanishpod_C0353pr.mp3 [[01 Freak Like Me.m4a]] spanishpod_B0635pr.mp3" modified="20150106231132719" tags="music" title="nirvana" type="text/vnd.tiddlywiki">
 <pre>&lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;&lt;$mplayer &gt;&lt;$action-mplaylist syntid=&quot;$:/temp/priv/playing&quot;  mode=&quot;dynamic&quot;&gt;
 
 &lt;$button&gt;
@@ -6473,7 +6458,7 @@ Next
 
 </pre>
 </div>
-<div created="20150105214403166" modified="20150106231850574" tags="$:/tags/SideBar" title="PlayLists 2" type="text/vnd.tiddlywikilist">
+<div created="20150105214403166" modified="20150106231115648" tags="$:/tags/SideBar" title="PlayLists 2" type="text/vnd.tiddlywikilist">
 <pre>\define player(name) 
 &lt;$refresh msg=&quot;tm-bj-playerRfresh&quot;&gt;
 &lt;$mplayer&gt;
@@ -6518,7 +6503,7 @@ Next
 !Control order of Playlist 
 
 &lt;$action-playlist filter=&quot;[tag[music]]&quot; syntid=&quot;$:/temp/list&quot;  mode=&quot;dynamic&quot;&gt;
-
+&lt;$ondrop targeTtag=&quot;music&quot; tagAction=&quot;addtag&quot; &gt;
 &lt;$button&gt;
 &lt;$action-sendmessage $message=&quot;tm-ply-prev&quot; /&gt;
 &lt;&lt;
@@ -6527,12 +6512,10 @@ Next
 &lt;$action-sendmessage $message=&quot;tm-ply-next&quot; /&gt;
 &gt;&gt;
 &lt;/$button&gt;
-
+&lt;/$ondrop&gt;
 &lt;$linkcatcher message=&quot;tm-ply-move&quot;&gt;
 &lt;$set name=currentTag value=&quot;music&quot;&gt;
-&lt;$ondrop targeTtag=&quot;music&quot; tagAction=&quot;addtag&quot; &gt;
-&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;music&quot; template=musicTemplate2 emptyMessage=&quot;drop here to create new list&quot;&gt;&lt;/$taglist&gt;
-&lt;/$ondrop&gt;
+&lt;$taglist class=&quot;btn btn-primary&quot; targeTtag=&quot;music&quot; template=musicTemplate2&gt;&lt;/$taglist&gt;
 &lt;/$set&gt;
 &lt;/$linkcatcher&gt;
 

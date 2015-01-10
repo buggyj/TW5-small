@@ -143,23 +143,11 @@ MPlayListWidget.prototype.doPrev = function() {
 	if(this.list.length === 0) {
 		//do nothing
 	} else {
-		var tid,uri,i;
+		var tid,i;
 		
-		for (i = this.n - 1 ; i >=0; i--) {
-			if ((tid = this.wiki.getTiddler(this.list[i])) && (tid.hasField("_canonical_uri"))) {
-				uri = tid.fields._canonical_uri;
-				this.dispatchEvent({
-					type: "tm-mstart",
-					paramObject : {track : uri,equalize : tid.fields.equalize}
-				});
+		for (i = this.n - 1; i >=0; i--) {
+			if (tid = this.wiki.getTiddler(this.list[i]))  {
 				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
-				
-				if (this.syntid.substring(0,13) === "$:/temp/priv/") {
-					this.dispatchEvent({
-						type: "tm-bj-playerRfresh",
-						paramObject : {title: this.syntid}
-					});
-				}
 				break;
 			}
 		}

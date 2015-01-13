@@ -1,0 +1,32 @@
+created: 20150105214403166
+modified: 20150106231115648
+tags: $:/tags/SideBar
+title: PlayLists yt
+type: text/vnd.tiddlywiki
+
+
+!Control order of Playlist 
+
+<$action-playlist filter="[tag[youtube]]" syntid="$:/temp/list"  mode="dynamic">
+<$ondrop targeTtag="youtube" tagAction="addtag" >
+<$button>
+<$action-sendmessage $message="tm-ply-prev" />
+<<
+</$button>
+<$button>
+<$action-sendmessage $message="tm-ply-next" />
+>>
+</$button>
+<$linkcatcher message="tm-ply-move">
+<$set name=currentTag value="youtube">
+<$taglist class="btn btn-primary" targeTtag="youtube" template=musicTemplate2 emptyMessage="drop playlist here"></$taglist>
+</$set>
+</$linkcatcher>
+</$ondrop>
+<$macrocall $name="player" name={{$:/temp/list}}/>
+</$action-playlist>
+
+
+
+
+

@@ -61,7 +61,7 @@ YTrawWidget.prototype.render = function(parent,nextSibling) {
 		height: 1,//this.height,
 		width: 1,//this.width,
 		
-		playerVars: {'autoplay': 0,  'controls': 2},
+		playerVars: {'autoplay': 0,  'controls': 1},
 		events: {
 		  'onReady':  function (event) {
 			 // alert("ready");

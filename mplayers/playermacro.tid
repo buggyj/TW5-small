@@ -5,6 +5,16 @@ tags: $:/tags/Macro
 <$refresh msg="tm-bj-playerRfresh">
 <$mplaylist filter="[tag[$name$]]" syntid="$:/temp/priv/playing"  mode="dynamic" onEnd="tm-ply-next" autoStart="yes">
 <hr>
+<$ytplayer onEnd="tm-mply-next">
+<$button>
+<$action-sendmessage $message="tm-mvdwn" />
+-
+</$button>
+<$button>
+<$action-sendmessage $message="tm-mvup" />
++
+</$button>
+</$ytplayer>
 <$mplayer onEnd="tm-mply-next">
 <$button>
 <$action-sendmessage $message="tm-mvdwn" />
@@ -23,17 +33,6 @@ tags: $:/tags/Macro
 ->
 </$button>
 </$mplayer>
-<hr>
-<$ytplayer onEnd="tm-mply-next">
-<$button>
-<$action-sendmessage $message="tm-mvdwn" />
--
-</$button>
-<$button>
-<$action-sendmessage $message="tm-mvup" />
-+
-</$button>
-</$ytplayer>
 <$ondrop targeTtag="$name$" tagAction="addtag" >
 <hr>
 <$button>
@@ -46,6 +45,8 @@ tags: $:/tags/Macro
 </$button>
 <$linkcatcher message="tm-mply-move">
 <$set name=currentTag value="$name$">
+
+!!Control individual playlists using drap and drop
 <$taglist class="btn btn-primary" targeTtag="$name$" template=musicTemplate emptyMessage="drop here to add to playlist"></$taglist>
 </$set>
 </$linkcatcher>

@@ -53,7 +53,7 @@ MPlayListWidget.prototype.execute = function() {
 };
 
 MPlayListWidget.prototype.getTiddlerList = function() {
-	var defaultFilter = "[tag["+this.getVariable("currentTiddler")+"]]";
+	var defaultFilter = "[tag["+this.getAttribute("targetTag")+"]]";
 	return this.wiki.filterTiddlers(this.getAttribute("filter",defaultFilter),this);
 };
 /*
@@ -62,9 +62,11 @@ Refresh the widget by ensuring our attributes are up to date
 MPlayListWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
 	//alert(this.attributes.filter);
-	if(changedAttributes.filter || changedAttributes["$tiddler"]) {
-		this.refreshSelf();
-		return true;
+	if(changedAttributes.targetTag || changedAttributes["$tiddler"]) {
+		this.list = this.getTiddlerList();
+		this.n =-1;
+		if (this.autoStart === "yes")this.doStart();
+		//this.updatelist();
 	}
 	return this.refreshChildren(changedTiddlers);
 };
@@ -213,6 +215,6 @@ MPlayListWidget.prototype.handlePrevEvent = function(event) {
 	
 	
 }
-exports["mplaylist"] = MPlayListWidget;
+exports["msequence"] = MPlayListWidget;
 
 })();

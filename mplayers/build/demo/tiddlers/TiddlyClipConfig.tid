@@ -1,5 +1,5 @@
 created: 20140920195158911
-modified: 20150106131155845
+modified: 20150115131247804
 title: TiddlyClipConfig
 type: text/vnd.tiddlywiki
 
@@ -13,8 +13,11 @@ type: text/vnd.tiddlywiki
 |Pin|pin it ||[[defaultPin]]||
 !Localclips
 |!Category|!Tip|!Tags|!Rule Tid|!Modes|
-|localmusic|make tiddler with mp3|nirvana|[[localtwmp3]]|linkLocal|
+|localmusic|make tiddler with mp3|music|[[localtwmp3]]|linkLocal|
 |localjpeg|make tiddler with jpeg||[[localtwjpeg]]|linkLocal|
 |localpng|make tiddler with jpeg||[[localtwpng]]|linkLocal|
 |localpdf|make tiddler with pdf||[[localtwpdf]]|linkLocal|
-
+!Extclips
+|!Category|!Tip|!Tags|!Rule Tid|!Modes|
+|music|make tiddler with mp3|test|[[extMusic]]||
+|utube|make utube tiddler|test|[[youtubeRule]]||

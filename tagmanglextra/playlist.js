@@ -171,6 +171,6 @@ MPlayListWidget.prototype.handlePrevEvent = function(event) {
 	
 	
 }
-exports["action-playlist"] = MPlayListWidget;
+exports["playlist"] = MPlayListWidget;
 
 })();

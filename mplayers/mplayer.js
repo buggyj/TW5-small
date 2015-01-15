@@ -56,15 +56,7 @@ MPlayerWidget.prototype.render = function(parent,nextSibling) {
 	parent.insertBefore(this.pNode,nextSibling);
 		this.renderChildren(this.cNode,null);
 	this.domNodes.push(this.pNode);
-	var player = this.audiodomNode;
-	//self.invokeActions({type:"start"});
-	/*function run(uri, player){
-		player.src = "file:///media/buggyj/FIRELITE/iTunes/iTunes%20Music/The%20Velvet%20Underground/The%20Velvet%20Underground%20&%20Nico/01%20Sunday%20Morning.mp3"
-        player.controls ="controls";
-		player.load();
-		player.play();
-	//}*/
-
+	this.pNode.setAttribute("hidden","true");
 };
 
 MPlayerWidget.prototype.ourmedia = function(event) {

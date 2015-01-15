@@ -1,0 +1,12 @@
+created: 20150113005903633
+modified: 20150114211520651
+tags: 
+title: Introduction
+type: text/vnd.tiddlywiki
+
+This is a proof of concept demo of MediaPlayer (MP) plugin. 
+The MP plugin is designed to play mixed media playlists.
+
+In this demo the MP plugin have be combined with the taglist plugin (and some other plugins) to enable playlist to be constructed using drag and drop.
+
+See the [[demo tiddler|PlayLists]]. The working are outlined [[here|Architecture]].

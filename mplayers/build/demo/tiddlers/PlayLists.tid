@@ -1,5 +1,5 @@
 created: 20150105214403166
-modified: 20150114222954127
+modified: 20150116000441606
 tags: $:/tags/SideBar
 title: PlayLists
 type: text/vnd.tiddlywiki
@@ -20,7 +20,7 @@ type: text/vnd.tiddlywiki
 </$button>
 <$linkcatcher message="tm-ply-move">
 <$set name=currentTag value="PlayList">
-<$taglist class="btn btn-primary" targeTtag="PlayList" template=musicTemplate2 emptyMessage="drop playlist here"></$taglist>
+<$taglist class="btn btn-primary" targeTtag="PlayList" template="$:/.bj/templates/allplaylists" emptyMessage="drop playlist here"></$taglist>
 </$set>
 </$linkcatcher>
 </$ondrop>
@@ -74,7 +74,7 @@ type: text/vnd.tiddlywiki
 <$set name=currentTag value={{$:/temp/list}}>
 <h2>Control individual playlists using drag and drop</h2>
 <$ondrop tagAction="addtag" targeTtag={{$:/temp/list}}>
-<$taglist class="btn btn-primary" targeTtag={{$:/temp/list}} template=musicTemplate emptyMessage="drop here to add to playlist"></$taglist>
+<$taglist class="btn btn-primary" targeTtag={{$:/temp/list}} template="$:/.bj/templates/track" emptyMessage="drop here to add to playlist"></$taglist>
 </$ondrop>
 </$set>
 </$linkcatcher>

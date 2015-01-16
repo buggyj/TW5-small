@@ -1,6 +1,6 @@
 created: 20140731170756774
-modified: 20150105232043655
-title: musicTemplate2
+modified: 20150115153938896
+title: $:/.bj/templates/allplaylists
 type: text/vnd.tiddlywiki
 
 <$reveal state="$:/temp/list" text={{!!title}} type="nomatch"><$fieldmangler><$button  param= <<currentTag>> message="tm-remove-tag" class="tc-btn-invisible">{{$:/core/images/cancel-button}}</$button></$fieldmangler>

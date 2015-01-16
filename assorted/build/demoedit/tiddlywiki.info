@@ -2,7 +2,7 @@
 	"plugins": [
 		"tiddlywiki/tiddlyweb",
 		"tiddlywiki/filesystem",
-		"bj/small/mdplusdemo"
+		"bj/small/assorted"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",

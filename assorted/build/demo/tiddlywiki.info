@@ -1,6 +1,6 @@
 {
 	"plugins": [
-		"bj/small/tagmanglextra"
+		"bj/small/assorted"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",

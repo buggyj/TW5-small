@@ -1,5 +1,5 @@
 /*\
-title: $:/bj/modules/widgets/mediaplaylist.js
+title: $:/bj/modules/widgets/msequence.js
 type: application/javascript
 module-type: widget
 
@@ -99,7 +99,7 @@ MPlayListWidget.prototype.doMove = function(loc) {
 				this.invokeActions({type:"start",tiddler: this.list[i]});
 				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 				
-				if (this.syntid.substring(0,13) === "$:/temp/priv/") {
+				if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
 					this.dispatchEvent({
 						type: "tm-bj-playerRfresh",
 						paramObject : {title: this.syntid}
@@ -129,7 +129,7 @@ MPlayListWidget.prototype.doStart = function() {
 				this.invokeActions({type:"start",tiddler: this.list[i]});
 				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 				
-				if (this.syntid.substring(0,13) === "$:/temp/priv/") {
+				if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
 					this.dispatchEvent({
 						type: "tm-bj-playerRfresh",
 						paramObject : {title: this.syntid}
@@ -160,7 +160,7 @@ MPlayListWidget.prototype.doNext = function() {
 				this.invokeActions({type:"start",tiddler: this.list[i]});
 				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 				
-				if (this.syntid.substring(0,13) === "$:/temp/priv/") {
+				if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
 					this.dispatchEvent({
 						type: "tm-bj-playerRfresh",
 						paramObject : {title: this.syntid}
@@ -186,7 +186,7 @@ MPlayListWidget.prototype.doPrev = function() {
 				this.invokeActions({type:"start",tiddler: this.list[i]});
 				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 				
-				if (this.syntid.substring(0,13) === "$:/temp/priv/") {
+				if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
 					this.dispatchEvent({
 						type: "tm-bj-playerRfresh",
 						paramObject : {title: this.syntid}

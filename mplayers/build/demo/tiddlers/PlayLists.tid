@@ -1,6 +1,6 @@
 created: 20150105214403166
-modified: 20150116000441606
-tags: $:/tags/SideBar
+modified: 20150117141137555
+tags: $:/MediaPlayer
 title: PlayLists
 type: text/vnd.tiddlywiki
 
@@ -25,7 +25,7 @@ type: text/vnd.tiddlywiki
 </$linkcatcher>
 </$ondrop>
 <$refresh msg="tm-bj-playerRfresh">
-<$msequence targetTag={{$:/temp/list}} syntid="$:/temp/priv/playing"  mode="dynamic" onEnd="tm-ply-next" autoStart="yes">
+<$msequence targetTag={{$:/temp/list}} syntid="$:/temp/__priv__/playing"  mode="dynamic" onEnd="tm-ply-next" autoStart="yes">
 <hr/>
 <$ytplayer onEnd="tm-mply-next">
 <$button>
@@ -36,7 +36,7 @@ type: text/vnd.tiddlywiki
 <$action-sendmessage $message="tm-mvup" />
 +
 </$button>
-<$set name="current" value ={{$:/temp/priv/playing}}>
+<$set name="current" value ={{$:/temp/__priv__/playing}}>
 <<extra>>
 </$set>
 </$ytplayer>
@@ -57,7 +57,7 @@ type: text/vnd.tiddlywiki
 <$action-sendmessage $message="tm-mff" />
 ->
 </$button>
-<$set name="current" value ={{$:/temp/priv/playing}}>
+<$set name="current" value ={{$:/temp/__priv__/playing}}>
 <<extra>>
 </$set>
 </$mplayer>

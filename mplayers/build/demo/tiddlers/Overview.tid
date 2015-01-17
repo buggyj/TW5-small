@@ -1,5 +1,6 @@
 created: 20150113035013818
-modified: 20150115133234859
+modified: 20150117141349462
+tags: $:/MediaPlayer
 title: Overview
 type: text/vnd.tiddlywiki
 
@@ -15,5 +16,5 @@ Only tiddlers with the _canonical_uri field defined and with types audio/mp3 and
 
 !!Additional New Elements
 !!!
-A new list player widget is all used in the demo, it reponds to messages to set tiddler titles from a list into the body of a given tiddler.
+A new list player widget (found here [[$:/plugins/bj/smalltools]]) is also used in the demo, it reponds to messages to set tiddler titles from a list into the body of a given tiddler.
 

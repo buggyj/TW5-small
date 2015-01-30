@@ -154,6 +154,7 @@ YTrawWidget.prototype.execute = function() {
     this.startTime = this.parseTreeNode.startTime;
 	this.height = this.parseTreeNode.height;
 	this.width = this.parseTreeNode.width;
+	this.onStart = this.parseTreeNode.onStart
     // Construct the child widgets
 	this.makeChildWidgets();
 };
@@ -187,6 +188,11 @@ YTrawWidget.prototype.handleStartEvent = function(event) {
 			//alert("go");
 			player.loadVideoById({videoId: self.src});
 			player.playVideo();
+			if (self.onStart){
+				self.dispatchEvent({
+				type: self.onStart
+				});	
+			}
 		}
 	}
 
@@ -309,7 +315,8 @@ YTWidget.prototype.execute = function() {
 		// Make the child widgets
 		this.makeChildWidgets([{type: "ytrawplayer", onEnd: this.getAttribute("onEnd"), deltas: this.getAttribute("deltas",10), 
 			startTime: this.getAttribute("startTime",0.0), width:this.getAttribute("width",640), 
-			height:this.getAttribute("height",320), children: this.parseTreeNode.children
+			height:this.getAttribute("height",320), children: this.parseTreeNode.children,
+			onStart:this.getAttribute("onStart")
 		}]);
 	}
 };

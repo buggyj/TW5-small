@@ -19,6 +19,7 @@ var MPlayListWidget = function(parseTreeNode,options) {
 		this.addEventListeners([
 	{type: "tm-mply-next", handler: "handleNextEvent"},
 	{type: "tm-mply-move", handler: "handleMoveEvent"},
+	{type: "tm-mply-caught", handler: "handleCaughtEvent"},
 	{type: "tm-mply-prev", handler: "handlePrevEvent"}]);
 };
 /*
@@ -91,21 +92,23 @@ MPlayListWidget.prototype.doMove = function(loc) {
 	if(this.list.length === 0) {
 		//do nothing
 	} else {
-		var tid,uri,i;
+		var tid,i;
 		for (i = 0; i < this.list.length; i++) {
-			if ((loc == this.list[i]) && (tid = this.wiki.getTiddler(this.list[i])) && (tid.hasField("_canonical_uri"))) {
-				uri = tid.fields._canonical_uri;
+			if ((loc == this.list[i]) && (tid = this.wiki.getTiddler(this.list[i]))) {
 				this.invokeActions({type:"preStart",tiddler: this.list[i]});
+				this.caught = null;
 				this.invokeActions({type:"start",tiddler: this.list[i]});
-				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
-				
-				if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
-					this.dispatchEvent({
-						type: "tm-bj-playerRfresh",
-						paramObject : {title: this.syntid}
-					});
+				if (this.caught) {
+					this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
+					
+					if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
+						this.dispatchEvent({
+							type: "tm-bj-playerRfresh",
+							paramObject : {title: this.syntid}
+						});
+					}
+					break;
 				}
-				break;
 			}
 		}
 		this.n = (i == this.list.length ? this.list.length - 1 : i);
@@ -117,25 +120,27 @@ MPlayListWidget.prototype.doStart = function() {
 	if(this.list.length === 0) {
 		//do nothing
 	} else {
-		var tid,uri,i;
+		var tid,i;
 		if (this.n == this.list.length -1) {
 			self.invokeActions(event);//BJ fix!
 			return;
 		};
 		for (i = this.n + 1; i < this.list.length; i++) {
-			if ((tid = this.wiki.getTiddler(this.list[i])) && (tid.hasField("_canonical_uri"))) {
-				uri = tid.fields._canonical_uri;
+			if ((tid = this.wiki.getTiddler(this.list[i]))) {
 				this.invokeActions({type:"preStart",tiddler: this.list[i]});
+				this.caught = null;
 				this.invokeActions({type:"start",tiddler: this.list[i]});
-				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
-				
-				if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
-					this.dispatchEvent({
-						type: "tm-bj-playerRfresh",
-						paramObject : {title: this.syntid}
-					});
+				if (this.caught) {
+					this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
+					
+					if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
+						this.dispatchEvent({
+							type: "tm-bj-playerRfresh",
+							paramObject : {title: this.syntid}
+						});
+					}
+					break;
 				}
-				break;
 			}
 		}
 		this.n = (i == this.list.length ? this.list.length - 1 : i);
@@ -146,7 +151,7 @@ MPlayListWidget.prototype.doNext = function() {
 	if(this.list.length === 0) {
 		//do nothing
 	} else {
-		var tid,uri,i;
+		var tid,i;
 		if ((this.onEnd) && (this.n == this.list.length -1)){
 			this.dispatchEvent({
 			type: this.onEnd
@@ -154,19 +159,21 @@ MPlayListWidget.prototype.doNext = function() {
 			return;
 		}
 		for (i = this.n + 1; i < this.list.length; i++) {
-			if ((tid = this.wiki.getTiddler(this.list[i])) && (tid.hasField("_canonical_uri"))) {
-				uri = tid.fields._canonical_uri;
+			if ((tid = this.wiki.getTiddler(this.list[i]))) {
 				this.invokeActions({type:"preStart",tiddler: this.list[i]});
+				this.caught = null;
 				this.invokeActions({type:"start",tiddler: this.list[i]});
-				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
-				
-				if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
-					this.dispatchEvent({
-						type: "tm-bj-playerRfresh",
-						paramObject : {title: this.syntid}
-					});
+				if (this.caught) {
+					this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
+					
+					if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
+						this.dispatchEvent({
+							type: "tm-bj-playerRfresh",
+							paramObject : {title: this.syntid}
+						});
+					}
+					break;
 				}
-				break;
 			}
 		}
 		this.n = (i == this.list.length ? this.list.length - 1 : i);
@@ -177,26 +184,33 @@ MPlayListWidget.prototype.doPrev = function() {
 	if(this.list.length === 0) {
 		//do nothing
 	} else {
-		var tid,uri,i;
+		var tid,i;
 		
 		for (i = this.n - 1 ; i >=0; i--) {
-			if ((tid = this.wiki.getTiddler(this.list[i])) && (tid.hasField("_canonical_uri"))) {
-				uri = tid.fields._canonical_uri;
+			if ((tid = this.wiki.getTiddler(this.list[i]))) {
 				this.invokeActions({type:"preStart",tiddler: this.list[i]});
+				this.caught = null;
 				this.invokeActions({type:"start",tiddler: this.list[i]});
-				this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
-				
-				if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
-					this.dispatchEvent({
-						type: "tm-bj-playerRfresh",
-						paramObject : {title: this.syntid}
-					});
+				if (this.caught) {
+					this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
+					
+					if (this.syntid.substring(0,17) === "$:/temp/__priv__/") {
+						this.dispatchEvent({
+							type: "tm-bj-playerRfresh",
+							paramObject : {title: this.syntid}
+						});
+					}
+					break;
 				}
-				break;
 			}
 		}
 		this.n = (i == -1? 0 : i);
 	}
+}
+MPlayListWidget.prototype.handleCaughtEvent = function(event) {
+		// Check for an empty list
+	this.caught = true;
+	return false; // dont propegate
 }
 MPlayListWidget.prototype.handleNextEvent = function(event) {
 		// Check for an empty list

@@ -89,6 +89,7 @@ Compute the internal state of the widget
 MPlayerWidget.prototype.execute = function() {
 	// Get our parameters
 	this.volume = 1.0;
+	this.onStart = this.getAttribute("onStart");
 	this.onEnd = this.getAttribute("onEnd");
     this.deltas =this.getAttribute("deltas",10);
     this.startTime =this.getAttribute("startTime",0.0);
@@ -126,6 +127,11 @@ MPlayerWidget.prototype.handleStartEvent = function(event) {
 	
 	player.load();
 	player.play();
+	if (this.onStart){
+		this.dispatchEvent({
+		type: this.onStart
+		});	
+	}
 	if (true) {
 		player.addEventListener("canplay",(function() { 
 			player.currentTime =  parseFloat(self.startTime);

@@ -1,11 +1,11 @@
-created: 20150105214403166
-modified: 20150117141137555
+created: 20150125211514802
+modified: 20150125215707400
 tags: $:/MediaPlayer
-title: PlayLists
+title: PlayStatics
 type: text/vnd.tiddlywiki
 
-\define extra()
-<$transclude tiddler="$(current)$/text" mode="block"/>
+\define showtid()
+<$transclude mode="block"/>
 \end
 !!Control list of Playlists using drag and drop
 <$playlist filter="[tag[PlayList]]" syntid="$:/temp/list"  mode="dynamic">
@@ -27,40 +27,12 @@ type: text/vnd.tiddlywiki
 <$refresh msg="tm-bj-playerRfresh">
 <$msequence targetTag={{$:/temp/list}} syntid="$:/temp/__priv__/playing"  mode="dynamic" onEnd="tm-ply-next" autoStart="yes">
 <hr/>
-<$ytplayer onEnd="tm-mply-next" onStart="tm-mply-caught" >
-<$button>
-<$action-sendmessage $message="tm-mvdwn" />
--
-</$button>
-<$button>
-<$action-sendmessage $message="tm-mvup" />
-+
-</$button>
-<$set name="current" value ={{$:/temp/__priv__/playing}}>
-<<extra>>
+<$staticplayer onEnd="tm-mply-next" onStart="tm-mply-caught" >
+
+<$set name="currentTiddler" value ={{$:/temp/__priv__/playing}}>
+<<showtid>>
 </$set>
-</$ytplayer>
-<$mplayer onEnd="tm-mply-next" onStart="tm-mply-caught" >
-<$button>
-<$action-sendmessage $message="tm-mvdwn" />
--
-</$button>
-<$button>
-<$action-sendmessage $message="tm-mvup" />
-+
-</$button>
-<$button>
-<$action-sendmessage $message="tm-mrw" />
-<-
-</$button>
-<$button>
-<$action-sendmessage $message="tm-mff" />
-->
-</$button>
-<$set name="current" value ={{$:/temp/__priv__/playing}}>
-<<extra>>
-</$set>
-</$mplayer>
+</$staticplayer>
 <hr/>
 <$button>
 <$action-sendmessage $message="tm-mply-prev" />

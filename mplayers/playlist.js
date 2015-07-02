@@ -107,7 +107,7 @@ MPlayListWidget.prototype.doStart = function() {
 	} else {
 		var tid,uri,i;
 		if (this.n == this.list.length -1) {
-			self.invokeActions(event);
+			self.invokeActions(this,event);
 			return;
 		};
 		for (i = this.n + 1; i < this.list.length; i++) {
@@ -126,7 +126,7 @@ MPlayListWidget.prototype.doNext = function() {
 	} else {
 		var tid,uri,i;
 		if (this.n == this.list.length -1) {
-			self.invokeActions(event);
+			self.invokeActions(this,event);
 			return;
 		}
 		for (i = this.n + 1; i < this.list.length; i++) {

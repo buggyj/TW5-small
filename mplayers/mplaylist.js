@@ -47,6 +47,7 @@ MPlayListWidget.prototype.execute = function() {
 	this.n =-1;
 	this.autoStart = this.getAttribute("autoStart")
 	this.onEnd = this.getAttribute("onEnd");
+	this.onEndParam = this.getAttribute("onEndParam");
     this.syntid = this.getAttribute("syntid");
     this.mode = this.getAttribute("mode");
 		// Construct the child widgets
@@ -95,9 +96,9 @@ MPlayListWidget.prototype.doMove = function(loc) {
 		var tid,i;
 		for (i = 0; i < this.list.length; i++) {
 			if ((loc == this.list[i]) && (tid = this.wiki.getTiddler(this.list[i]))) {
-				this.invokeActions({type:"preStart",tiddler: this.list[i]});
+				this.invokeActions(this,{type:"preStart",tiddler: this.list[i]});
 				this.caught = null;
-				this.invokeActions({type:"start",tiddler: this.list[i]});
+				this.invokeActions(this,{type:"start",tiddler: this.list[i]});
 				if (this.caught) {
 					this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 					
@@ -121,15 +122,15 @@ MPlayListWidget.prototype.doStart = function() {
 		//do nothing
 	} else {
 		var tid,i;
-		if (this.n == this.list.length -1) {
-			self.invokeActions(event);//BJ fix!
+		if (this.n == this.list.length -1) { alert (this.list.length);
+			//self.invokeActions(event);//BJ fix!
 			return;
 		};
 		for (i = this.n + 1; i < this.list.length; i++) {
 			if ((tid = this.wiki.getTiddler(this.list[i]))) {
-				this.invokeActions({type:"preStart",tiddler: this.list[i]});
+				this.invokeActions(this,{type:"preStart",tiddler: this.list[i]});
 				this.caught = null;
-				this.invokeActions({type:"start",tiddler: this.list[i]});
+				this.invokeActions(this,{type:"start",tiddler: this.list[i]});
 				if (this.caught) {
 					this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 					
@@ -153,16 +154,23 @@ MPlayListWidget.prototype.doNext = function() {
 	} else {
 		var tid,i;
 		if ((this.onEnd) && (this.n == this.list.length -1)){
-			this.dispatchEvent({
-			type: this.onEnd
-			});		
+			if (this.onEndParam) {
+				this.dispatchEvent({
+				type: this.onEnd,
+				param: this.onEndParam
+				});
+			} else {
+				this.dispatchEvent({
+				type: this.onEnd
+				});
+			}	
 			return;
 		}
 		for (i = this.n + 1; i < this.list.length; i++) {
 			if ((tid = this.wiki.getTiddler(this.list[i]))) {
-				this.invokeActions({type:"preStart",tiddler: this.list[i]});
+				this.invokeActions(this,{type:"preStart",tiddler: this.list[i]});
 				this.caught = null;
-				this.invokeActions({type:"start",tiddler: this.list[i]});
+				this.invokeActions(this,{type:"start",tiddler: this.list[i]});
 				if (this.caught) {
 					this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 					
@@ -188,9 +196,9 @@ MPlayListWidget.prototype.doPrev = function() {
 		
 		for (i = this.n - 1 ; i >=0; i--) {
 			if ((tid = this.wiki.getTiddler(this.list[i]))) {
-				this.invokeActions({type:"preStart",tiddler: this.list[i]});
+				this.invokeActions(this,{type:"preStart",tiddler: this.list[i]});
 				this.caught = null;
-				this.invokeActions({type:"start",tiddler: this.list[i]});
+				this.invokeActions(this,{type:"start",tiddler: this.list[i]});
 				if (this.caught) {
 					this.wiki.setTextReference(this.syntid,this.list[i],this.getVariable("currentTiddler"));
 					
@@ -229,6 +237,9 @@ MPlayListWidget.prototype.handlePrevEvent = function(event) {
 	
 	
 }
+Widget.prototype.allowActionPropagation = function() {
+	return false;
+};
 exports["msequence"] = MPlayListWidget;
 
 })();

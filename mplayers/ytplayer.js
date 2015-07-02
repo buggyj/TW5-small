@@ -336,7 +336,7 @@ YTWidget.prototype.refresh = function(changedTiddlers) {
 	}
 };
 YTWidget.prototype.invokeAction = function(triggeringWidget,event) {
-	this.invokeActions(event);
+	this.invokeActions(this,event);
 	return true; // Action was invoked
 };
 exports.ytplayer = YTWidget;

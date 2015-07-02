@@ -119,6 +119,7 @@ MPlayerWidget.prototype.handleStartEvent = function(event) {
 		if ((tid = this.wiki.getTiddler(additionalFields.tiddler)) && (tid.hasField("_canonical_uri"))) {
 			track = tid.fields._canonical_uri;
 			self.equalize = tid.fields.equalize || 1.0;
+			self.startTime = tid.fields.starttime || self.startTime;//notce case of letters
 		}	
 	}
 	try {

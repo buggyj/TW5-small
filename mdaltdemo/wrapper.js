@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/bj/small/mdaltdemo/parsers/markapdaper.js
+title: $:/plugins/bj/mdaltdemo/parsers/markapdaper.js
 type: application/javascript
 module-type: parser
 
@@ -8,7 +8,7 @@ to support inclusions
 
 (function(){
 
-var marked = require("$:/plugins/bj/small/mdaltdemo/markdown.js");
+var marked = require("$:/plugins/bj/mdaltdemo/markdown.js");
 
 /*jslint node: true, browser: true */
 /*global $tw: false */

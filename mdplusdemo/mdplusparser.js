@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/bj/small/mdplusdemo/parsers/PostMd.js
+title: $:/plugins/bj/mdplusdemo/parsers/PostMd.js
 type: application/javascript
 module-type: parser
 

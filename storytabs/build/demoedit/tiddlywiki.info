@@ -2,7 +2,7 @@
 	"plugins": [
 		"tiddlywiki/tiddlyweb",
 		"tiddlywiki/filesystem",
-		"bj/small/storytabs"
+		"bj/plugins/storytabs"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",

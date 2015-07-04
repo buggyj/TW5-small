@@ -1,6 +1,6 @@
 {
 	"plugins": [
-		"bj/small/assorted"
+		"bj/plugins/assorted"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",

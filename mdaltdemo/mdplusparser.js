@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/bj/small/mdaltdemo/parsers/PostMd.js
+title: $:/plugins/bj/mdaltdemo/parsers/PostMd.js
 type: application/javascript
 module-type: parser
 

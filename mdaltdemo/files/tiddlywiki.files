@@ -4,7 +4,7 @@
 			"file": "markdown.js",
 			"fields": {
 				"type": "application/javascript",
-				"title": "$:/plugins/bj/small/mdaltdemo/markdown.js",
+				"title": "$:/plugins/bj/plugins/mdaltdemo/markdown.js",
 				"module-type": "library"
 			}
 		}

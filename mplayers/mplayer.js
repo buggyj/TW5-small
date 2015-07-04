@@ -61,7 +61,7 @@ MPlayerWidget.prototype.render = function(parent,nextSibling) {
 
 MPlayerWidget.prototype.ourmedia = function(event) {
 		var tid;
-		if ((tid = this.wiki.getTiddler(event.tiddler)) && (tid.hasField("_canonical_uri"))
+		if ((tid = this.wiki.getTiddler(event.tiddler)) 
 			&& (tid.fields.type === "audio/mp3")) {
 			return true;
 		}
@@ -116,11 +116,19 @@ MPlayerWidget.prototype.handleStartEvent = function(event) {
 
 	{
 		additionalFields = event;
-		if ((tid = this.wiki.getTiddler(additionalFields.tiddler)) && (tid.hasField("_canonical_uri"))) {
-			track = tid.fields._canonical_uri;
-			self.equalize = tid.fields.equalize || 1.0;
-			self.startTime = tid.fields.starttime || self.startTime;//notce case of letters
-		}	
+		if ((tid = this.wiki.getTiddler(additionalFields.tiddler)) ) {
+			if (tid.hasField("_canonical_uri")) {
+				track = tid.fields._canonical_uri;
+				self.equalize = tid.fields.equalize || 1.0;
+				self.startTime = tid.fields.starttime || self.startTime;//notce case of letters
+			}
+			else {
+				track = "data:" + tid.fields.type + ";base64," + tid.fields.text;
+				self.equalize = tid.fields.equalize || 1.0;
+				self.startTime = tid.fields.starttime || self.startTime;//notce case of letters
+			}
+		}
+
 	}
 	try {
 	player.src = track;

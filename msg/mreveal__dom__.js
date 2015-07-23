@@ -1,5 +1,5 @@
 /*\
-title: $:/bj/modules/widgets/mreveal.js
+title: $:/bj/modules/widgets/mrevealdom.js
 type: application/javascript
 module-type: widget
 
@@ -54,6 +54,21 @@ RevealWidget.prototype.render = function(parent,nextSibling) {
 	}
 	this.domNodes.push(domNode);alert("ren"+this.domNodes.length)
 	this.isOpen = this.toOpen;
+	/////////////	
+	count++;
+	this["cb"+count] = this.handlesetvalEvent;
+	this.handlename = "cb"+count;
+	///////////
+	domNode.setAttribute("id",this.handlename);//link the dom with the callback
+	
+	var aux = {isOpen:this.isOpen, type:this.type, text:this.text,closeAnimation:this.closeAnimation,openAnimation:this.openAnimation};
+	//bj addIdEventListeners adds callback function handleNavigateEvent to this widget instance with key = id/type
+	// there will be a removeIdEventListeners ([{type: "tm-navigate", id:this.id}]) which widget calls on closing down
+	if (this.Id) {			
+		this.addIdEventListeners([
+			{type: "bjm-setval", handler: this.handlename, id:this.Id, aux:aux}
+		]);
+	}
 };
 
 /*
@@ -72,27 +87,15 @@ RevealWidget.prototype.execute = function() {
 	this.style = this.getAttribute("style","");
 	this["default"] = this.getAttribute("default","");
 	this.animate = this.getAttribute("animate","no");
-	this.retain = this.getAttribute("retain","no");
 	this.openAnimation = this.animate === "no" ? undefined : "open";
 	this.closeAnimation = this.animate === "no" ? undefined : "close";
 	// Compute the title of the state tiddler and read it
 	this.stateTitle = this.state;
 	this.toOpen = this.readState();
-	/////////////	
-	count++;
-	this["cb"+count] = this.handlesetvalEvent;
-	this.handlename = "cb"+count;
-	///////////
-	//bj addIdEventListeners adds callback function handleNavigateEvent to this widget instance with key = id/type
-	// there will be a removeIdEventListeners ([{type: "tm-navigate", id:this.id}]) which widget calls on closing down
-	if (this.Id) {			
-		this.addIdEventListeners([
-			{type: "bjm-setval", handler: this.handlename, id:this.Id}
-		]);
-	}
+
 	// Construct the child widgets
-	var childNodes = this.toOpen||this.retain == 'yes' ? this.parseTreeNode.children : [];//Note that when rending we there can be no children
-	this.hasChildNodes = this.toOpen||this.retain == 'yes';
+	var childNodes = this.parseTreeNode.children;//Note that when rending there can be no children
+	this.hasChildNodes = true;
 	this.makeChildWidgets(childNodes);
 };
 
@@ -152,38 +155,41 @@ need to bind the callback to this widget
 need a $tw.actionmsg(messge,id,value) - simple lookup message and call it - no need to register the actionmsg
 */
 
-RevealWidget.prototype.handlesetvalEvent = function(event) {
-	this.setmessage(event.paramObject.state)
+RevealWidget.prototype.handlesetvalEvent = function(event,aux) {
+	//in the reduced case, the domnode with be passed here.
+	var domNode = aux.domNode?aux.domNode:this.domNodes[0];
+	this.setmessage(event.paramObject.state, aux, domNode) //event.paramObject.state is the changed state (in a string) sent to use from the source.
 }
 
-RevealWidget.prototype.setmessage = function(state) {
-			var refreshed = false,
-			toOpen;
-  this.statea= state;
+RevealWidget.prototype.setmessage = function(state, internals, domNode) {
+	var refreshed = false,
+		toOpen;
+
 	switch(this.type) {
 		case "match":
-			toOpen = state === this.text;//alert(state+" state M toopen="+toOpen);
+			toOpen = state === internals.text;//alert(state+" state M toopen="+toOpen);
 			break;
 		case "nomatch":
-			toOpen = state === this.text;//alert(state+" state noM toopen"+toOpen);
+			toOpen = state === internals.text;//alert(state+" state noM toopen"+toOpen);
 			toOpen = !toOpen;
 			break;
 	}
-	if(toOpen !== this.isOpen) {// alert("r "+state+" state M isopen"+this.isOpen +" toopen"+toOpen+"text"+this.text);
-		if(this.retain === "yes") {
-			this.updateState();
+	if(toOpen !== internals.isOpen) {
+
+		
+		// Animate our DOM node
+		if(!internals.isOpen) {
+			domNode.removeAttribute("hidden");
+			$tw.anim.perform(internals.openAnimation,domNode);
+			internals.isOpen = true;
 		} else {
-			this.refreshSelf();
-			refreshed = true;
+			$tw.anim.perform(internals.closeAnimation,domNode,{callback: function() {
+				domNode.setAttribute("hidden","true");
+			}});
+			internals.isOpen = false;
 		}
 	} else {}//alert(state+" state M isopen"+this.isOpen +" toopen"+toOpen+"text"+this.text);}
 };
-
-
-RevealWidget.prototype.readMatchState = function(state) {
-	this.isOpen = state === this.text;
-};
-
 
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
@@ -194,17 +200,7 @@ RevealWidget.prototype.refresh = function(changedTiddlers) {
 		this.refreshSelf();
 		return true;
 	} else {
-		var refreshed = false,
-		toOpen = this.readState();
-		if(this.isOpen !== toOpen) {
-			if(this.retain === "yes") {
-				this.updateState();
-			} else {
-				this.refreshSelf();
-				refreshed = true;
-			}
-		}
-		return this.refreshChildren(changedTiddlers) || refreshed;
+		return this.refreshChildren(changedTiddlers);
 	}
 };
 
@@ -212,15 +208,8 @@ RevealWidget.prototype.refresh = function(changedTiddlers) {
 Called by refresh() to dynamically show or hide the content
 */
 RevealWidget.prototype.updateState = function() {alert("update "+this.domNodes.length)
-	// Read the current state
-	//this.readState();
-	// Construct the child nodes if needed
+
 	var domNode = this.domNodes[0];
-	if(!this.isOpen && !this.hasChildNodes) {
-		this.hasChildNodes = true;
-		this.makeChildWidgets(this.parseTreeNode.children);
-		this.renderChildren(domNode,null);
-	}
 	// Animate our DOM node
 	if(!this.isOpen) {
 		domNode.removeAttribute("hidden");
@@ -234,6 +223,6 @@ RevealWidget.prototype.updateState = function() {alert("update "+this.domNodes.l
 	}
 };
 
-exports.mreveal = RevealWidget;
+exports["mrevealdom"] = RevealWidget;
 
 })();

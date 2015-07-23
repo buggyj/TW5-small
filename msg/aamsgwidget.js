@@ -21,22 +21,24 @@ Add a list of event listeners from an array [{type:,handler:},...]
 Widget.prototype.addIdEventListeners = function(listeners) {
 	var self = this;
 	$tw.utils.each(listeners,function(listenerInfo) {
-		self.addIdEventListener(listenerInfo.id,listenerInfo.type,listenerInfo.handler);
+		self.addIdEventListener(listenerInfo.id,listenerInfo.type,listenerInfo.handler,listenerInfo.aux);
 	});
 };
 /*
 Add a message event listener
 */
 //bj should throw an error if action[id+'/'+type] already exists - should be unque otherwise it will cause an error
-Widget.prototype.addIdEventListener = function(id,type,handler) {
+Widget.prototype.addIdEventListener = function(id,type,handler,aux) {
 	var self = this;
-	var newitem ={name:null,handle:null,next:null}
+	var newitem ={name:null,handle:null,next:null,aux:null}
 
 	if(typeof handler === "string") { // The handler is a method name on this widget
+		newitem.aux = aux; //data to be passed back to the user
 		newitem.handle= function(event) {
-			return self[handler].call(self,event);
+			return self[handler].call(self,event,newitem.aux);
 		};
 		newitem.name = handler; //save name so we can del later
+
 	} else { // The handler is a function
 		newitem.handle = function(event) {
 			return handler.call(self,event);
@@ -63,7 +65,7 @@ Widget.prototype.delIdEventListeners = function(listeners) {
 Widget.prototype.delIdEventListener = function(id,type,handler) {
 	var self = this;
 
-	if (!action[id+'/'+type]) { alert ("no entry found")
+	if (!action[id+'/'+type]) { alert ("no entry found "+id+'/'+type)
 		return;
 	} else {
 		var next = action[id+'/'+type];
@@ -76,7 +78,9 @@ Widget.prototype.delIdEventListener = function(id,type,handler) {
 					if (handler == next.next.name) break;
 					next = next.next;
 				}
-				if (!next.next) {alert("not found str");return;}
+				if (!next.next) {
+					alert("not found str");return;
+					}
 
 				next.next = next.next.next;
 				return;				
@@ -91,7 +95,8 @@ Widget.prototype.delIdEventListener = function(id,type,handler) {
 					if (handler == next.next.handle) break;
 					next = next.next;
 				}
-				if (!next.next) {alert("not found ");return;}
+				if (!next.next) {//alert("not found ");return;
+					}
 			
 				next.next = next.next.next;
 				return;				
@@ -111,6 +116,7 @@ Dispatch an event to a widget. If the widget doesn't handle the event then it is
 Widget.prototype.dispatchIdEvent = function(id, event) {
 	var listener = action[id+'/'+ event.type];
 	while (listener) {
+		event.aux = listener.aux;
 		listener.handle(event);//alert("LISTEN")
 		
 		if(!listener.next) {
@@ -120,6 +126,10 @@ Widget.prototype.dispatchIdEvent = function(id, event) {
 	}
 	return true;
 };
+Widget.prototype.getTable = function () {
+	return action;
+}
+
 var action={};
 
 exports.msgwidget = Widget;

@@ -7,7 +7,7 @@ Action widget to send a message
 
 \*/
 (function(){
-alert = function () {};
+//alert = function () {};
 /*jslint node: true, browser: true */
 /*global $tw: false */
 "use strict";
@@ -35,11 +35,30 @@ SendMessageWidget.prototype.render = function(parent,nextSibling) {
 Compute the internal state of the widget
 */
 SendMessageWidget.prototype.execute = function() {
-	this.id = this.getAttribute("$Id");
-	this.actionMessage = this.getAttribute("$message");
-	this.actionParam = this.getAttribute("$param");
-	this.actionName = this.getAttribute("$name");
-	this.actionValue = this.getAttribute("$value","");
+	var self = this;
+	this.oAux = {};//hold the values for the dowmsteam dynamic
+	this.outId = this.getAttribute("$Id");
+	this.oActionMessage = this.getAttribute("$message");
+	this.oActionParam = this.getAttribute("$param");
+	this.oActionName = this.getAttribute("$name");
+	this.oActionValue = this.getAttribute("$value","");
+	// Get the string parameter
+	this.oAux.param = this.oActionParam;
+	// Assemble the attributes as a hashmap
+	this.oAux.paramObject = Object.create(null);
+	$tw.utils.each(this.attributes,function(attribute,name) {
+		if(name.charAt(0) !== "$") {
+			self.oAux.paramObject[name] = attribute;
+		}
+	});
+	// Add name/value pair if present
+	if(this.oActionName) {
+		this.oAux.paramObject[this.oActionName] = this.oActionValue;
+	}
+	this.oAux.Id = this.outId;
+	this.oAux.type = this.oActionMessage;
+	this.oAux.tiddlerTitle = this.getVariable("currentTiddler");
+	this.oAux.navigateFromTitle = this.getVariable("storyTiddler");
 };
 
 /*
@@ -54,36 +73,51 @@ SendMessageWidget.prototype.refresh = function(changedTiddlers) {
 	return this.refreshChildren(changedTiddlers);
 };
 
-/*
-Invoke the action associated with this widget
+/*Remove event handlers
 */
-SendMessageWidget.prototype.invokeAction = function(triggeringWidget,event) {
-	// Get the string parameter
-	var param = this.actionParam;
-	// Assemble the attributes as a hashmap
-	var paramObject = Object.create(null);
-	var count = 0;
-	$tw.utils.each(this.attributes,function(attribute,name) {
-		if(name.charAt(0) !== "$") {
-			paramObject[name] = attribute;
-			count++;
-		}
-	});
-	// Add name/value pair if present
-	if(this.actionName) {
-		paramObject[this.actionName] = this.actionValue;
-	}
-	// Dispatch the message
-	this.dispatchIdEvent(this.id,{
-		type: this.actionMessage,
-		param: param,
-		paramObject: paramObject,
-		tiddlerTitle: this.getVariable("currentTiddler"),
-		navigateFromTitle: this.getVariable("storyTiddler")
-	});
-	return true; // Action was invoked
+SendMessageWidget.prototype.removeChildDomNodes = function() {
+//no childern with this widget - just remove event handler
+	this.delIdEventListeners([
+		{type: this.msgType, handler: this.handlename, id:this.id}
+	]);
 };
+/*
+Invoke the init action associated with this widget
+*/
+SendMessageWidget.prototype.invokeInitAction = function(triggeringWidget,event) { //use addIdEventListener
+// set up the static part of the upstream.- 
+// receive the item to listen for
+// setup incomming messge	
+	this.id = event.id;//incomming id
+	this.msgType = event.msgType;
+		
+//expose the name of the event in the central table
+	this[this.id] = this.handlesetvalEvent;
+	this.handlename = this.id;
 
+//pass the state of the widget into the central table via oAux (as the upstream listener) - this is the dynamic structure.
+
+	this.addIdEventListeners([
+		{type: this.msgType, handler: this.handlename, id:this.id, aux:this.oAux}
+	]);
+
+};
+/*
+Invoke the down stream action associated with receiving an upstream event
+*/
+SendMessageWidget.prototype.handlesetvalEvent = function(event,aux) {
+
+	// Dispatch the message to the outbound
+	this.setmessage(aux.Id,aux);
+
+}
+
+
+SendMessageWidget.prototype.setmessage = function(id,aux) {
+// this is the upstream dynamic method - just passes data thru to the down stream 
+	// Dispatch the message
+	this.dispatchIdEvent(id,aux);
+};
 exports["action-sentmessage"] = SendMessageWidget;
 
 })();

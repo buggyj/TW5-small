@@ -1,5 +1,5 @@
 /*\
-title: $:/bj/modules/widgets/mreveal.js
+title: $:/bj/modules/widgets/mreveal__ext__.js
 type: application/javascript
 module-type: widget
 
@@ -234,6 +234,6 @@ RevealWidget.prototype.updateState = function() {alert("update "+this.domNodes.l
 	}
 };
 
-exports.mreveal = RevealWidget;
+exports["mreveal__ext__"] = RevealWidget;
 
 })();

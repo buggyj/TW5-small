@@ -1,0 +1,8 @@
+created: 20150722055231961
+modified: 20150723111458587
+tags: 
+title: create msg table
+type: text/vnd.tiddlywiki
+
+<$msgexport tiddler="test">
+</$msgexport>  

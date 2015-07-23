@@ -1,0 +1,705 @@
+created: 20150723111459854
+title: test
+type: text/vnd.tiddlywiki
+
+{
+    "bt1/bjm-null": null,
+    "$:/state/tab/sidebar--1835078512/bjm-setval": {
+        "name": "cb40",
+        "next": {
+            "name": "cb41",
+            "next": {
+                "name": "cb42",
+                "next": {
+                    "name": "cb43",
+                    "next": {
+                        "name": "cb44",
+                        "next": {
+                            "name": "cb45",
+                            "next": {
+                                "name": "cb46",
+                                "next": {
+                                    "name": "cb47",
+                                    "next": {
+                                        "name": "cb48",
+                                        "next": {
+                                            "name": "cb49",
+                                            "next": {
+                                                "name": "cb50",
+                                                "next": {
+                                                    "name": "cb78",
+                                                    "next": null,
+                                                    "aux": {
+                                                        "isOpen": true,
+                                                        "type": "match",
+                                                        "text": "$:/core/ui/SideBar/More",
+                                                        "closeAnimation": "close",
+                                                        "openAnimation": "open"
+                                                    }
+                                                },
+                                                "aux": {
+                                                    "isOpen": false,
+                                                    "type": "match",
+                                                    "text": "$:/core/ui/SideBar/Tools",
+                                                    "closeAnimation": "close",
+                                                    "openAnimation": "open"
+                                                }
+                                            },
+                                            "aux": {
+                                                "isOpen": false,
+                                                "type": "match",
+                                                "text": "$:/core/ui/SideBar/Recent",
+                                                "closeAnimation": "close",
+                                                "openAnimation": "open"
+                                            }
+                                        },
+                                        "aux": {
+                                            "isOpen": false,
+                                            "type": "match",
+                                            "text": "$:/core/ui/SideBar/Open",
+                                            "closeAnimation": "close",
+                                            "openAnimation": "open"
+                                        }
+                                    },
+                                    "aux": {
+                                        "isOpen": false,
+                                        "type": "nomatch",
+                                        "text": "$:/core/ui/SideBar/More"
+                                    }
+                                },
+                                "aux": {
+                                    "isOpen": true,
+                                    "type": "match",
+                                    "text": "$:/core/ui/SideBar/More"
+                                }
+                            },
+                            "aux": {
+                                "isOpen": true,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/SideBar/Tools"
+                            }
+                        },
+                        "aux": {
+                            "isOpen": false,
+                            "type": "match",
+                            "text": "$:/core/ui/SideBar/Tools"
+                        }
+                    },
+                    "aux": {
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/SideBar/Recent"
+                    }
+                },
+                "aux": {
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/SideBar/Recent"
+                }
+            },
+            "aux": {
+                "isOpen": true,
+                "type": "nomatch",
+                "text": "$:/core/ui/SideBar/Open"
+            }
+        },
+        "aux": {
+            "isOpen": false,
+            "type": "match",
+            "text": "$:/core/ui/SideBar/Open"
+        }
+    },
+    "bt2/bjm-null": null,
+    "bt3/bjm-null": null,
+    "bt4/bjm-null": null,
+    "bt5/bjm-null": null,
+    "bt6/bjm-null": null,
+    "bt7/bjm-null": null,
+    "bt8/bjm-null": null,
+    "bt9/bjm-null": null,
+    "$:/state/tab/moresidebar-401116514/bjm-setval": {
+        "name": "cb51",
+        "next": {
+            "name": "cb52",
+            "next": {
+                "name": "cb53",
+                "next": {
+                    "name": "cb54",
+                    "next": {
+                        "name": "cb55",
+                        "next": {
+                            "name": "cb56",
+                            "next": {
+                                "name": "cb57",
+                                "next": {
+                                    "name": "cb58",
+                                    "next": {
+                                        "name": "cb59",
+                                        "next": {
+                                            "name": "cb60",
+                                            "next": {
+                                                "name": "cb61",
+                                                "next": {
+                                                    "name": "cb62",
+                                                    "next": {
+                                                        "name": "cb63",
+                                                        "next": {
+                                                            "name": "cb64",
+                                                            "next": {
+                                                                "name": "cb65",
+                                                                "next": {
+                                                                    "name": "cb66",
+                                                                    "next": {
+                                                                        "name": "cb67",
+                                                                        "next": {
+                                                                            "name": "cb68",
+                                                                            "next": {
+                                                                                "name": "cb69",
+                                                                                "next": {
+                                                                                    "name": "cb70",
+                                                                                    "next": {
+                                                                                        "name": "cb71",
+                                                                                        "next": {
+                                                                                            "name": "cb72",
+                                                                                            "next": {
+                                                                                                "name": "cb73",
+                                                                                                "next": {
+                                                                                                    "name": "cb74",
+                                                                                                    "next": {
+                                                                                                        "name": "cb75",
+                                                                                                        "next": {
+                                                                                                            "name": "cb76",
+                                                                                                            "next": {
+                                                                                                                "name": "cb77",
+                                                                                                                "next": null,
+                                                                                                                "aux": {
+                                                                                                                    "isOpen": false,
+                                                                                                                    "type": "match",
+                                                                                                                    "text": "$:/core/ui/MoreSideBar/Shadows",
+                                                                                                                    "closeAnimation": "close",
+                                                                                                                    "openAnimation": "open"
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "aux": {
+                                                                                                                "isOpen": false,
+                                                                                                                "type": "match",
+                                                                                                                "text": "$:/core/ui/MoreSideBar/System",
+                                                                                                                "closeAnimation": "close",
+                                                                                                                "openAnimation": "open"
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "aux": {
+                                                                                                            "isOpen": false,
+                                                                                                            "type": "match",
+                                                                                                            "text": "$:/core/ui/MoreSideBar/Types",
+                                                                                                            "closeAnimation": "close",
+                                                                                                            "openAnimation": "open"
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "aux": {
+                                                                                                        "isOpen": false,
+                                                                                                        "type": "match",
+                                                                                                        "text": "$:/core/ui/MoreSideBar/Orphans",
+                                                                                                        "closeAnimation": "close",
+                                                                                                        "openAnimation": "open"
+                                                                                                    }
+                                                                                                },
+                                                                                                "aux": {
+                                                                                                    "isOpen": false,
+                                                                                                    "type": "match",
+                                                                                                    "text": "$:/core/ui/MoreSideBar/Drafts",
+                                                                                                    "closeAnimation": "close",
+                                                                                                    "openAnimation": "open"
+                                                                                                }
+                                                                                            },
+                                                                                            "aux": {
+                                                                                                "isOpen": false,
+                                                                                                "type": "match",
+                                                                                                "text": "$:/core/ui/MoreSideBar/Missing",
+                                                                                                "closeAnimation": "close",
+                                                                                                "openAnimation": "open"
+                                                                                            }
+                                                                                        },
+                                                                                        "aux": {
+                                                                                            "isOpen": true,
+                                                                                            "type": "match",
+                                                                                            "text": "$:/core/ui/MoreSideBar/Tags",
+                                                                                            "closeAnimation": "close",
+                                                                                            "openAnimation": "open"
+                                                                                        }
+                                                                                    },
+                                                                                    "aux": {
+                                                                                        "isOpen": false,
+                                                                                        "type": "match",
+                                                                                        "text": "$:/core/ui/MoreSideBar/Recent",
+                                                                                        "closeAnimation": "close",
+                                                                                        "openAnimation": "open"
+                                                                                    }
+                                                                                },
+                                                                                "aux": {
+                                                                                    "isOpen": false,
+                                                                                    "type": "match",
+                                                                                    "text": "$:/core/ui/MoreSideBar/All",
+                                                                                    "closeAnimation": "close",
+                                                                                    "openAnimation": "open"
+                                                                                }
+                                                                            },
+                                                                            "aux": {
+                                                                                "isOpen": true,
+                                                                                "type": "nomatch",
+                                                                                "text": "$:/core/ui/MoreSideBar/Shadows"
+                                                                            }
+                                                                        },
+                                                                        "aux": {
+                                                                            "isOpen": false,
+                                                                            "type": "match",
+                                                                            "text": "$:/core/ui/MoreSideBar/Shadows"
+                                                                        }
+                                                                    },
+                                                                    "aux": {
+                                                                        "isOpen": true,
+                                                                        "type": "nomatch",
+                                                                        "text": "$:/core/ui/MoreSideBar/System"
+                                                                    }
+                                                                },
+                                                                "aux": {
+                                                                    "isOpen": false,
+                                                                    "type": "match",
+                                                                    "text": "$:/core/ui/MoreSideBar/System"
+                                                                }
+                                                            },
+                                                            "aux": {
+                                                                "isOpen": true,
+                                                                "type": "nomatch",
+                                                                "text": "$:/core/ui/MoreSideBar/Types"
+                                                            }
+                                                        },
+                                                        "aux": {
+                                                            "isOpen": false,
+                                                            "type": "match",
+                                                            "text": "$:/core/ui/MoreSideBar/Types"
+                                                        }
+                                                    },
+                                                    "aux": {
+                                                        "isOpen": true,
+                                                        "type": "nomatch",
+                                                        "text": "$:/core/ui/MoreSideBar/Orphans"
+                                                    }
+                                                },
+                                                "aux": {
+                                                    "isOpen": false,
+                                                    "type": "match",
+                                                    "text": "$:/core/ui/MoreSideBar/Orphans"
+                                                }
+                                            },
+                                            "aux": {
+                                                "isOpen": true,
+                                                "type": "nomatch",
+                                                "text": "$:/core/ui/MoreSideBar/Drafts"
+                                            }
+                                        },
+                                        "aux": {
+                                            "isOpen": false,
+                                            "type": "match",
+                                            "text": "$:/core/ui/MoreSideBar/Drafts"
+                                        }
+                                    },
+                                    "aux": {
+                                        "isOpen": true,
+                                        "type": "nomatch",
+                                        "text": "$:/core/ui/MoreSideBar/Missing"
+                                    }
+                                },
+                                "aux": {
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/MoreSideBar/Missing"
+                                }
+                            },
+                            "aux": {
+                                "isOpen": false,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/MoreSideBar/Tags"
+                            }
+                        },
+                        "aux": {
+                            "isOpen": true,
+                            "type": "match",
+                            "text": "$:/core/ui/MoreSideBar/Tags"
+                        }
+                    },
+                    "aux": {
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/MoreSideBar/Recent"
+                    }
+                },
+                "aux": {
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/MoreSideBar/Recent"
+                }
+            },
+            "aux": {
+                "isOpen": true,
+                "type": "nomatch",
+                "text": "$:/core/ui/MoreSideBar/All"
+            }
+        },
+        "aux": {
+            "isOpen": false,
+            "type": "match",
+            "text": "$:/core/ui/MoreSideBar/All"
+        }
+    },
+    "bt10/bjm-null": null,
+    "bt11/bjm-null": null,
+    "bt12/bjm-null": null,
+    "bt13/bjm-null": null,
+    "bt14/bjm-null": null,
+    "bt15/bjm-null": null,
+    "bt16/bjm-null": null,
+    "bt17/bjm-null": null,
+    "bt18/bjm-null": null,
+    "bt19/bjm-null": null,
+    "bt20/bjm-null": null,
+    "bt21/bjm-null": null,
+    "bt22/bjm-null": null,
+    "bt23/bjm-null": null,
+    "bt24/bjm-null": null,
+    "bt25/bjm-null": null,
+    "bt26/bjm-null": null,
+    "bt27/bjm-null": {
+        "name": "bt27",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Open"
+            },
+            "Id": "$:/state/tab/sidebar--1835078512",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt28/bjm-null": {
+        "name": "bt28",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Open"
+            },
+            "Id": "$:/state/tab/sidebar--1835078512",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt29/bjm-null": {
+        "name": "bt29",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Recent"
+            },
+            "Id": "$:/state/tab/sidebar--1835078512",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt30/bjm-null": {
+        "name": "bt30",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Recent"
+            },
+            "Id": "$:/state/tab/sidebar--1835078512",
+            "type": "bjm-setval",
+            "tiddlerTitle": "",
+            "aux": {
+                "isOpen": true,
+                "type": "match",
+                "text": "$:/core/ui/SideBar/More",
+                "closeAnimation": "close",
+                "openAnimation": "open"
+            }
+        }
+    },
+    "bt31/bjm-null": {
+        "name": "bt31",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Tools"
+            },
+            "Id": "$:/state/tab/sidebar--1835078512",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt32/bjm-null": {
+        "name": "bt32",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Tools"
+            },
+            "Id": "$:/state/tab/sidebar--1835078512",
+            "type": "bjm-setval",
+            "tiddlerTitle": "",
+            "aux": {
+                "isOpen": true,
+                "type": "match",
+                "text": "$:/core/ui/SideBar/More",
+                "closeAnimation": "close",
+                "openAnimation": "open"
+            }
+        }
+    },
+    "bt33/bjm-null": {
+        "name": "bt33",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/More"
+            },
+            "Id": "$:/state/tab/sidebar--1835078512",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt34/bjm-null": {
+        "name": "bt34",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/More"
+            },
+            "Id": "$:/state/tab/sidebar--1835078512",
+            "type": "bjm-setval",
+            "tiddlerTitle": "",
+            "aux": {
+                "isOpen": true,
+                "type": "match",
+                "text": "$:/core/ui/SideBar/More",
+                "closeAnimation": "close",
+                "openAnimation": "open"
+            }
+        }
+    },
+    "bt35/bjm-null": {
+        "name": "bt35",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/All"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt36/bjm-null": {
+        "name": "bt36",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/All"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt37/bjm-null": {
+        "name": "bt37",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Recent"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt38/bjm-null": {
+        "name": "bt38",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Recent"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt39/bjm-null": {
+        "name": "bt39",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Tags"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt40/bjm-null": {
+        "name": "bt40",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Tags"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt41/bjm-null": {
+        "name": "bt41",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Missing"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt42/bjm-null": {
+        "name": "bt42",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Missing"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt43/bjm-null": {
+        "name": "bt43",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Drafts"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt44/bjm-null": {
+        "name": "bt44",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Drafts"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt45/bjm-null": {
+        "name": "bt45",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Orphans"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt46/bjm-null": {
+        "name": "bt46",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Orphans"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt47/bjm-null": {
+        "name": "bt47",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Types"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt48/bjm-null": {
+        "name": "bt48",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Types"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt49/bjm-null": {
+        "name": "bt49",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/System"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt50/bjm-null": {
+        "name": "bt50",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/System"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt51/bjm-null": {
+        "name": "bt51",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Shadows"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    },
+    "bt52/bjm-null": {
+        "name": "bt52",
+        "next": null,
+        "aux": {
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Shadows"
+            },
+            "Id": "$:/state/tab/moresidebar-401116514",
+            "type": "bjm-setval",
+            "tiddlerTitle": ""
+        }
+    }
+}

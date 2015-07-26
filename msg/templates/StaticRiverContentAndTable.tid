@@ -6,3 +6,5 @@ title: $:/core/templates/exporters/StaticRiver/ContentAndTable
 <$importvariables filter="[[$:/core/ui/PageMacros]] [all[shadows+tiddlers]tag[$:/tags/Macro]!has[draft.of]]">
 <<renderContent>>
 </$importvariables>
+<$msgexport tiddler="transientTableEvents"/>
+

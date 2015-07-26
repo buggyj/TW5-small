@@ -31,7 +31,7 @@ SendMessageWidget.prototype.render = function(parent,nextSibling) {
 	this.execute();
 	var	fields = {
 				title: this.tiddler,
-				text: JSON.stringify(this.getTable(),null,$tw.config.preferences.jsonSpaces)
+				text: JSON.stringify(this.getTable())
 			};
 	//create a json tiddler containing the msg table
 	this.wiki.addTiddler(new $tw.Tiddler(fields));

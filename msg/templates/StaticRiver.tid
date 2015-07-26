@@ -1,4 +1,4 @@
-title: $:/core/templates/exporters/StaticRiverBJ
+title: $:/mcore/templates/exporters/StaticRiver
 tags: $:/tags/Exporter
 description: {{$:/language/Exporters/StaticRiver}}
 extension: .html
@@ -30,7 +30,7 @@ extension: .html
 {{$:/StaticBanner||$:/core/templates/html-tiddler}}
 <section class="tc-story-river">
 {{$:/core/templates/exporters/StaticRiver/ContentAndTable||$:/core/templates/html-tiddler}}
-{{$:/core/templates/exporters/StaticRiver/js}}
+{{$:/core/templates/exporters/jsonRiver}}
 {{{ [all[shadows+tiddlers]module-type[dom_method]] ||$:/core/templates/javascript-tiddler}}}
 </section>
 

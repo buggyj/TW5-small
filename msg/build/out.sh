@@ -17,7 +17,7 @@ fi
 node ../../../../../tiddlywiki.js \
 	./demo \
 	--verbose \
-	--rendertiddler btag $TW5_BUILD_OUTPUT/msgbtag.html text/plain \
+	--rendertiddler $/mcore/templates/testing $TW5_BUILD_OUTPUT/msgbtag.html text/plain \
 	|| exit 1
 
 

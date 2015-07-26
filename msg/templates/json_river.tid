@@ -1,7 +1,7 @@
 created: 20150725090158641
 modified: 20150725090942455
 tags: 
-title: $:/core/templates/exporters/StaticRiver/js
+title: $:/core/templates/exporters/jsonRiver
 type: text/vnd.tiddlywiki
 
 \define renderContent()

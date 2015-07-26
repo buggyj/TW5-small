@@ -7,22 +7,28 @@ Action widget to send a message
 
 \*/
 (function(){
-//alert = function () {};
+alert = function () {};
 /*jslint node: true, browser: true */
 /*global $tw: false */
 "use strict";
+var count = 0;
 
 var Widget = require("$:/bj/modules/widgets/msgwidget.js").msgwidget;
 
 var SendMessageWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
+	if(!SendMessageWidget[this.label]) {
+		SendMessageWidget.prototype[this.label] = $tw.modules.applyMethods("dom_method")[this.label];
+	}	
 };
+
 
 /*
 Inherit from the base widget class
 */
 SendMessageWidget.prototype = new Widget();
 
+SendMessageWidget.prototype.label = "as";
 /*
 Render this widget into the DOM
 */
@@ -78,7 +84,7 @@ SendMessageWidget.prototype.refresh = function(changedTiddlers) {
 SendMessageWidget.prototype.removeChildDomNodes = function() {
 //no childern with this widget - just remove event handler
 	this.delIdEventListeners([
-		{type: this.msgType, handler: this.handlename, id:this.id}
+		{handler: this.handlename, id:this.id+'/'+ this.msgType}
 	]);
 };
 /*
@@ -90,15 +96,20 @@ SendMessageWidget.prototype.invokeInitAction = function(triggeringWidget,event) 
 // setup incomming messge	
 	this.id = event.id;//incomming id
 	this.msgType = event.msgType;
-		
-//expose the name of the event in the central table
-	this[this.id] = this.handlesetvalEvent;
-	this.handlename = this.id;
+	
+	//expose the name of the event in the central table
+		/////////////	
+	count++;
+	this[this.label+count] = this.handlesetvalEvent;
+	this.handlename = this.label+count;
+	///////////	
+
+
 
 //pass the state of the widget into the central table via oAux (as the upstream listener) - this is the dynamic structure.
 
 	this.addIdEventListeners([
-		{type: this.msgType, handler: this.handlename, id:this.id, aux:this.oAux}
+		{ handler: this.handlename, id:this.id+'/'+this.msgType, aux:this.oAux}
 	]);
 
 };
@@ -108,16 +119,10 @@ Invoke the down stream action associated with receiving an upstream event
 SendMessageWidget.prototype.handlesetvalEvent = function(event,aux) {
 
 	// Dispatch the message to the outbound
-	this.setmessage(aux.Id,aux);
+	this[this.label](event,aux);
 
 }
 
-
-SendMessageWidget.prototype.setmessage = function(id,aux) {
-// this is the upstream dynamic method - just passes data thru to the down stream 
-	// Dispatch the message
-	this.dispatchIdEvent(id,aux);
-};
 exports["action-sentmessage"] = SendMessageWidget;
 
 })();

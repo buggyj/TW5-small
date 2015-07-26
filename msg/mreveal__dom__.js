@@ -17,6 +17,10 @@ var Widget = require("$:/bj/modules/widgets/msgwidget.js").msgwidget;
 
 var RevealWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
+		if(!RevealWidget[RevealWidget.prototype.label]) {
+			//$tw.modules.applyMethods("mrevealdom_method",RevealWidget.prototype);
+			RevealWidget.prototype[this.label] = $tw.modules.applyMethods("dom_method")[this.label];
+		}
 };
 
 /*
@@ -24,6 +28,8 @@ Inherit from the base widget class
 */
 RevealWidget.prototype = new Widget();
 
+
+RevealWidget.prototype.label = "rv";
 
 
 /*
@@ -52,21 +58,22 @@ RevealWidget.prototype.render = function(parent,nextSibling) {
 	if(!this.toOpen) {
 		domNode.setAttribute("hidden","true");
 	}
-	this.domNodes.push(domNode);alert("ren"+this.domNodes.length)
+	this.domNodes.push(domNode);//alert("ren"+this.domNodes.length)
 	this.isOpen = this.toOpen;
 	/////////////	
 	count++;
-	this["cb"+count] = this.handlesetvalEvent;
-	this.handlename = "cb"+count;
+	this[this.label+count] = this.handlesetvalEvent;
+	this.handlename = this.label+count;
 	///////////
 	domNode.setAttribute("id",this.handlename);//link the dom with the callback
-	
-	var aux = {isOpen:this.isOpen, type:this.type, text:this.text,closeAnimation:this.closeAnimation,openAnimation:this.openAnimation};
+	domNode.setAttribute("data-event",this.Id+"/bjm-setval");
+	//the value fof domNode below is added by the reduce runtime to the table enties, when it add the replacement for handlesetvalEvent
+	var aux = {domNode:null,isOpen:this.isOpen, type:this.type, text:this.text,closeAnimation:this.closeAnimation,openAnimation:this.openAnimation};
 	//bj addIdEventListeners adds callback function handleNavigateEvent to this widget instance with key = id/type
 	// there will be a removeIdEventListeners ([{type: "tm-navigate", id:this.id}]) which widget calls on closing down
 	if (this.Id) {			
 		this.addIdEventListeners([
-			{type: "bjm-setval", handler: this.handlename, id:this.Id, aux:aux}
+			{handler: this.handlename, id:this.Id+"/bjm-setval", aux:aux}
 		]);
 	}
 };
@@ -103,7 +110,7 @@ RevealWidget.prototype.execute = function() {
 /*Remove any DOM nodes created by this widget or its children
 */
 RevealWidget.prototype.removeChildDomNodes = function() {
-alert(this.text+ "dom remove")
+//alert(this.text+ "dom remove")
 	// If this widget has directly created DOM nodes, delete them and exit. This assumes that any child widgets are contained within the created DOM nodes, which would normally be the case
 	$tw.utils.each(this.children,function(childWidget) {
 			childWidget.removeChildDomNodes();
@@ -115,7 +122,7 @@ alert(this.text+ "dom remove")
 		this.domNodes = [];
 	}
 	this.delIdEventListeners([
-		{type: "bjm-setval", handler: this.handlename, id:this.Id}
+		{ handler: this.handlename, id:this.Id+"/bjm-setval"}
 	]);
 };
 /*
@@ -142,54 +149,13 @@ RevealWidget.prototype.readState = function() {
 	return toOpen;
 };
 
-/*
-need to register this function - $tw.instantmsg.reg("bjm-setstate", this.id, this.setmessage) - returns the handle for easy managing teardown
-follow pattern of this.domnodes
-
-	this.msgs.push( $tw.instantmsg.reg("bjm-setstate", this.id, this.setmessage));
-
-then on teardown  call 
-* for (i = 0 to this.msg.length) this.msg.remove();
-
-need to bind the callback to this widget
-need a $tw.actionmsg(messge,id,value) - simple lookup message and call it - no need to register the actionmsg
-*/
 
 RevealWidget.prototype.handlesetvalEvent = function(event,aux) {
-	//in the reduced case, the domnode with be passed here.
+	//bj meditation: in the reduced case, the domnode with be passed here? or will be place in table?
+	//the runtime will have to connect this up to the table up - better use table
 	var domNode = aux.domNode?aux.domNode:this.domNodes[0];
-	this.setmessage(event.paramObject.state, aux, domNode) //event.paramObject.state is the changed state (in a string) sent to use from the source.
+	this[this.label](event,aux, domNode);
 }
-
-RevealWidget.prototype.setmessage = function(state, internals, domNode) {
-	var refreshed = false,
-		toOpen;
-
-	switch(this.type) {
-		case "match":
-			toOpen = state === internals.text;//alert(state+" state M toopen="+toOpen);
-			break;
-		case "nomatch":
-			toOpen = state === internals.text;//alert(state+" state noM toopen"+toOpen);
-			toOpen = !toOpen;
-			break;
-	}
-	if(toOpen !== internals.isOpen) {
-
-		
-		// Animate our DOM node
-		if(!internals.isOpen) {
-			domNode.removeAttribute("hidden");
-			$tw.anim.perform(internals.openAnimation,domNode);
-			internals.isOpen = true;
-		} else {
-			$tw.anim.perform(internals.closeAnimation,domNode,{callback: function() {
-				domNode.setAttribute("hidden","true");
-			}});
-			internals.isOpen = false;
-		}
-	} else {}//alert(state+" state M isopen"+this.isOpen +" toopen"+toOpen+"text"+this.text);}
-};
 
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering

@@ -1,0 +1,15 @@
+created: 20150721114551856
+modified: 20150725153058217
+tags: 
+title: btag
+type: text/vnd.tiddlywiki
+
+<!-- This template is provided for backwards compatibility with older versions of TiddlyWiki -->
+
+<$set name="exportFilter" value="[tag[btag]]">
+<$set name="exportFilterJson" value="[[test]]">
+
+{{$:/core/templates/exporters/StaticRiverBJ}}
+
+</$set> 
+</$set> 

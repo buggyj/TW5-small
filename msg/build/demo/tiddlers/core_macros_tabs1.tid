@@ -1,5 +1,5 @@
 created: 20150717051043053
-modified: 20150722172523700
+modified: 20150725042950069
 tags: $:/tags/Macro
 title: core/macros/tabs1
 type: text/vnd.tiddlywiki
@@ -9,8 +9,9 @@ type: text/vnd.tiddlywiki
 <div class="tc-tab-buttons $class$">
 <$list filter="$tabsList$" variable="currentTab">
 <$mrevealdom type="match"  Id=<<qualify "$state$">> retain="yes"  text=<<currentTab>> default="$default$">
-<$setbutton class="tc-tab-selected">
+<$setbutton class="tc-tab-selected bt">
 <$action-sentmessage $message="bjm-setval" $Id=<<qualify "$state$">>  state=<<currentTab>>/>
+<$action-sentmessage $message="bjm-test" $Id=<<qualify "$state$">>  state=<<currentTab>>/>
 <$set name="tv-wikilinks" value="no">
 <$transclude tiddler=<<currentTab>> field="caption">
 <$macrocall $name="currentTab" $type="text/plain" $output="text/plain"/>
@@ -19,7 +20,7 @@ type: text/vnd.tiddlywiki
 </$setbutton>
 </$mrevealdom>
 <$mrevealdom type="nomatch"  Id=<<qualify "$state$">> retain="yes"  text=<<currentTab>> default="$default$">
-<$setbutton>
+<$setbutton class=" bt">
 <$action-sentmessage $message="bjm-setval" $Id=<<qualify "$state$">>  state=<<currentTab>>/>
 <$set name="tv-wikilinks" value="no">
 <$transclude tiddler=<<currentTab>> field="caption">

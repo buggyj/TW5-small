@@ -62,7 +62,7 @@ ButtonWidget.prototype.render = function(parent,nextSibling) {
 	// Add a click event handler
 	domNode.addEventListener("click",function (event) {
 		//the id and aux will need to be in the dom. - why is the aux used
-		self.dispatchIdEvent(self.domnodeId,{type:"bjm-null"});	
+		self.dispatchIdEvent(self.domnodeId+"/bjm-null",{});	
 		return true;
 	},false);
 	// Insert element
@@ -72,6 +72,7 @@ ButtonWidget.prototype.render = function(parent,nextSibling) {
 
 
 	domNode.setAttribute("id",this.domnodeId);//link the dom with the callback
+	domNode.setAttribute("data-event",this.domnodeId+"/bjm-null");
 	this.invokeInitActions(this,{id:this.domnodeId, msgType:"bjm-null"})
 };
 

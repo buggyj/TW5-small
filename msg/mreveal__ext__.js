@@ -112,7 +112,7 @@ alert(this.text+ "dom remove")
 		this.domNodes = [];
 	}
 	this.delIdEventListeners([
-		{type: "bjm-setval", handler: this.handlename, id:this.Id}
+		{handler: this.handlename, id:this.Id+"/bjm-setval"}
 	]);
 };
 /*
@@ -153,7 +153,7 @@ need a $tw.actionmsg(messge,id,value) - simple lookup message and call it - no n
 */
 
 RevealWidget.prototype.handlesetvalEvent = function(event) {
-	this.setmessage(event.paramObject.state)
+	this.setmessage(event.aux.paramObject.state)
 }
 
 RevealWidget.prototype.setmessage = function(state) {

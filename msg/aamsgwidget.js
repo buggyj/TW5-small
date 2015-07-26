@@ -21,14 +21,14 @@ Add a list of event listeners from an array [{type:,handler:},...]
 Widget.prototype.addIdEventListeners = function(listeners) {
 	var self = this;
 	$tw.utils.each(listeners,function(listenerInfo) {
-		self.addIdEventListener(listenerInfo.id,listenerInfo.type,listenerInfo.handler,listenerInfo.aux);
+		self.addIdEventListener(listenerInfo.id,listenerInfo.handler,listenerInfo.aux);
 	});
 };
 /*
 Add a message event listener
 */
-//bj should throw an error if action[id+'/'+type] already exists - should be unque otherwise it will cause an error
-Widget.prototype.addIdEventListener = function(id,type,handler,aux) {
+//bj should throw an error if action[id] already exists - should be unque otherwise it will cause an error
+Widget.prototype.addIdEventListener = function(id,handler,aux) {
 	var self = this;
 	var newitem ={name:null,handle:null,next:null,aux:null}
 
@@ -44,10 +44,10 @@ Widget.prototype.addIdEventListener = function(id,type,handler,aux) {
 			return handler.call(self,event);
 		};
 	}
-	if (!action[id+'/'+type]) {
-		action[id+'/'+type] = newitem;
+	if (!action[id]) {
+		action[id] = newitem;
 	} else {
-		var next = action[id+'/'+type];
+		var next = action[id];
 		    while (next.next) next = next.next;
 		    next.next = newitem;
 	}
@@ -65,13 +65,14 @@ Widget.prototype.delIdEventListeners = function(listeners) {
 Widget.prototype.delIdEventListener = function(id,type,handler) {
 	var self = this;
 
-	if (!action[id+'/'+type]) { alert ("no entry found "+id+'/'+type)
+	if (!action[id]) { alert ("no entry found "+id)
 		return;
 	} else {
-		var next = action[id+'/'+type];
-		if (typeof handler === "string") {alert ("str"+handler)
+		var next = action[id];
+		if (typeof handler === "string") {//alert ("str"+handler)
 			if (handler == next.name) {
-				 action[id+'/'+type] = next.next;
+				 action[id] = next.next;
+				 if (action[id] == null) delete (action[id]);
 				return;
 			} else {
 				while (next.next) {
@@ -88,7 +89,7 @@ Widget.prototype.delIdEventListener = function(id,type,handler) {
 			}
 		} else 	{
 			if (handler == next.handle) {
-				action[id+'/'+type] = next.next;
+				action[id] = next.next;
 				return;
 			} else {
 				while (next.next) {
@@ -114,10 +115,10 @@ var actions = {};//global actions table
 Dispatch an event to a widget. If the widget doesn't handle the event then it is also dispatched to the parent widget
 */
 Widget.prototype.dispatchIdEvent = function(id, event) {
-	var listener = action[id+'/'+ event.type];
+	var listener = action[id];
 	while (listener) {
-		event.aux = listener.aux;
-		listener.handle(event);//alert("LISTEN")
+
+		listener.handle(event,listener.aux);//aux is the context
 		
 		if(!listener.next) {
 			return true;

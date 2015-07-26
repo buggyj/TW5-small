@@ -7,7 +7,7 @@ create a json tiddler containing the msg table
 * 
 \*/
 (function(){
-//alert = function () {};
+
 /*jslint node: true, browser: true */
 /*global $tw: false */
 "use strict";

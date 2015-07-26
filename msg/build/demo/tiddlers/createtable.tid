@@ -1,7 +1,7 @@
 created: 20150722055231961
-modified: 20150723111458587
-tags: 
-title: create msg table
+modified: 20150725083412512
+tags: btag
+title: createtable
 type: text/vnd.tiddlywiki
 
 <$msgexport tiddler="test">

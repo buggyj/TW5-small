@@ -52,7 +52,7 @@ RevealWidget.prototype.render = function(parent,nextSibling) {
 	if(!this.toOpen) {
 		domNode.setAttribute("hidden","true");
 	}
-	this.domNodes.push(domNode);alert("ren"+this.domNodes.length)
+	this.domNodes.push(domNode);//alert("ren"+this.domNodes.length)
 	this.isOpen = this.toOpen;
 };
 
@@ -87,7 +87,7 @@ RevealWidget.prototype.execute = function() {
 	// there will be a removeIdEventListeners ([{type: "tm-navigate", id:this.id}]) which widget calls on closing down
 	if (this.Id) {			
 		this.addIdEventListeners([
-			{type: "bjm-setval", handler: this.handlename, id:this.Id}
+			{handler: this.handlename, id:this.Id+"/bjm-setval"}
 		]);
 	}
 	// Construct the child widgets
@@ -112,7 +112,7 @@ alert(this.text+ "dom remove")
 		this.domNodes = [];
 	}
 	this.delIdEventListeners([
-		{type: "bjm-setval", handler: this.handlename, id:this.Id}
+		{handler: this.handlename, id:this.Id+"/bjm-setval"}
 	]);
 };
 /*
@@ -153,7 +153,7 @@ need a $tw.actionmsg(messge,id,value) - simple lookup message and call it - no n
 */
 
 RevealWidget.prototype.handlesetvalEvent = function(event) {
-	this.setmessage(event.paramObject.state)
+	this.setmessage(event.aux.paramObject.state)
 }
 
 RevealWidget.prototype.setmessage = function(state) {
@@ -179,10 +179,6 @@ RevealWidget.prototype.setmessage = function(state) {
 	} else {}//alert(state+" state M isopen"+this.isOpen +" toopen"+toOpen+"text"+this.text);}
 };
 
-
-RevealWidget.prototype.readMatchState = function(state) {
-	this.isOpen = state === this.text;
-};
 
 
 /*

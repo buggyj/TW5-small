@@ -62,7 +62,7 @@ ButtonWidget.prototype.render = function(parent,nextSibling) {
 	// Add a click event handler
 	domNode.addEventListener("click",function (event) {
 		//the id and aux will need to be in the dom. - why is the aux used
-		self.dispatchIdEvent(self.domnodeId+"/bjm-null",{});	
+		self.dispatchIdEvent(self.domnodeId+"/bjm-null",Object.create(null));	
 		return true;
 	},false);
 	// Insert element
@@ -119,13 +119,13 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
 */
 ButtonWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
-	if(changedAttributes.tooltip || changedAttributes.hover || changedAttributes["class"] || changedAttributes.selectedClass || changedAttributes.style ) {
+	if(Object.keys(changedAttributes).length) {
 		this.refreshSelf();
 		return true;
 	}
 	return this.refreshChildren(changedTiddlers);
 };
 
-exports.setbutton = ButtonWidget;
+exports.mbutton = ButtonWidget;
 
 })();

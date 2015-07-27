@@ -1,15 +1,15 @@
 created: 20150721114551856
-modified: 20150725153058217
+modified: 20150726130228147
 tags: 
 title: btag
-type: text/vnd.tiddlywiki
+type: pla
 
 <!-- This template is provided for backwards compatibility with older versions of TiddlyWiki -->
 
-<$set name="exportFilter" value="[tag[btag]]">
-<$set name="exportFilterJson" value="[[test]]">
+<$set name="exportFilter" value="[tag[testtiddlers1]]">
+<$set name="exportFilterJson" value="[[transientTableEvents]]">
 
-{{$:/core/templates/exporters/StaticRiverBJ}}
+{{$:/mcore/templates/exporters/StaticRiver}}
 
 </$set> 
 </$set> 

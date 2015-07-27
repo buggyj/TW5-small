@@ -42,29 +42,22 @@ Compute the internal state of the widget
 */
 SendMessageWidget.prototype.execute = function() {
 	var self = this;
-	this.oAux = {};//hold the values for the dowmsteam dynamic
-	this.outId = this.getAttribute("$Id");
-	this.oActionMessage = this.getAttribute("$message");
-	this.oActionParam = this.getAttribute("$param");
-	this.oActionName = this.getAttribute("$name");
-	this.oActionValue = this.getAttribute("$value","");
-	// Get the string parameter
-	this.oAux.param = this.oActionParam;
+
+	
+	this.here = Object.create(null);//hold the values for the dowmsteam dynamic
+	this.here.sendId = this.getAttribute("$sendOn");
+	this.here.sendType = this.getAttribute("$action");
+
 	// Assemble the attributes as a hashmap
-	this.oAux.paramObject = Object.create(null);
+	this.here.paramObject = Object.create(null);
 	$tw.utils.each(this.attributes,function(attribute,name) {
 		if(name.charAt(0) !== "$") {
-			self.oAux.paramObject[name] = attribute;
+			self.here.paramObject[name] = attribute;
 		}
 	});
-	// Add name/value pair if present
-	if(this.oActionName) {
-		this.oAux.paramObject[this.oActionName] = this.oActionValue;
-	}
-	this.oAux.Id = this.outId;
-	this.oAux.type = this.oActionMessage;
-	this.oAux.tiddlerTitle = this.getVariable("currentTiddler");
-	this.oAux.navigateFromTitle = this.getVariable("storyTiddler");
+
+	this.here.tiddlerTitle = this.getVariable("currentTiddler");
+	this.here.storyTiddler = this.getVariable("storyTiddler");
 };
 
 /*
@@ -106,10 +99,10 @@ SendMessageWidget.prototype.invokeInitAction = function(triggeringWidget,event) 
 
 
 
-//pass the state of the widget into the central table via oAux (as the upstream listener) - this is the dynamic structure.
+//pass the state of the widget into the central table via here (as the upstream listener) - this is the dynamic structure.
 
 	this.addIdEventListeners([
-		{ handler: this.handlename, id:this.id+'/'+this.msgType, aux:this.oAux}
+		{ handler: this.handlename, id:this.id+'/'+this.msgType, aux:this.here}
 	]);
 
 };

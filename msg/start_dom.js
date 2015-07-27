@@ -6,11 +6,12 @@ module-type: head_method
 Action start of static dom - in the head eare
 
 \*/
-var exports = {};
+var $twmodules = {}
+$twmodules.dom_method = {};
 window.onload = function()
 //setTimeout(function()
 {	
-	var mod = exports;
+	var mod = $twmodules.dom_method;
 	//alert("load")
 	// first link to central table
 	var json = document.getElementById("jsontable");//alert(json.textContent)

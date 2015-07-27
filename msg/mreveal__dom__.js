@@ -61,19 +61,20 @@ RevealWidget.prototype.render = function(parent,nextSibling) {
 	this.domNodes.push(domNode);//alert("ren"+this.domNodes.length)
 	this.isOpen = this.toOpen;
 	/////////////	
+	//bj meditation: hid this name mangling with a method in base class
 	count++;
 	this[this.label+count] = this.handlesetvalEvent;
 	this.handlename = this.label+count;
 	///////////
 	domNode.setAttribute("id",this.handlename);//link the dom with the callback
-	domNode.setAttribute("data-event",this.Id+"/bjm-setval");
+	domNode.setAttribute("data-event",this.Id+"/mtm-compare");
 	//the value fof domNode below is added by the reduce runtime to the table enties, when it add the replacement for handlesetvalEvent
 	var aux = {domNode:null,isOpen:this.isOpen, type:this.type, text:this.text,closeAnimation:this.closeAnimation,openAnimation:this.openAnimation};
 	//bj addIdEventListeners adds callback function handleNavigateEvent to this widget instance with key = id/type
 	// there will be a removeIdEventListeners ([{type: "tm-navigate", id:this.id}]) which widget calls on closing down
 	if (this.Id) {			
 		this.addIdEventListeners([
-			{handler: this.handlename, id:this.Id+"/bjm-setval", aux:aux}
+			{handler: this.handlename, id:this.Id+"/mtm-compare", aux:aux}
 		]);
 	}
 };
@@ -85,7 +86,7 @@ RevealWidget.prototype.execute = function() {
 	// Get our parameters
 
 	this.state = this.getAttribute("state");
-	this.Id = this.getAttribute("Id");
+	this.Id = this.getAttribute("recvOn");
 	this.revealTag = this.getAttribute("tag");
 	this.type = this.getAttribute("type");
 	this.text = this.getAttribute("text");
@@ -122,7 +123,7 @@ RevealWidget.prototype.removeChildDomNodes = function() {
 		this.domNodes = [];
 	}
 	this.delIdEventListeners([
-		{ handler: this.handlename, id:this.Id+"/bjm-setval"}
+		{ handler: this.handlename, id:this.Id+"/mtm-compare"}
 	]);
 };
 /*
@@ -162,7 +163,7 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
 */
 RevealWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
-	if(changedAttributes.state || changedAttributes.type || changedAttributes.text || changedAttributes.position || changedAttributes["default"] || changedAttributes.animate) {
+	if(Object.keys(changedAttributes).length) {
 		this.refreshSelf();
 		return true;
 	} else {

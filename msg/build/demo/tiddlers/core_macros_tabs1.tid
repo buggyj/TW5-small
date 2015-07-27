@@ -8,32 +8,32 @@ type: text/vnd.tiddlywiki
 <div class="tc-tab-set $class$">
 <div class="tc-tab-buttons $class$">
 <$list filter="$tabsList$" variable="currentTab">
-<$mrevealdom type="match"  Id=<<qualify "$state$">> retain="yes"  text=<<currentTab>> default="$default$">
-<$setbutton class="tc-tab-selected bt">
-<$action-sentmessage $message="bjm-setval" $Id=<<qualify "$state$">>  state=<<currentTab>>/>
-<$action-sentmessage $message="bjm-test" $Id=<<qualify "$state$">>  state=<<currentTab>>/>
+<$mrevealdom type="match"  recvOn=<<qualify "$state$">> retain="yes"  text=<<currentTab>> default="$default$">
+<$mbutton class="tc-tab-selected bt">
+<$action-sentmessage $action="mtm-compare" $sendOn=<<qualify "$state$">>  state=<<currentTab>>/>
+<$action-sentmessage $action="mtm-test" $sendOn=<<qualify "$state$">>  state=<<currentTab>>/>
 <$set name="tv-wikilinks" value="no">
 <$transclude tiddler=<<currentTab>> field="caption">
 <$macrocall $name="currentTab" $type="text/plain" $output="text/plain"/>
 </$transclude>
 </$set>
-</$setbutton>
+</$mbutton>
 </$mrevealdom>
-<$mrevealdom type="nomatch"  Id=<<qualify "$state$">> retain="yes"  text=<<currentTab>> default="$default$">
-<$setbutton class=" bt">
-<$action-sentmessage $message="bjm-setval" $Id=<<qualify "$state$">>  state=<<currentTab>>/>
+<$mrevealdom type="nomatch"  recvOn=<<qualify "$state$">> retain="yes"  text=<<currentTab>> default="$default$">
+<$mbutton class=" bt">
+<$action-sentmessage $action="mtm-compare" $sendOn=<<qualify "$state$">>  state=<<currentTab>>/>
 <$set name="tv-wikilinks" value="no">
 <$transclude tiddler=<<currentTab>> field="caption">
 <$macrocall $name="currentTab" $type="text/plain" $output="text/plain"/>
 </$transclude>
 </$set>
-</$setbutton>
+</$mbutton>
 </$mrevealdom>
 </$list>
 </div><div class="tc-tab-divider $class$"/><div class="tc-tab-content $class$">
 <$list filter="$tabsList$" variable="currentTab">
 
-<$mrevealdom animate="yes"  type="match"  Id=<<qualify "$state$">> retain="yes"  text=<<currentTab>> default="$default$">
+<$mrevealdom animate="yes"  type="match"  recvOn=<<qualify "$state$">> retain="yes"  text=<<currentTab>> default="$default$">
 
 <$transclude tiddler="$template$" mode="block">
 

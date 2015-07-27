@@ -34,8 +34,8 @@ Widget.prototype.addIdEventListener = function(id,handler,aux) {
 
 	if(typeof handler === "string") { // The handler is a method name on this widget
 		newitem.aux = aux; //data to be passed back to the user
-		newitem.handle= function(event) {
-			return self[handler].call(self,event,newitem.aux);
+		newitem.handle= function(event, aux) {
+			return self[handler].call(self,event,aux);
 		};
 		newitem.name = handler; //save name so we can del later
 
@@ -115,11 +115,14 @@ var actions = {};//global actions table
 Dispatch an event to a widget. If the widget doesn't handle the event then it is also dispatched to the parent widget
 */
 Widget.prototype.dispatchIdEvent = function(id, event) {
-	var listener = action[id];
+	var listener = action[id], e, aux;
 	while (listener) {
+		if (typeof event.$custom === "undefined" || event.$custom !== true) {
+			e = JSON.parse(JSON.stringify(event));//clone to stop unintentional linking thru object referencing
+		}
+		listener.handle(e,listener.aux);
+		//pass thru dynamic content
 
-		listener.handle(event,listener.aux);//aux is the context
-		
 		if(!listener.next) {
 			return true;
 		}
@@ -131,7 +134,7 @@ Widget.prototype.getTable = function () {
 	return action;
 }
 
-var action={};
+var action=Object.create(null);;
 
 exports.msgwidget = Widget;
 

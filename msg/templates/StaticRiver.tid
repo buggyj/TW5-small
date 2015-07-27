@@ -31,7 +31,7 @@ extension: .html
 <section class="tc-story-river">
 {{$:/core/templates/exporters/StaticRiver/ContentAndTable||$:/core/templates/html-tiddler}}
 {{$:/core/templates/exporters/jsonRiver}}
-{{{ [all[shadows+tiddlers]module-type[dom_method]] ||$:/core/templates/javascript-tiddler}}}
+{{{ [[dom_method]] ||$:/mcore/templates/modules}}}
 </section>
 
 </body>

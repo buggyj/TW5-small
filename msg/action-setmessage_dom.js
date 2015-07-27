@@ -7,9 +7,17 @@ Action widget to send a message
 
 \*/
 (function(){
-exports["as"] = function(id,aux) {
-// this is the upstream dynamic method - just passes data thru to the down stream 
-	// Dispatch the message
-	this.dispatchIdEvent(aux.Id+'/'+aux.type,aux);
+exports["as"] = function(upstream,here) {
+	var data ={}, downsteamId;
+	upstream= upstream?upstream:Object.create(null);
+	// just passes data thru to the down stream, with overrides 
+	// Dispatch the message using the user supplied id/type - we are passing data onwards
+	downsteamId = here.sendId+'/'+here.sendType;
+	//in this widget the 'here' only contains params to be pass forwards - override data passed from upstream
+	for (var attrname in upstream) { data[attrname] = upstream[attrname]; }
+	for (var attrname in here) { data[attrname] = here[attrname]; }
+
+	this.dispatchIdEvent(downsteamId,here);
+
 };
 })();

@@ -116,10 +116,15 @@ Dispatch an event to a widget. If the widget doesn't handle the event then it is
 */
 Widget.prototype.dispatchIdEvent = function(id, event) {
 	var listener = action[id], e, aux;
+
+	//if (typeof event.$isRef === "undefined" || event.$isRef !== true) {
+		//e = JSON.parse(JSON.stringify(event));//clone to stop unintentional linking thru object referencing
+	//}
+	//else 
+	e = event;
+
 	while (listener) {
-		if (typeof event.$custom === "undefined" || event.$custom !== true) {
-			e = JSON.parse(JSON.stringify(event));//clone to stop unintentional linking thru object referencing
-		}
+		
 		listener.handle(e,listener.aux);
 		//pass thru dynamic content
 
@@ -137,5 +142,6 @@ Widget.prototype.getTable = function () {
 var action=Object.create(null);;
 
 exports.msgwidget = Widget;
+$tw.msgwidgettable = action;
 
 })();

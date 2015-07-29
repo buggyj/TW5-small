@@ -16,6 +16,7 @@ var Widget = require("$:/bj/modules/widgets/msgwidget.js").msgwidget;
 
 var ButtonWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
+
 };
 
 /*
@@ -28,6 +29,7 @@ Render this widget into the DOM
 */
 ButtonWidget.prototype.render = function(parent,nextSibling) {
 	var self = this;
+	
 	// Remember parent
 	this.parentDomNode = parent;
 	// Compute attributes and execute state
@@ -42,7 +44,7 @@ ButtonWidget.prototype.render = function(parent,nextSibling) {
 	// Assign classes
 	var classes = this["class"].split(" ") || [];
 
-
+    
 	domNode.className = classes.join(" ");
 	// Assign other attributes
 	if(this.style) {
@@ -59,11 +61,14 @@ ButtonWidget.prototype.render = function(parent,nextSibling) {
 	count++;
     this.domnodeId = "bt"+count;
 	///////////
-	// Add a click event handler
+	// Add a click event handler and send off our domNode (used to locate with popups)
+
 	domNode.addEventListener("click",function (event) {
-		//the id and aux will need to be in the dom. - why is the aux used
-		self.dispatchIdEvent(self.domnodeId+"/bjm-null",Object.create(null));	
-		return true;
+		var data = Object.create(null);
+		data.domNode = domNode;
+		data.$isRef = true; //indicate that we are sending references to objects
+		self.dispatchIdEvent(self.domnodeId+"/bjm-null",data);	
+			return true;
 	},false);
 	// Insert element
 	parent.insertBefore(domNode,nextSibling);

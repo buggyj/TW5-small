@@ -17,7 +17,7 @@ exports["as"] = function(upstream,here) {
 	for (var attrname in upstream) { data[attrname] = upstream[attrname]; }
 	for (var attrname in here) { data[attrname] = here[attrname]; }
 
-	this.dispatchIdEvent(downsteamId,here);
+	this.dispatchIdEvent(downsteamId,data);
 
 };
 })();

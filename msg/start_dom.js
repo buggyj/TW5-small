@@ -24,7 +24,10 @@ window.onload = function()
 	for(var i=0; i<elements.length; i++) { 
 			elements[i].addEventListener("click",function (event) {
 			//the id and aux will need to be in the dom. - why is the aux used
-			mod.dispatchIdEvent(this.getAttribute("data-event"),{});	
+			var data = Object.create(null);
+			data.domNode = this;
+			data.$isRef !== true; //indicate that we are sending references to objects
+			mod.dispatchIdEvent(this.getAttribute("data-event"),data);	
 			//alert(this.id+this.getAttribute("data-event")) 
 			return true;
 		},false);

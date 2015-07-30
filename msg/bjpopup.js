@@ -22,7 +22,20 @@ var Popup = function(options) {
 	this.popups = []; // Array of {title:,wiki:,domNode:} objects - bj add msg
 	this.widgetmsg = $tw.msgwidgettable; 
 };
-
+/*
+ask if popped up
+*/
+Popup.prototype.isPoppedUp = function(domNode) {
+	// Check if this popup is already active
+	var index = -1;
+	for(var t=0; t<this.popups.length; t++) {
+		// this will be checked for later 
+		if(this.popups[t].domNode === domNode) {
+			return true
+		}
+	}
+	return false;
+}
 /*
 Trigger a popup open or closed. Parameters are in a hashmap:
 	title: title of the tiddler where the popup details are stored
@@ -34,7 +47,8 @@ Popup.prototype.triggerPopup = function(options) {
 	// Check if this popup is already active
 	var index = -1;
 	for(var t=0; t<this.popups.length; t++) {
-		// this will be checked for later
+		// this will be checked for later 
+
 		if(this.popups[t].title === options.title) {
 			index = t;
 		}
@@ -44,6 +58,7 @@ Popup.prototype.triggerPopup = function(options) {
 	if(options.force !== undefined) {
 		state = options.force;
 	}
+	
 	// Show or cancel the popup according to the new state
 	if(state) {
 		this.show(options);
@@ -56,11 +71,11 @@ Popup.prototype.handleEvent = function(event) {
 	if(event.type === "click") {
 		// Find out what was clicked on
 		var info = this.popupInfo(event.target),
-			cancelLevel = info.popupLevel - 1;
+			cancelLevel = info.popupLevel;
 		// Don't remove the level that was clicked on if we clicked on a handle
-		if(info.isHandle) {
+		if(this.isPoppedUp(event.target)||$tw.utils.hasClass(event.target,"tc-popup-handle")) {
 			cancelLevel++;
-		}
+		}else 
 		// Cancel
 		this.cancel(cancelLevel);
 	}
@@ -74,7 +89,7 @@ isHandle: true if the specified element is within a popup handle
 Popup.prototype.popupInfo = function(domNode) {
 	var isHandle = false,
 		popupCount = 0,
-		node = domNode;
+		node = domNode.parentNode;
 	// First check ancestors to see if we're within a popup handle
 	while(node) {
 		if($tw.utils.hasClass(node,"tc-popup-handle")) {
@@ -87,7 +102,7 @@ Popup.prototype.popupInfo = function(domNode) {
 		node = node.parentNode;
 	}
 	// Then count the number of ancestor popups
-	node = domNode;
+	node = domNode.parentNode;
 	while(node) {
 		if($tw.utils.hasClass(node,"tc-popup")) {
 			popupCount++;
@@ -100,7 +115,8 @@ Popup.prototype.popupInfo = function(domNode) {
 	};
 	return info;
 };
-
+var reduced = null;
+if (typeof $twmodules !== 'undefined') reduced = true;
 /*
 Display a popup by adding it to the stack
 */
@@ -126,15 +142,17 @@ Popup.prototype.show = function(options) {
 			downsteamId = options.title+'/'+"mtm-popup";
 		here.text = "(" + options.domNode.offsetLeft + "," + options.domNode.offsetTop + "," + 
 					options.domNode.offsetWidth + "," + options.domNode.offsetHeight + ")";	
-	   dispatchIdEvent(downsteamId,here);	//alert("dw "+downsteamId)
+	   reduced?$twmodules.dom_method.dispatchIdEvent(downsteamId,here):dispatchIdEvent(downsteamId,here);	//alert("dw "+downsteamId)
 	} else {
 		options.wiki.setTextReference(options.title,
 				"(" + options.domNode.offsetLeft + "," + options.domNode.offsetTop + "," + 
 					options.domNode.offsetWidth + "," + options.domNode.offsetHeight + ")");
 		// Add the click handler if we have any popups
-		if(this.popups.length > 0) {
-			this.rootElement.addEventListener("click",this,true);		
-		}
+	
+
+	}
+	if(this.popups.length > 0) {
+		this.rootElement.addEventListener("click",this,true);	
 	}
 };
 
@@ -175,7 +193,7 @@ Popup.prototype.cancel = function(level) {
 				var here = Object.create(null), 
 					downsteamId = popup.title+'/'+"mtm-popup";
 				here.text = "";
-			   dispatchIdEvent(downsteamId,here);	
+			   reduced?$twmodules.dom_method.dispatchIdEvent(downsteamId,here):dispatchIdEvent(downsteamId,here);	
 	
 			}
 		}

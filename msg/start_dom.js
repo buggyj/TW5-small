@@ -8,16 +8,22 @@ Action start of static dom - in the head eare
 \*/
 var $twmodules = {}
 $twmodules.dom_method = {};
+	$tw = {};
+	$tw.utils ={};
 window.onload = function()
 //setTimeout(function()
 {	
+ 
+
+
 	var mod = $twmodules.dom_method;
 	//alert("load")
 	// first link to central table
 	var json = document.getElementById("jsontable");//alert(json.textContent)
 	var action = JSON.parse(json.textContent); //alert(action["bt1/bjm-null"])
-
-
+$tw.msgwidgettable = action;
+	// Install the popup manager
+	$tw.popup = new $tw.utils.Popup();
 
 // next connenct button clicks
 	var elements = document.getElementsByClassName("bt");//alert(elements.length)

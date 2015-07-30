@@ -47,7 +47,7 @@ SendMessageWidget.prototype.execute = function() {
 	this.here = Object.create(null);//hold the values for the dowmsteam dynamic
 
 	this.here.popup = this.getAttribute("popup");
-
+	this.here["class"] = this.getAttribute("class","");
 
 	this.here.tiddlerTitle = this.getVariable("currentTiddler");
 	this.here.storyTiddler = this.getVariable("storyTiddler");

@@ -32,7 +32,9 @@ extension: .html
 {{$:/core/templates/exporters/StaticRiver/ContentAndTable||$:/core/templates/html-tiddler}}
 {{$:/core/templates/exporters/jsonRiver}}
 {{{ [[dom_method]] ||$:/mcore/templates/modules}}}
-</section>
+{{$:/core/modules/utils/dom/popup.js||$:/core/templates/javascript-tiddler-popup}}
+{{$:/core/modules/utils/dom.js||$:/core/templates/javascript-tiddler-popup}}
+</section> 
 
 </body>
 </html>

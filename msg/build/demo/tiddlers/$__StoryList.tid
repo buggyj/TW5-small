@@ -1,5 +1,5 @@
-created: 20150730161203155
-list: $:/AdvancedSearch $:/core/ui/TagTemplate $:/core/ui/TagTemplate1 [[Draft of '$:/core/ui/ViewTemplate/tags']] $:/ControlPanel GettingStarted $:/core/ui/SideBar/More
+created: 20150731133223364
+list: [[demo popup]] GettingStarted $:/core/ui/SideBar/More core/ui/TiddlerInfo
 title: $:/StoryList
 type: text/vnd.tiddlywiki
 

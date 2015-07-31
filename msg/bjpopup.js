@@ -47,8 +47,6 @@ Popup.prototype.triggerPopup = function(options) {
 	// Check if this popup is already active
 	var index = -1;
 	for(var t=0; t<this.popups.length; t++) {
-		// this will be checked for later 
-
 		if(this.popups[t].title === options.title) {
 			index = t;
 		}
@@ -58,7 +56,7 @@ Popup.prototype.triggerPopup = function(options) {
 	if(options.force !== undefined) {
 		state = options.force;
 	}
-	
+	 
 	// Show or cancel the popup according to the new state
 	if(state) {
 		this.show(options);
@@ -71,9 +69,9 @@ Popup.prototype.handleEvent = function(event) {
 	if(event.type === "click") {
 		// Find out what was clicked on
 		var info = this.popupInfo(event.target),
-			cancelLevel = info.popupLevel;
+			cancelLevel = info.popupLevel - 1;
 		// Don't remove the level that was clicked on if we clicked on a handle
-		if(this.isPoppedUp(event.target)||$tw.utils.hasClass(event.target,"tc-popup-handle")) {
+		if(this.isPoppedUp(event.target)||info.isHandle) {
 			cancelLevel++;
 		}else 
 		// Cancel
@@ -89,7 +87,7 @@ isHandle: true if the specified element is within a popup handle
 Popup.prototype.popupInfo = function(domNode) {
 	var isHandle = false,
 		popupCount = 0,
-		node = domNode.parentNode;
+		node = domNode;
 	// First check ancestors to see if we're within a popup handle
 	while(node) {
 		if($tw.utils.hasClass(node,"tc-popup-handle")) {
@@ -102,7 +100,7 @@ Popup.prototype.popupInfo = function(domNode) {
 		node = node.parentNode;
 	}
 	// Then count the number of ancestor popups
-	node = domNode.parentNode;
+	node = domNode;
 	while(node) {
 		if($tw.utils.hasClass(node,"tc-popup")) {
 			popupCount++;
@@ -142,7 +140,9 @@ Popup.prototype.show = function(options) {
 			downsteamId = options.title+'/'+"mtm-popup";
 		here.text = "(" + options.domNode.offsetLeft + "," + options.domNode.offsetTop + "," + 
 					options.domNode.offsetWidth + "," + options.domNode.offsetHeight + ")";	
-	   reduced?$twmodules.dom_method.dispatchIdEvent(downsteamId,here):dispatchIdEvent(downsteamId,here);	//alert("dw "+downsteamId)
+	   reduced?$twmodules.dom_method.dispatchIdEvent(downsteamId,here):dispatchIdEvent(downsteamId,here);	
+	   //put the button into 'tc-popup-handle' mode
+		$tw.utils.addClass(options.domNode,"tc-popup-handle");
 	} else {
 		options.wiki.setTextReference(options.title,
 				"(" + options.domNode.offsetLeft + "," + options.domNode.offsetTop + "," + 
@@ -191,9 +191,11 @@ Popup.prototype.cancel = function(level) {
 				//BJ meditation: we may need to create the message object as a tiddler 
 				//to persist - as the reciever may have been 'folded out of the widget tree'
 				var here = Object.create(null), 
-					downsteamId = popup.title+'/'+"mtm-popup";
+				downsteamId = popup.title+'/'+"mtm-popup";
 				here.text = "";
 			   reduced?$twmodules.dom_method.dispatchIdEvent(downsteamId,here):dispatchIdEvent(downsteamId,here);	
+			   	//pull the button out of 'tc-popup-handle' mode
+				$tw.utils.removeClass(popup.domNode,"tc-popup-handle");
 	
 			}
 		}

@@ -1,0 +1,9 @@
+created: 20150728152655904
+draft.of: $:/core/ui/ViewTemplate/tags
+draft.title: $:/core/ui/ViewTemplate/tags
+modified: 20150730160403592
+tags: $:/tags/ViewTemplate
+title: Draft of '$:/core/ui/ViewTemplate/tags'
+type: text/vnd.tiddlywiki
+
+<div class="tc-tags-wrapper"><$list filter="[all[current]tags[]sort[title]]" template="$:/core/ui/TagTemplate" storyview="pop"/></div>

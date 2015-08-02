@@ -1,5 +1,5 @@
 /*\
-title: $:/core/modules/widgets/mbutton.js
+title: $:/mcore/modules/widgets/mform.js
 type: application/javascript
 module-type: widget
 
@@ -36,7 +36,7 @@ ButtonWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 	// Create element
-	var tag = "button";
+	var tag = "form";
 	if(this.buttonTag && $tw.config.htmlUnsafeElements.indexOf(this.buttonTag) === -1) {
 		tag = this.buttonTag;
 	}
@@ -58,7 +58,7 @@ ButtonWidget.prototype.render = function(parent,nextSibling) {
 	//need to generate id for domnode and pass it to action setmessage widgets
 	/////////////	
 	count++;
-    this.domnodeId = "bt"+count;
+    this.domnodeId = "fm"+count;
 	///////////
 
 	
@@ -68,23 +68,35 @@ ButtonWidget.prototype.render = function(parent,nextSibling) {
 	parent.insertBefore(domNode,nextSibling);
 	this.renderChildren(domNode,null);
 	this.domNodes.push(domNode);
+	
+	if (this.valuesfrom) {
+			var configOptions = $tw.wiki.getTiddlerData(this.valuesfrom,{}), i;
+			for (i in configOptions) {
+				try {
+					parent.firstElementChild[i].value = configOptions[i];
+				} catch (e) {
 
+				} 
+				
+			}
+	}
 	this.events = this.invokeInitActions(this,{id:this.domnodeId, msgTypePreamble:"mtm-"});
 	
 	for (var i =0;i < this.events.length;i++) {//alert("i"+i+ this.events[i]); 
 		(function (z) {
 		var i = z;//for seperate closure
 		domNode.addEventListener(self.events[i],function (event) {
+			event.preventDefault();
 			var data = Object.create(null);
 			data.domNode = domNode;
+			data.e =event;
 			data.$isRef = true; //indicate that we are sending references to objects
 			self.dispatchIdEvent(self.domnodeId+"/mtm-"+self.events[i],data);	//alert(self.domnodeId+"/mtm-"+self.events[i]+"--"+index);
 				return true;
 		},false);})(i);
-
-
-		domNode.setAttribute("data-event"+i,this.events[i]);
+		domNode.setAttribute("data-event"+i,this.events[i]);	//this is used by the reduced runtime to link up events
 	}
+	
 	// Insert element
 
 
@@ -121,7 +133,7 @@ Compute the internal state of the widget
 */
 ButtonWidget.prototype.execute = function() {
 	// Get attributes
-
+	this.valuesfrom = this.getAttribute("valuesfrom")||null;
 	this.hover = this.getAttribute("hover");
 	this["class"] = this.getAttribute("class","");
 	this["aria-label"] = this.getAttribute("aria-label");
@@ -145,6 +157,6 @@ ButtonWidget.prototype.refresh = function(changedTiddlers) {
 	return this.refreshChildren(changedTiddlers);
 };
 
-exports.mbutton = ButtonWidget;
+exports.mform = ButtonWidget;
 
 })();

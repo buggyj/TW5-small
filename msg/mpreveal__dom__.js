@@ -36,8 +36,9 @@ RevealWidget.prototype.label = "pr";
 Render this widget into the DOM
 */
 RevealWidget.prototype.render = function(parent,nextSibling) {
-	this.statea = null;
-	this.isOpen = false;
+	this.here = {};
+	this.here.domNode = null;
+	this.here.isOpen = false;
 	this.parentDomNode = parent;
 	this.computeAttributes();
 	this.execute();
@@ -68,13 +69,12 @@ RevealWidget.prototype.render = function(parent,nextSibling) {
 	domNode.setAttribute("data-event",this.Id+"/mtm-popup");
 	//the value fof domNode below is added by the reduce runtime to the table enties, when it add the replacement for handlesetvalEvent
 	
-	var aux = {domNode:null,isOpen:this.isOpen, type:this.type, text:this.text,closeAnimation:this.closeAnimation,openAnimation:this.openAnimation,position:this.position};
 	
 	//bj addIdEventListeners adds callback function handleNavigateEvent to this widget instance with key = id/type
 	// there will be a removeIdEventListeners ([{type: "tm-navigate", id:this.id}]) which widget calls on closing down
 	if (this.Id) {	//alert("set "+this.Id+"/mtm-popup")		
 		this.addIdEventListeners([
-			{handler: this.handlename, id:this.Id+"/mtm-popup", aux:aux}
+			{handler: this.handlename, id:this.Id+"/mtm-popup", aux:this.here}
 		]);
 	}
 };
@@ -88,15 +88,15 @@ RevealWidget.prototype.execute = function() {
 	this.state = this.getAttribute("state");
 	this.Id = this.getAttribute("recvOn");
 	this.revealTag = this.getAttribute("tag");
-	this.type = this.getAttribute("type");
-	this.text = this.getAttribute("text");
-	this.position = this.getAttribute("position");
+	this.here.type = this.getAttribute("type");
+	this.here.text = this.getAttribute("text");
+	this.here.position = this.getAttribute("position");
 	this["class"] = this.getAttribute("class","");
 	this.style = this.getAttribute("style","");
 	this["default"] = this.getAttribute("default","");
 	this.animate = this.getAttribute("animate","no");
-	this.openAnimation = this.animate === "no" ? undefined : "open";
-	this.closeAnimation = this.animate === "no" ? undefined : "close";
+	this.here.openAnimation = this.animate === "no" ? undefined : "open";
+	this.here.closeAnimation = this.animate === "no" ? undefined : "close";
 	// Compute the title of the state tiddler and read it
 	this.stateTitle = this.state;
 

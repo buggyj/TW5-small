@@ -7,7 +7,7 @@ Action widget to send a message
 
 \*/
 (function(){
-exports["ap"] = function(upstream,here) {
+exports["do-popup"] = function(upstream,here) {
 	/*
 	// Assign classes
 	alert("classas"+upstream.domNode.getAttribute("class"))

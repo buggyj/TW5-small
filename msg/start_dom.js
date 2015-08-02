@@ -8,8 +8,12 @@ Action start of static dom - in the head eare
 \*/
 var $twmodules = {}
 $twmodules.dom_method = {};
+$twmodules.animation = {};
+
+
 	$tw = {};
 	$tw.utils ={};
+	$tw.anim ={};
 window.onload = function()
 //setTimeout(function()
 {	
@@ -26,18 +30,49 @@ $tw.msgwidgettable = action;
 	$tw.popup = new $tw.utils.Popup();
 
 // next connenct button clicks
-	var elements = document.getElementsByClassName("bt");//alert(elements.length)
+	var elements = document.getElementsByClassName("event");alert(elements.length)
 	for(var i=0; i<elements.length; i++) { 
-			elements[i].addEventListener("click",function (event) {
-			//the id and aux will need to be in the dom. - why is the aux used
-			var data = Object.create(null);
-			data.domNode = this;
-			data.$isRef !== true; //indicate that we are sending references to objects
-			mod.dispatchIdEvent(this.getAttribute("data-event"),data);	
-			//alert(this.id+this.getAttribute("data-event")) 
-			return true;
-		},false);
+		var j = 0;//alert("event"+i)
+		var ev;
+		while ( ev = elements[i].getAttribute("data-event"+j)) {//alert(ev)
+			j++;
+			(function (z,k) {
+			var ev = z;
+			var i = k;
+			elements[i].addEventListener(ev,function (event) {
+				event.preventDefault();
+				//the id and aux will need to be in the dom. - why is the aux used
+				var data = Object.create(null);
+				data.domNode = this;
+				data.$isRef !== true; //indicate that we are sending references to objects
+				mod.dispatchIdEvent(this.getAttribute("id")+"/mtm-"+ev,data);	
+				//alert(this.getAttribute("id")+"/mtm-"+ev) 
+				return true;
+			},false);
+			
+			})(ev,i);
+		}
 	}
+	
+	
+$tw.utils.getAnimationDuration =function () {return 400}
+
+ $tw.anim.perform = function(type,domNode,options) {
+	options = options || {};
+	// Find an animation that can handle this type
+	var chosenAnimation;
+	if (type == "open") chosenAnimation= $twmodules.animation.slide.open;
+	else if (type == "close") chosenAnimation= $twmodules.animation.slide.close;
+	if(!chosenAnimation) {
+		chosenAnimation = function(domNode,options) {
+			if(options.callback) {
+				options.callback();
+			}
+		};
+	}
+	// Call the animation
+	chosenAnimation(domNode,options);
+};
 
 mod.dispatchIdEvent = function(id, event) {
 	var listener = action[id], domNode;
@@ -49,7 +84,9 @@ mod.dispatchIdEvent = function(id, event) {
 		}
 		//each widget needs to expose its dom modifying code via a naming convention
 		//eg as = action set message,these are used to find their code in the reduced runtime
-		mod[listener.name.substring(0, 2)](event,listener.aux,listener.aux['domNode']);
+		//BJ meditiation we can use the non numeric part of the name instead of just the first two letter,
+		//that will allow us to have user-defined methods. string.replace(searchvalue,newvalue)
+		mod[listener.name.replace(/\d*/g,"")](event,listener.aux,listener.aux['domNode']);
 		if(!listener.next) {
 			return true;
 		}

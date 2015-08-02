@@ -1,5 +1,5 @@
 /*\
-title: $:/core/modules/widgets/action-sentmessage.js
+title: $:/core/modules/widgets/app-submit.js
 type: application/javascript
 module-type: widget
 
@@ -28,9 +28,9 @@ Inherit from the base widget class
 */
 SendMessageWidget.prototype = new Widget();
 
-SendMessageWidget.prototype.etype = "click"
+SendMessageWidget.prototype.etype = "submit"
 
-SendMessageWidget.prototype.label = "as";
+SendMessageWidget.prototype.label = "do-submit";
 /*
 Render this widget into the DOM
 */
@@ -47,19 +47,13 @@ SendMessageWidget.prototype.execute = function() {
 
 	
 	this.here = Object.create(null);//hold the values for the dowmsteam dynamic
-	this.here.sendId = this.getAttribute("$sendOn");
-	this.here.sendType = this.getAttribute("$action");
 
-	// Assemble the attributes as a hashmap
-	this.here.paramObject = Object.create(null);
-	$tw.utils.each(this.attributes,function(attribute,name) {
-		if(name.charAt(0) !== "$") {
-			self.here.paramObject[name] = attribute;
-		}
-	});
+	this.here.tiddler = this.getAttribute("tiddler");
+	this.here["class"] = this.getAttribute("class","");
 
 	this.here.tiddlerTitle = this.getVariable("currentTiddler");
 	this.here.storyTiddler = this.getVariable("storyTiddler");
+
 };
 
 /*
@@ -112,12 +106,12 @@ SendMessageWidget.prototype.invokeInitAction = function(triggeringWidget,event) 
 Invoke the down stream action associated with receiving an upstream event
 */
 SendMessageWidget.prototype.handlesetvalEvent = function(event,aux) {
-
+     //alert(event.domeNode+aux.popup)
 	// Dispatch the message to the outbound
 	this[this.label](event,aux);
 
 }
 
-exports["action-sentmessage"] = SendMessageWidget;
+exports["app-submit"] = SendMessageWidget;
 
 })();

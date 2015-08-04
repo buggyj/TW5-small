@@ -1,9 +1,9 @@
 /*\
-title: $:/core/modules/widgets/action-sentmessage.js
+title: $:/mcore/modules/widgets/event.js
 type: application/javascript
 module-type: widget
 
-Action widget to send a message
+base msg widget 
 
 \*/
 (function(){
@@ -11,34 +11,40 @@ Action widget to send a message
 /*jslint node: true, browser: true */
 /*global $tw: false */
 "use strict";
-var count = 0;
+//BJ meditation - maybe move to a startup module?
+if($tw.browser) {
+		$tw.domextra = new $tw.utils.domextra();
+}
+var count = 0;//used as part of the unique id for each widget
+
+var intra = "event";
 
 var Widget = require("$:/bj/modules/widgets/msgwidget.js").msgwidget;
 
 var SendMessageWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
-	if(!SendMessageWidget[this.label]) {
-		SendMessageWidget.prototype[this.label] = $tw.modules.applyMethods("dom_method")[this.label];
-	}	
+	this.count = count++;
 };
-
 
 /*
 Inherit from the base widget class
 */
 SendMessageWidget.prototype = new Widget();
 
-SendMessageWidget.prototype.etype = "click"
+SendMessageWidget.prototype.wtype = intra;
 
-SendMessageWidget.prototype.label = "as";
+SendMessageWidget.prototype.etype = null;
+
+SendMessageWidget.prototype.handler = null;
 /*
 Render this widget into the DOM
 */
 SendMessageWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
-};
+	if (this.handler) this[this.handler] = $tw.modules.applyMethods("dom_method")[this.handler];
 
+};
 /*
 Compute the internal state of the widget
 */
@@ -47,17 +53,16 @@ SendMessageWidget.prototype.execute = function() {
 
 	
 	this.here = Object.create(null);//hold the values for the dowmsteam dynamic
-	this.here.sendId = this.getAttribute("$sendOn");
-	this.here.sendType = this.getAttribute("$action");
-
-	// Assemble the attributes as a hashmap
-	this.here.paramObject = Object.create(null);
+;
 	$tw.utils.each(this.attributes,function(attribute,name) {
 		if(name.charAt(0) !== "$") {
-			self.here.paramObject[name] = attribute;
+			self.here[name] = attribute;
 		}
 	});
-
+	
+	if (!this.etype) this.etype = this.getAttribute("$event","");
+	if (!this.handler) this.handler = this.getAttribute("$handle","");
+	
 	this.here.tiddlerTitle = this.getVariable("currentTiddler");
 	this.here.storyTiddler = this.getVariable("storyTiddler");
 };
@@ -71,7 +76,7 @@ SendMessageWidget.prototype.refresh = function(changedTiddlers) {
 		this.refreshSelf();
 		return true;
 	}
-	return this.refreshChildren(changedTiddlers);
+	return true;
 };
 
 /*Remove event handlers
@@ -92,32 +97,31 @@ SendMessageWidget.prototype.invokeInitAction = function(triggeringWidget,event) 
 	this.id = event.id;//incomming id
 	this.msgType = event.msgTypePreamble+this.etype;
 	
-	//expose the name of the event in the central table
+	//expose the name of the handler in the central table
 		/////////////	
-	count++;
-	this[this.label+count] = this.handlesetvalEvent;
-	this.handlename = this.label+count;
+	this[this.wtype+this.count] = this.handleEvent;
+	this.handlename = this.wtype+this.count;
 	///////////	
 
 
 
 //pass the state of the widget into the central table via here (as the upstream listener) - this is the dynamic structure.
 
-	this.addIdEventListeners([
-		{ handler: this.handlename, id:this.id+'/'+this.msgType, aux:this.here}
+this.addIdEventListeners([
+		{id:this.id+'/'+this.msgType, handler: this.handlename, aux:this.here, dom_method:this.handler}
 	]);
 	return this.etype;
 };
 /*
 Invoke the down stream action associated with receiving an upstream event
 */
-SendMessageWidget.prototype.handlesetvalEvent = function(event,aux) {
-
-	// Dispatch the message to the outbound
-	this[this.label](event,aux);
+SendMessageWidget.prototype.handleEvent = function(event,aux) {
+     //alert(event.domeNode+aux.popup)
+	// invoke handler
+	this[this.handler](event,aux);
 
 }
 
-exports["action-sentmessage"] = SendMessageWidget;
+exports[intra] = SendMessageWidget;//event
 
 })();

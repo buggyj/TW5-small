@@ -86,7 +86,7 @@ ButtonWidget.prototype.render = function(parent,nextSibling) {
 		(function (z) {
 		var i = z;//for seperate closure
 		domNode.addEventListener(self.events[i],function (event) {
-			event.preventDefault();
+			if (event.cancelable) event.preventDefault();
 			var data = Object.create(null);
 			data.domNode = domNode;
 			data.e =event;

@@ -1,5 +1,5 @@
 /*\
-title: $:/bj/modules/widgets/mrevealdom.js
+title: $:/mcore/modules/widgets/mpreveal.js
 type: application/javascript
 module-type: widget
 
@@ -13,14 +13,11 @@ Reveal widget
 "use strict";
 //alert = function () {};
 var count = 0;
+var intra = "mpreveal";
 var Widget = require("$:/bj/modules/widgets/msgwidget.js").msgwidget;
 
 var RevealWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
-		if(!RevealWidget[RevealWidget.prototype.label]) {
-			//$tw.modules.applyMethods("mrevealdom_method",RevealWidget.prototype);
-			RevealWidget.prototype[this.label] = $tw.modules.applyMethods("dom_method")[this.label];
-		}
 };
 
 /*
@@ -29,15 +26,17 @@ Inherit from the base widget class
 RevealWidget.prototype = new Widget();
 
 
-RevealWidget.prototype.label = "rv";
+RevealWidget.prototype.handler = "pr";
 
+RevealWidget.prototype.wtype = intra;
 
 /*
 Render this widget into the DOM
 */
 RevealWidget.prototype.render = function(parent,nextSibling) {
-	this.statea = null;
-	this.isOpen = false;
+	this.here = {};
+	this.here.domNode = null;
+	this.here.isOpen = false;
 	this.parentDomNode = parent;
 	this.computeAttributes();
 	this.execute();
@@ -55,26 +54,25 @@ RevealWidget.prototype.render = function(parent,nextSibling) {
 	parent.insertBefore(domNode,nextSibling);
 	this.renderChildren(domNode,null);//if there is not a matching default then there will not be children - see execute.
 
-	if(!this.toOpen) {
-		domNode.setAttribute("hidden","true");
-	}
+	domNode.setAttribute("hidden","true");
+
 	this.domNodes.push(domNode);//alert("ren"+this.domNodes.length)
-	this.isOpen = this.toOpen;
 	/////////////	
 	//bj meditation: hid this name mangling with a method in base class
 	count++;
-	this[this.label+count] = this.handlesetvalEvent;
-	this.handlename = this.label+count;
+	this[this.wtype+count] = this.handlesetvalEvent;
+	this.handlename = this.wtype+count;
 	///////////
 	domNode.setAttribute("id",this.handlename);//link the dom with the callback
-	domNode.setAttribute("data-event",this.Id+"/mtm-compare");
+	domNode.setAttribute("data-event",this.Id+"/mtm-popup");
 	//the value fof domNode below is added by the reduce runtime to the table enties, when it add the replacement for handlesetvalEvent
-	var aux = {domNode:null,isOpen:this.isOpen, type:this.type, text:this.text,closeAnimation:this.closeAnimation,openAnimation:this.openAnimation};
+	
+	if (this.handler) this[this.handler] = $tw.modules.applyMethods("dom_method")[this.handler];
 	//bj addIdEventListeners adds callback function handleNavigateEvent to this widget instance with key = id/type
 	// there will be a removeIdEventListeners ([{type: "tm-navigate", id:this.id}]) which widget calls on closing down
-	if (this.Id) {			
+	if (this.Id) {	//alert("set "+this.Id+"/mtm-popup")		
 		this.addIdEventListeners([
-			{handler: this.handlename, id:this.Id+"/mtm-compare", aux:aux}
+			{handler: this.handlename, id:this.Id+"/mtm-popup", aux:this.here, dom_method:this.handler}
 		]);
 	}
 };
@@ -85,21 +83,21 @@ Compute the internal state of the widget
 RevealWidget.prototype.execute = function() {
 	// Get our parameters
 
-	this.state = this.getAttribute("state");
 	this.Id = this.getAttribute("recvOn");
 	this.revealTag = this.getAttribute("tag");
-	this.type = this.getAttribute("type");
-	this.text = this.getAttribute("text");
-	this.position = this.getAttribute("position");
+	
+	this.here.type = this.getAttribute("type");
+	this.here.text = this.getAttribute("text");
+	this.here.position = this.getAttribute("position");
+	
 	this["class"] = this.getAttribute("class","");
 	this.style = this.getAttribute("style","");
 	this["default"] = this.getAttribute("default","");
+	
 	this.animate = this.getAttribute("animate","no");
-	this.openAnimation = this.animate === "no" ? undefined : "open";
-	this.closeAnimation = this.animate === "no" ? undefined : "close";
-	// Compute the title of the state tiddler and read it
-	this.stateTitle = this.state;
-	this.toOpen = this.readState();
+	this.here.openAnimation = this.animate === "no" ? undefined : "open";
+	this.here.closeAnimation = this.animate === "no" ? undefined : "close";
+
 
 	// Construct the child widgets
 	var childNodes = this.parseTreeNode.children;//Note that when rending there can be no children
@@ -123,31 +121,8 @@ RevealWidget.prototype.removeChildDomNodes = function() {
 		this.domNodes = [];
 	}
 	this.delIdEventListeners([
-		{ handler: this.handlename, id:this.Id+"/mtm-compare"}
+		{ handler: this.handlename, id:this.Id+"/mtm-popup"}
 	]);
-};
-/*
-Read the state tiddler
-*/
-RevealWidget.prototype.readState = function() {
-	// Read the information from the state tiddler
-	var state, toOpen;
-	if (this.statea) {
-		state = this.statea;// this.statea = null;
-	}
-	else
-	  state = this["default"];
-	  
-	switch(this.type) {
-		case "match":
-			toOpen = state === this.text;
-			break;
-		case "nomatch":
-			toOpen = state === this.text;
-			toOpen  = !toOpen;
-			break;
-	}
-	return toOpen;
 };
 
 
@@ -155,7 +130,7 @@ RevealWidget.prototype.handlesetvalEvent = function(event,aux) {
 	//bj meditation: in the reduced case, the domnode with be passed here? or will be place in table?
 	//the runtime will have to connect this up to the table up - better use table
 	var domNode = aux.domNode?aux.domNode:this.domNodes[0];
-	this[this.label](event,aux, domNode);
+	this[this.handler](event,aux, domNode);
 }
 
 /*
@@ -171,25 +146,7 @@ RevealWidget.prototype.refresh = function(changedTiddlers) {
 	}
 };
 
-/*
-Called by refresh() to dynamically show or hide the content
-*/
-RevealWidget.prototype.updateState = function() {alert("update "+this.domNodes.length)
 
-	var domNode = this.domNodes[0];
-	// Animate our DOM node
-	if(!this.isOpen) {
-		domNode.removeAttribute("hidden");
-        $tw.anim.perform(this.openAnimation,domNode);
-        this.isOpen = true;
-	} else {
-		$tw.anim.perform(this.closeAnimation,domNode,{callback: function() {
-			domNode.setAttribute("hidden","true");
-        }});
-        this.isOpen = false;
-	}
-};
-
-exports["mrevealdom"] = RevealWidget;
+exports[intra] = RevealWidget;//mpreveal
 
 })();

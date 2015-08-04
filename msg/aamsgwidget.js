@@ -21,16 +21,16 @@ Add a list of event listeners from an array [{type:,handler:},...]
 Widget.prototype.addIdEventListeners = function(listeners) {
 	var self = this;
 	$tw.utils.each(listeners,function(listenerInfo) {
-		self.addIdEventListener(listenerInfo.id,listenerInfo.handler,listenerInfo.aux);
+		self.addIdEventListener(listenerInfo.id,listenerInfo.handler,listenerInfo.aux,listenerInfo.dom_method);
 	});
 };
 /*
 Add a message event listener
 */
 //bj should throw an error if action[id] already exists - should be unque otherwise it will cause an error
-Widget.prototype.addIdEventListener = function(id,handler,aux) {
+Widget.prototype.addIdEventListener = function(id,handler,aux, dom_method) {
 	var self = this;
-	var newitem ={name:null,handle:null,next:null,aux:null}
+	var newitem ={name:null,handle:null,next:null,aux:null, dom_method:null}
 
 	if(typeof handler === "string") { // The handler is a method name on this widget
 		newitem.aux = aux; //data to be passed back to the user
@@ -38,6 +38,7 @@ Widget.prototype.addIdEventListener = function(id,handler,aux) {
 			return self[handler].call(self,event,aux);
 		};
 		newitem.name = handler; //save name so we can del later
+		newitem.dom_method = dom_method;
 
 	} else { // The handler is a function
 		newitem.handle = function(event) {

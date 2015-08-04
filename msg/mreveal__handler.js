@@ -1,5 +1,5 @@
 /*\
-title: $:/bj/modules/widgets/mrevealdom_method.js
+title: $:/mcore/modules/widgets/mreveal_handler.js
 type: application/javascript
 module-type: dom_method
 

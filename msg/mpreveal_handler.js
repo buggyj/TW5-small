@@ -1,8 +1,7 @@
 /*\
-title: $:/bj/modules/widgets/mprevealdom_method.js
+title: $:/mcore/modules/widgets/mpreveal_handler.js
 type: application/javascript
 module-type: dom_method
-
 
 \*/
 (function(){

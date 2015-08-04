@@ -36,6 +36,8 @@ extension: .html
 {{$:/core/modules/utils/dom/browser.js||$:/core/templates/javascript-tiddler-popup}}
 {{$:/core/modules/utils/dom/popup.js||$:/core/templates/javascript-tiddler-popup}}
 {{$:/core/modules/utils/dom.js||$:/core/templates/javascript-tiddler-popup}}
+{{$:/mcore/modules/utils/dom/extra.js||$:/core/templates/javascript-tiddler-popup}}
+
 </section> 
 
 </body>

@@ -1,11 +1,12 @@
 created: 20150702060156770
-modified: 20150802121659267
+modified: 20150804184936474
 tags: $:/tags/SideBar testtiddlers
 title: meditation
 type: text/vnd.tiddlywiki
 
 <$mform valuesfrom="test">
 <$app-submit tiddler="test"/>
+<$event $event="input" $handle="update-timetot"/>
 <fieldset>
     <legend>Intro Timer Seconds</legend>
 <input type="number" name="timer1" value="0" min="0" max="60" style = "width:50px"> repeat <input type="number" name="reps1" value="1" min="1" style = "width:50px"><select name="bell1">
@@ -34,7 +35,7 @@ Sequence Timers</div>
 </fieldset>   
 <fieldset>
     <legend>Minute Timer 3</legend>
-<input type="number" name="timer4" value="0" min="0" max="60" style = "width:50px">repeat <input type="number" name="resp4" value="1" min="1" style = "width:50px"><select name="bell4">
+<input type="number" name="timer4" value="0" min="0" max="60" style = "width:50px">repeat <input type="number" name="reps4" value="1" min="1" style = "width:50px"><select name="bell4">
 <option value="bigbell">bigbell</option>
 <option value="">smallbell</option>
 <option value="block">wood</option>
@@ -42,5 +43,5 @@ Sequence Timers</div>
 </fieldset>   
 
 <input type="submit" value="start timers">
-
+ <output  name="x" for="timer2 timer3 timer4"></output>
 </$mform>

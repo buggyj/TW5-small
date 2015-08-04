@@ -1,5 +1,5 @@
 /*\
-title: $:/core/modules/widgets/action-sentmessage_dom.js
+title: $:/mcore/modules/widgets/sentmessage_handler.js
 type: application/javascript
 module-type: dom_method
 

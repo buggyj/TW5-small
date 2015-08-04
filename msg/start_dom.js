@@ -28,6 +28,7 @@ window.onload = function()
 $tw.msgwidgettable = action;
 	// Install the popup manager
 	$tw.popup = new $tw.utils.Popup();
+	$tw.domextra = new $tw.utils.domextra();
 
 // next connenct button clicks
 	var elements = document.getElementsByClassName("event");alert(elements.length)
@@ -40,10 +41,11 @@ $tw.msgwidgettable = action;
 			var ev = z;
 			var i = k;
 			elements[i].addEventListener(ev,function (event) {
-				event.preventDefault();
+				if (event.cancelable)  event.preventDefault();
 				//the id and aux will need to be in the dom. - why is the aux used
 				var data = Object.create(null);
 				data.domNode = this;
+				data.e = event;
 				data.$isRef !== true; //indicate that we are sending references to objects
 				mod.dispatchIdEvent(this.getAttribute("id")+"/mtm-"+ev,data);	
 				//alert(this.getAttribute("id")+"/mtm-"+ev) 
@@ -86,7 +88,7 @@ mod.dispatchIdEvent = function(id, event) {
 		//eg as = action set message,these are used to find their code in the reduced runtime
 		//BJ meditiation we can use the non numeric part of the name instead of just the first two letter,
 		//that will allow us to have user-defined methods. string.replace(searchvalue,newvalue)
-		mod[listener.name.replace(/\d*/g,"")](event,listener.aux,listener.aux['domNode']);
+		mod[listener.dom_method](event,listener.aux,listener.aux['domNode']);
 		if(!listener.next) {
 			return true;
 		}

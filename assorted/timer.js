@@ -1,10 +1,12 @@
 /*\
-title: $:/core/modules/widgets/bjforms/timer.js
+title: $:/mcore/modules/utils/dom/timer.js
 type: application/javascript
-module-type: library
+module-type: utils
 \*/
 
-bjGlogalTimer = {
+(function(){
+
+exports["bjGlogalTimer"] = {
 	registered: [],
 	tickers:[],
 	jsTimer: 0,
@@ -92,3 +94,5 @@ bjGlogalTimer = {
 		}
 	}
 };
+
+})();

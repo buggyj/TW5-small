@@ -24,11 +24,33 @@ Widget.prototype.addIdEventListeners = function(listeners) {
 		self.addIdEventListener(listenerInfo.id,listenerInfo.handler,listenerInfo.aux,listenerInfo.dom_method);
 	});
 };
+
+Widget.prototype.initialise = function(parseTreeNode,options) {
+	options = options || {};
+	// Save widget info
+	this.parseTreeNode = parseTreeNode;
+	this.wiki = options.wiki;
+	this.parentWidget = options.parentWidget;
+	this.variablesConstructor = function() {};
+	this.variablesConstructor.prototype = this.parentWidget ? this.parentWidget.variables : {};
+	this.variables = new this.variablesConstructor();
+	this.document = options.document;
+	this.attributes = {};
+	this.children = [];
+	this.domNodes = [];
+	this.eventListeners = {};
+	this.eventTable = options.eventTable || action;//if ($tw.browser && options.eventTable)alert(options.eventTable["type"]);
+	// Hashmap of the widget classes
+	if(!this.widgetClasses) {
+		Widget.prototype.widgetClasses = $tw.modules.applyMethods("widget");
+	}
+};
 /*
 Add a message event listener
 */
 //bj should throw an error if action[id] already exists - should be unque otherwise it will cause an error
 Widget.prototype.addIdEventListener = function(id,handler,aux, dom_method) {
+
 	var self = this;
 	var newitem ={name:null,handle:null,next:null,aux:null, dom_method:null}
 
@@ -109,13 +131,14 @@ Widget.prototype.delIdEventListener = function(id,type,handler) {
 	
 };
 
-var actions = {};//global actions table
+
 
 
 /*
 Dispatch an event to a widget. If the widget doesn't handle the event then it is also dispatched to the parent widget
 */
 Widget.prototype.dispatchIdEvent = function(id, event) {
+
 	var listener = action[id], e, aux;
 
 	//if (typeof event.$isRef === "undefined" || event.$isRef !== true) {
@@ -139,10 +162,18 @@ Widget.prototype.dispatchIdEvent = function(id, event) {
 Widget.prototype.getTable = function () {
 	return action;
 }
+Widget.prototype.setTable = function () {
+	 action=Object.create(null);
+}
+Widget.prototype.resetTable = function () {
+	 action=eventTable;
+}
+var eventTable=Object.create(null);
 
-var action=Object.create(null);;
+var action = eventTable;
 
 exports.msgwidget = Widget;
+
 $tw.msgwidgettable = action;
 
 })();

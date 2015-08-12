@@ -31,7 +31,7 @@ $tw.msgwidgettable = action;
 	$tw.domextra = new $tw.utils.domextra();
 
 // next connenct button clicks
-	var elements = document.getElementsByClassName("event");alert(elements.length)
+	var elements = document.getElementsByClassName("event");//alert(elements.length)
 	for(var i=0; i<elements.length; i++) { 
 		var j = 0;//alert("event"+i)
 		var ev;

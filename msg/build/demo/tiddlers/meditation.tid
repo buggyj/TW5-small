@@ -1,11 +1,11 @@
 created: 20150702060156770
-modified: 20150804184936474
-tags: $:/tags/SideBar testtiddlers
+modified: 20150806142628095
+tags: $:/tags/SideBar testtiddlers med-style
 title: meditation
 type: text/vnd.tiddlywiki
 
 <$mform valuesfrom="test">
-<$app-submit tiddler="test"/>
+<$app-submit tiddler="bigbell"/>
 <$event $event="input" $handle="update-timetot"/>
 <fieldset>
     <legend>Intro Timer Seconds</legend>
@@ -45,3 +45,13 @@ Sequence Timers</div>
 <input type="submit" value="start timers">
  <output  name="x" for="timer2 timer3 timer4"></output>
 </$mform>
+<$alert recvOn="bigbell"/>
+<$play tag="div" recvOn="bigbell">
+{{bigbell.mp3}}
+</$play>
+<$play tag="div" recvOn="smallbell" >
+{{smallbell.mp3}}
+</$play>
+<$play recvOn="block">
+{{block.mp3}}
+</$play>

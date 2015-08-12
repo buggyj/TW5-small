@@ -26,10 +26,17 @@ extension: .html
 {{{ [all[shadows+tiddlers]module-type[head_method]] ||$:/core/templates/javascript-tiddler}}}
 </head>
 <body class="tc-body">
- 
+{{$:/core/templates/exporters/StaticRiver/tableset}}
 {{$:/StaticBanner||$:/core/templates/html-tiddler}}
+{{{[all[shadows+tiddlers]tag[$:/tags/AboveStory]!has[draft.of]]||$:/core/templates/html-tiddler}}}
+
 <section class="tc-story-river">
-{{$:/core/templates/exporters/StaticRiver/ContentAndTable||$:/core/templates/html-tiddler}}
+{{$:/core/templates/exporters/StaticRiver/Content||$:/core/templates/html-tiddler}}
+
+</section> 
+{{$:/StaticBottom||$:/core/templates/html-tiddler}}
+{{{[all[shadows+tiddlers]tag[$:/tags/BelowStory]!has[draft.of]]||$:/core/templates/html-tiddler}}}
+{{$:/core/templates/exporters/StaticRiver/table}}
 {{$:/core/templates/exporters/jsonRiver}}
 {{{ [[dom_method]] [[animation]] ||$:/mcore/templates/modules}}}
 {{$:/core/modules/utils/utils.js||$:/core/templates/javascript-tiddler-popup}}
@@ -37,8 +44,6 @@ extension: .html
 {{$:/core/modules/utils/dom/popup.js||$:/core/templates/javascript-tiddler-popup}}
 {{$:/core/modules/utils/dom.js||$:/core/templates/javascript-tiddler-popup}}
 {{$:/mcore/modules/utils/dom/extra.js||$:/core/templates/javascript-tiddler-popup}}
-
-</section> 
-
+{{$:/mcore/modules/utils/dom/timer.js||$:/core/templates/javascript-tiddler-popup}}
 </body>
 </html>

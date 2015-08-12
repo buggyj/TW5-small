@@ -1,5 +1,5 @@
 /*\
-title: $:/core/modules/widgets/msgexport.js
+title: $:/core/modules/widgets/tableset.js
 type: application/javascript
 module-type: widget
 
@@ -27,23 +27,13 @@ SendMessageWidget.prototype = new Widget();
 Render this widget into the DOM
 */
 SendMessageWidget.prototype.render = function(parent,nextSibling) {
-	this.computeAttributes();
-	this.execute();
-	var	fields = {
-				title: this.tiddler,
-				text: JSON.stringify(this.getTable(),null,$tw.config.preferences.jsonSpaces)
-			
-			};
-	//create a json tiddler containing the msg table
-	//count++;
-	this.wiki.addTiddler(new $tw.Tiddler(fields));
+this.setTable();
 };
 
 /*
 Compute the internal state of the widget
 */
 SendMessageWidget.prototype.execute = function() {
-	this.tiddler = this.getAttribute("tiddler");
 
 };
 
@@ -57,6 +47,6 @@ SendMessageWidget.prototype.refresh = function(changedTiddlers) {
 
 
 
-exports["msgexport"] = SendMessageWidget;
+exports["tableset"] = SendMessageWidget;
 
 })();

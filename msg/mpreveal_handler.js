@@ -53,6 +53,10 @@ var positionPopup = function(domNode,popup,position) {
 			domNode.style.left = (popup.left + popup.width - domNode.offsetWidth) + "px";
 			domNode.style.top = (popup.top + popup.height) + "px";
 			break;
+		case "belowcenter":
+			domNode.style.left = (popup.left + popup.width - domNode.offsetWidth)/2 + "px";
+			domNode.style.top = (popup.top + popup.height) + "px";
+			break;
 		default: // Below
 			domNode.style.left = popup.left + "px";
 			domNode.style.top = (popup.top + popup.height) + "px";

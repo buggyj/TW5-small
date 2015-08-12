@@ -1,17 +1,19 @@
-/*\
-title: $:/mcore/modules/widgets/submit_handler.js
+created: 20150704215327084
+modified: 20150805191045065
+module-type: library
+tags: $:/tags/bjforms
+title: $:/bj/modules/widgets/bjforms/testtimers.js
 type: application/javascript
-module-type: dom_method
-\*/
-(function(){
-var reduced = null;
-if (typeof $twmodules !== 'undefined') reduced = true;
 
-exports["do-submit"] = function(upstream,here) {
-	var widget = this;
-	
-	   
-	var settimers = function(node,vals,title) {
+/*\
+title: $:/bj/modules/widgets/msg/timerset.js
+type: application/javascript
+tags:  $:/tags/bjforms
+module-type: library 
+\*/
+
+exports.name ="testtimer";
+exports.run  = function(node,vals,title) {
 	var self = this;
 	var next = new Date(), timejson = {}, interval = 0, offset = 0;
 	if (vals.timer1) interval = parseInt(vals.timer1);
@@ -22,10 +24,11 @@ exports["do-submit"] = function(upstream,here) {
 		timejson.dur = interval;
 		timejson.bell = vals.bell1;		
 		timejson.onTimeout = function (){
-			var here = Object.create(null), 
-			downsteamId = this.bell+'/'+"mtm-play";
-			here.text = "";
-			reduced?$twmodules.dom_method.dispatchIdEvent(downsteamId,here):widget.dispatchIdEvent(downsteamId,here);
+
+			self.dispatchEvent({
+				type: "tm-navigate",
+				navigateTo: this.bell
+			});
 			if (this.reps > 0) {
 				var next = new Date();
 				next.setSeconds(next.getSeconds() + this.dur);	
@@ -52,10 +55,11 @@ exports["do-submit"] = function(upstream,here) {
 		timejson.dur = interval;
 		timejson.bell = vals.bell2;	
 		timejson.onTimeout = function (){
-			var here = Object.create(null), 
-			downsteamId = this.bell+'/'+"mtm-play";
-			here.text = "";
-			reduced?$twmodules.dom_method.dispatchIdEvent(downsteamId,here):widget.dispatchIdEvent(downsteamId,here);
+
+			self.dispatchEvent({
+				type: "tm-navigate",
+				navigateTo: this.bell
+			});
 			if (this.reps > 0) {
 				var next = new Date();
 				next.setMinutes(next.getMinutes() + this.dur);	
@@ -82,10 +86,11 @@ exports["do-submit"] = function(upstream,here) {
 		timejson.dur = interval;
 		timejson.bell = vals.bell3;
 		timejson.onTimeout = function (){
-			var here = Object.create(null), 
-			downsteamId = this.bell+'/'+"mtm-play";
-			here.text = "";
-			reduced?$twmodules.dom_method.dispatchIdEvent(downsteamId,here):widget.dispatchIdEvent(downsteamId,here);
+
+			self.dispatchEvent({
+				type: "tm-navigate",
+				navigateTo: this.bell
+			});
 			if (this.reps > 0) {
 				var next = new Date();
 				next.setMinutes(next.getMinutes() + this.dur);	
@@ -112,10 +117,11 @@ exports["do-submit"] = function(upstream,here) {
 		timejson.dur = interval;
 		timejson.bell = vals.bell4;
 		timejson.onTimeout = function (){
-			var here = Object.create(null), 
-			downsteamId = this.bell+'/'+"mtm-play";
-			here.text = "";
-			reduced?$twmodules.dom_method.dispatchIdEvent(downsteamId,here):widget.dispatchIdEvent(downsteamId,here);
+
+			self.dispatchEvent({
+				type: "tm-navigate",
+				navigateTo: this.bell
+			});
 			if (this.reps > 0) {
 				var next = new Date();
 				next.setMinutes(next.getMinutes() + this.dur);	
@@ -156,10 +162,9 @@ exports["do-submit"] = function(upstream,here) {
         }
     }.bind(timejson) ;
 	$tw.utils.bjGlogalTimer.register(timejson);
-	//$tw.wiki.setTiddlerData (title,vals);
+	$tw.wiki.setTiddlerData (title,vals);
 }
-	var vals = $tw.domextra.serialize(upstream.domNode, upstream.e);
-	settimers(upstream.domNode, vals, here.tiddler);
-	//alert(JSON.stringify(vals))//$tw.wiki.setTiddlerData (here.tiddler,vals); 
-};
-})();
+
+
+
+

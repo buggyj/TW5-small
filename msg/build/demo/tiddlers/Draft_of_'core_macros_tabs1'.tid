@@ -1,7 +1,9 @@
 created: 20150717051043053
-modified: 20150808095537929
+draft.of: core/macros/tabs1
+draft.title: core/macros/tabs1
+modified: 20150809103013503
 tags: $:/tags/Macro
-title: core/macros/tabs1
+title: Draft of 'core/macros/tabs1'
 type: text/vnd.tiddlywiki
 
 \define tabs(tabsList,default,state:"$:/state/tab",class,template)

@@ -1,6 +1,6 @@
 author: Jeffrey Wilkinson
-core-version: >=5.1.5
-created: 20141214202323948
+core-version: >=5.1.9
+created: 20150809173236915
 dependents: 
 description: flexible types
 list: readme license
@@ -8,7 +8,7 @@ plugin-type: plugin
 source: https://github.com/buggyj/TW5-flexitype
 title: $:/plugins/bj/flexitype
 type: application/json
-version: 0.0.3
+version: 0.0.4
 
 {
     "tiddlers": {
@@ -21,6 +21,12 @@ version: 0.0.3
         "$:/core/modules/parsers/wikiparser/basewikiparser.js": {
             "text": "/*\\\ntitle: $:/core/modules/parsers/wikiparser/basewikiparser.js\ntype: application/javascript\nmodule-type: parser\n\nThe base wiki text parser\n\nThis implementation is sub-optional, it 'steals' its defintion from the text/vnd.tiddlywiki,\nit would be better that the text/vnd.tiddlywiki was split into an abstract base and a realisation\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\nfunction override(a, b) {\n  var hash = {};\n  return a.concat(b).filter(function (val) {\n    return hash[val] ? 0 : hash[val] = 1;\n  });\n}\nvar createClassesList= function (ruleList,userlist,nativelist) {\n\tvar temp ={};\n\tfor (var i=0;i<ruleList.length;i++) {\n\t\tvar rule = ruleList[i];\n\t\tvar found = false;\n\t\tif (!!userlist) \n\t\t\tif (Object.prototype.hasOwnProperty.call(userlist,rule)) {\n\t\t\t\ttemp[rule] = userlist[rule];\n\t\t\t\tfound = true; \n\t\t\t}\n\t\tif (!found) \n\t\t\tif (Object.prototype.hasOwnProperty.call(nativelist,rule)) {\n\t\t\t\ttemp[rule] = nativelist[rule];\n\t\t\t}\n\t\t\n\t}\n\treturn temp;\n};\nvar ParserPrimer = function(type,text,options) {\n\t//BJ meditation if I pass in the complete type here, then I could use this to cache the \n\t//Parser objects.\n\tif(!this.pragmaRuleClasses) {\n\t\tParserPrimer.prototype.pragmaRuleClasses = $tw.modules.createClassesFromModules(\"wikirule\",\"pragma\",$tw.WikiRuleBase);\n\t}\n\tif(!this.blockRuleClasses) {\n\t\tParserPrimer.prototype.blockRuleClasses = $tw.modules.createClassesFromModules(\"wikirule\",\"block\",$tw.WikiRuleBase);\n\t}\n\tif(!this.inlineRuleClasses) {\n\t\tParserPrimer.prototype.inlineRuleClasses = $tw.modules.createClassesFromModules(\"wikirule\",\"inline\",$tw.WikiRuleBase);\n\t}\n\tif(!this.userClasses) {\n\t\tParserPrimer.prototype.userClasses = $tw.modules.createClassesFromModules(\"wikirule\",\"user\",$tw.WikiRuleBase);\n\t}\n\n    if (!!options.parserrules) {//if($tw.browser)alert(\"createrules\");\n\t\tif (!!options.parserrules.pragmaRuleList)this.pragmaRuleClasses=createClassesList(options.parserrules.pragmaRuleList, this.userClasses, this.pragmaRuleClasses);\n\t\tif (!!options.parserrules.blockRuleList)this.blockRuleClasses=createClassesList(options.parserrules.blockRuleList, this.userClasses, this.blockRuleClasses);\n\t\tif (!!options.parserrules.inlineRuleList)this.inlineRuleClasses=createClassesList(options.parserrules.inlineRuleList, this.userClasses, this.inlineRuleClasses);\n\t}\n\tfor (var i = 0;i<this.blockRuleClasses.length;i++) alert (this.blockRuleClasses[i].rule.name);\n\t// Save the parse text\n\tthis.type = type || \"text/vnd.twbase\";\n\tthis.source = text || \"\";\n\tthis.options = options;\n};\n//realise the parser from the abstr parser\nvar  BaseWikiParser5= function (type,text,options) { \n\trequire(\"$:/core/modules/parsers/wikiparser/abstractwikiparser.js\")[\"AbstrWikiParser\"].\n\t\t\t\t\t\t\t\t\t\t\t\tcall(this,new ParserPrimer(type,text,options));\n}\nBaseWikiParser5.prototype =Object.create( \n\trequire(\"$:/core/modules/parsers/wikiparser/abstractwikiparser.js\")[\"AbstrWikiParser\"].prototype);\n\nexports[\"text/vnd.twbase\"] = BaseWikiParser5;\n\n})();\n\n",
             "title": "$:/core/modules/parsers/wikiparser/basewikiparser.js",
+            "type": "application/javascript",
+            "module-type": "parser"
+        },
+        "$:/core/modules/parsers/htmlparser.js": {
+            "text": "/*\\\ntitle: $:/core/modules/parsers/htmlparser.js\ntype: application/javascript\nmodule-type: parser\n\nThe HTML parser displays text as raw HTML\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nvar HtmlParser = function(type,text,options) {\n\tvar src,sandbox;alert(JSON.stringify(options));\n\tif(options._canonical_uri) {\n\t\tsrc = options._canonical_uri;\n\t} else if(text) {\n\t\tsrc = \"data:text/html;charset=utf-8,\" + encodeURIComponent(text);\n\t}\n\tif (options.parserrules && options.parserrules.sandbox) {\n\t\tsandbox = options.parserrules.sandbox;\n\t}\n\telse {\n\t\tsandbox = \"sandbox\";\n\t}\n\tthis.tree = [{\n\t\ttype: \"element\",\n\t\ttag: \"iframe\",\n\t\tattributes: {\n\t\t\tsrc: {type: \"string\", value: src},\n\t\t\tsandbox: {type: \"string\", value: sandbox}\n\t\t}\n\t}];\n};\n\nexports[\"text/html\"] = HtmlParser;\n\n})();\n\n",
+            "title": "$:/core/modules/parsers/htmlparser.js",
             "type": "application/javascript",
             "module-type": "parser"
         },

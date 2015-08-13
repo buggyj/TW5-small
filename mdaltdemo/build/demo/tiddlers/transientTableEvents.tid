@@ -1,0 +1,2753 @@
+created: 20150809102550331
+title: transientTableEvents
+type: text/vnd.tiddlywiki
+
+{
+    "bt25/mtm-click": {
+        "name": "action-sm36",
+        "next": {
+            "name": "action-sm37",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab-1749438307",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Info"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Info"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab-1749438307/mtm-compare": {
+        "name": "mreveal36",
+        "next": {
+            "name": "mreveal37",
+            "next": {
+                "name": "mreveal38",
+                "next": {
+                    "name": "mreveal39",
+                    "next": {
+                        "name": "mreveal40",
+                        "next": {
+                            "name": "mreveal41",
+                            "next": {
+                                "name": "mreveal42",
+                                "next": {
+                                    "name": "mreveal43",
+                                    "next": {
+                                        "name": "mreveal44",
+                                        "next": {
+                                            "name": "mreveal45",
+                                            "next": {
+                                                "name": "mreveal46",
+                                                "next": {
+                                                    "name": "mreveal47",
+                                                    "next": {
+                                                        "name": "mreveal48",
+                                                        "next": {
+                                                            "name": "mreveal64",
+                                                            "next": {
+                                                                "name": "mreveal89",
+                                                                "next": {
+                                                                    "name": "mreveal90",
+                                                                    "next": {
+                                                                        "name": "mreveal91",
+                                                                        "next": {
+                                                                            "name": "mreveal101",
+                                                                            "next": null,
+                                                                            "aux": {
+                                                                                "domNode": null,
+                                                                                "isOpen": false,
+                                                                                "type": "match",
+                                                                                "text": "$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel",
+                                                                                "closeAnimation": "close",
+                                                                                "openAnimation": "open"
+                                                                            },
+                                                                            "dom_method": "rv"
+                                                                        },
+                                                                        "aux": {
+                                                                            "domNode": null,
+                                                                            "isOpen": true,
+                                                                            "type": "match",
+                                                                            "text": "$:/core/ui/ControlPanel/Plugins",
+                                                                            "closeAnimation": "close",
+                                                                            "openAnimation": "open"
+                                                                        },
+                                                                        "dom_method": "rv"
+                                                                    },
+                                                                    "aux": {
+                                                                        "domNode": null,
+                                                                        "isOpen": false,
+                                                                        "type": "match",
+                                                                        "text": "$:/core/ui/ControlPanel/Saving",
+                                                                        "closeAnimation": "close",
+                                                                        "openAnimation": "open"
+                                                                    },
+                                                                    "dom_method": "rv"
+                                                                },
+                                                                "aux": {
+                                                                    "domNode": null,
+                                                                    "isOpen": false,
+                                                                    "type": "match",
+                                                                    "text": "$:/core/ui/ControlPanel/Settings",
+                                                                    "closeAnimation": "close",
+                                                                    "openAnimation": "open"
+                                                                },
+                                                                "dom_method": "rv"
+                                                            },
+                                                            "aux": {
+                                                                "domNode": null,
+                                                                "isOpen": false,
+                                                                "type": "match",
+                                                                "text": "$:/core/ui/ControlPanel/Appearance",
+                                                                "closeAnimation": "close",
+                                                                "openAnimation": "open"
+                                                            },
+                                                            "dom_method": "rv"
+                                                        },
+                                                        "aux": {
+                                                            "domNode": null,
+                                                            "isOpen": false,
+                                                            "type": "match",
+                                                            "text": "$:/core/ui/ControlPanel/Info",
+                                                            "closeAnimation": "close",
+                                                            "openAnimation": "open"
+                                                        },
+                                                        "dom_method": "rv"
+                                                    },
+                                                    "aux": {
+                                                        "domNode": null,
+                                                        "isOpen": true,
+                                                        "type": "nomatch",
+                                                        "text": "$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel"
+                                                    },
+                                                    "dom_method": "rv"
+                                                },
+                                                "aux": {
+                                                    "domNode": null,
+                                                    "isOpen": false,
+                                                    "type": "match",
+                                                    "text": "$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel"
+                                                },
+                                                "dom_method": "rv"
+                                            },
+                                            "aux": {
+                                                "domNode": null,
+                                                "isOpen": false,
+                                                "type": "nomatch",
+                                                "text": "$:/core/ui/ControlPanel/Plugins"
+                                            },
+                                            "dom_method": "rv"
+                                        },
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": true,
+                                            "type": "match",
+                                            "text": "$:/core/ui/ControlPanel/Plugins"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": true,
+                                        "type": "nomatch",
+                                        "text": "$:/core/ui/ControlPanel/Saving"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/ControlPanel/Saving"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": true,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/ControlPanel/Settings"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": false,
+                            "type": "match",
+                            "text": "$:/core/ui/ControlPanel/Settings"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/ControlPanel/Appearance"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/ControlPanel/Appearance"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": true,
+                "type": "nomatch",
+                "text": "$:/core/ui/ControlPanel/Info"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": false,
+            "type": "match",
+            "text": "$:/core/ui/ControlPanel/Info"
+        },
+        "dom_method": "rv"
+    },
+    "bt26/mtm-click": {
+        "name": "action-sm38",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Info"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt27/mtm-click": {
+        "name": "action-sm39",
+        "next": {
+            "name": "action-sm40",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab-1749438307",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Appearance"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Appearance"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt28/mtm-click": {
+        "name": "action-sm41",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Appearance"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt29/mtm-click": {
+        "name": "action-sm42",
+        "next": {
+            "name": "action-sm43",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab-1749438307",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Settings"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Settings"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt30/mtm-click": {
+        "name": "action-sm44",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Settings"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt31/mtm-click": {
+        "name": "action-sm45",
+        "next": {
+            "name": "action-sm46",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab-1749438307",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Saving"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Saving"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt32/mtm-click": {
+        "name": "action-sm47",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Saving"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt33/mtm-click": {
+        "name": "action-sm48",
+        "next": {
+            "name": "action-sm49",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab-1749438307",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Plugins"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Plugins"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt34/mtm-click": {
+        "name": "action-sm50",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Plugins"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt35/mtm-click": {
+        "name": "action-sm51",
+        "next": {
+            "name": "action-sm52",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab-1749438307",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt36/mtm-click": {
+        "name": "action-sm53",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab-1749438307",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt37/mtm-click": {
+        "name": "action-sm54",
+        "next": {
+            "name": "action-sm55",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--2112689675",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Basics"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--2112689675",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Basics"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab--2112689675/mtm-compare": {
+        "name": "mreveal49",
+        "next": {
+            "name": "mreveal50",
+            "next": {
+                "name": "mreveal51",
+                "next": {
+                    "name": "mreveal52",
+                    "next": {
+                        "name": "mreveal53",
+                        "next": {
+                            "name": "mreveal54",
+                            "next": null,
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": false,
+                                "type": "match",
+                                "text": "$:/core/ui/ControlPanel/Advanced",
+                                "closeAnimation": "close",
+                                "openAnimation": "open"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": true,
+                            "type": "match",
+                            "text": "$:/core/ui/ControlPanel/Basics",
+                            "closeAnimation": "close",
+                            "openAnimation": "open"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/ControlPanel/Advanced"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/ControlPanel/Advanced"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": false,
+                "type": "nomatch",
+                "text": "$:/core/ui/ControlPanel/Basics"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": true,
+            "type": "match",
+            "text": "$:/core/ui/ControlPanel/Basics"
+        },
+        "dom_method": "rv"
+    },
+    "bt38/mtm-click": {
+        "name": "action-sm56",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--2112689675",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Basics"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt39/mtm-click": {
+        "name": "action-sm57",
+        "next": {
+            "name": "action-sm58",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--2112689675",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Advanced"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--2112689675",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Advanced"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt40/mtm-click": {
+        "name": "action-sm59",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--2112689675",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Advanced"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt41/mtm-click": {
+        "name": "action-sm60",
+        "next": {
+            "name": "action-sm61",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--959111941",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/EditorTypes"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--959111941",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/EditorTypes"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab--959111941/mtm-compare": {
+        "name": "mreveal55",
+        "next": {
+            "name": "mreveal56",
+            "next": {
+                "name": "mreveal57",
+                "next": {
+                    "name": "mreveal58",
+                    "next": {
+                        "name": "mreveal59",
+                        "next": {
+                            "name": "mreveal60",
+                            "next": {
+                                "name": "mreveal61",
+                                "next": {
+                                    "name": "mreveal62",
+                                    "next": {
+                                        "name": "mreveal63",
+                                        "next": null,
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": true,
+                                            "type": "match",
+                                            "text": "$:/core/ui/ControlPanel/TiddlerFields",
+                                            "closeAnimation": "close",
+                                            "openAnimation": "open"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": false,
+                                        "type": "match",
+                                        "text": "$:/core/ui/ControlPanel/LoadedModules",
+                                        "closeAnimation": "close",
+                                        "openAnimation": "open"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/ControlPanel/EditorTypes",
+                                    "closeAnimation": "close",
+                                    "openAnimation": "open"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": false,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/ControlPanel/TiddlerFields"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": true,
+                            "type": "match",
+                            "text": "$:/core/ui/ControlPanel/TiddlerFields"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/ControlPanel/LoadedModules"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/ControlPanel/LoadedModules"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": true,
+                "type": "nomatch",
+                "text": "$:/core/ui/ControlPanel/EditorTypes"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": false,
+            "type": "match",
+            "text": "$:/core/ui/ControlPanel/EditorTypes"
+        },
+        "dom_method": "rv"
+    },
+    "bt42/mtm-click": {
+        "name": "action-sm62",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--959111941",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/EditorTypes"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt43/mtm-click": {
+        "name": "action-sm63",
+        "next": {
+            "name": "action-sm64",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--959111941",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/LoadedModules"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--959111941",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/LoadedModules"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt44/mtm-click": {
+        "name": "action-sm65",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--959111941",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/LoadedModules"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt45/mtm-click": {
+        "name": "action-sm66",
+        "next": {
+            "name": "action-sm67",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--959111941",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/TiddlerFields"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--959111941",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/TiddlerFields"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt46/mtm-click": {
+        "name": "action-sm68",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--959111941",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/TiddlerFields"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt47/mtm-click": {
+        "name": "action-sm69",
+        "next": {
+            "name": "action-sm70",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1963855381",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Palette"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1963855381",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Palette"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab--1963855381/mtm-compare": {
+        "name": "mreveal65",
+        "next": {
+            "name": "mreveal66",
+            "next": {
+                "name": "mreveal67",
+                "next": {
+                    "name": "mreveal68",
+                    "next": {
+                        "name": "mreveal69",
+                        "next": {
+                            "name": "mreveal70",
+                            "next": {
+                                "name": "mreveal71",
+                                "next": {
+                                    "name": "mreveal72",
+                                    "next": {
+                                        "name": "mreveal73",
+                                        "next": {
+                                            "name": "mreveal74",
+                                            "next": {
+                                                "name": "mreveal75",
+                                                "next": {
+                                                    "name": "mreveal76",
+                                                    "next": {
+                                                        "name": "mreveal77",
+                                                        "next": {
+                                                            "name": "mreveal78",
+                                                            "next": {
+                                                                "name": "mreveal88",
+                                                                "next": null,
+                                                                "aux": {
+                                                                    "domNode": null,
+                                                                    "isOpen": false,
+                                                                    "type": "match",
+                                                                    "text": "$:/themes/tiddlywiki/vanilla/themetweaks",
+                                                                    "closeAnimation": "close",
+                                                                    "openAnimation": "open"
+                                                                },
+                                                                "dom_method": "rv"
+                                                            },
+                                                            "aux": {
+                                                                "domNode": null,
+                                                                "isOpen": false,
+                                                                "type": "match",
+                                                                "text": "$:/core/ui/ControlPanel/Toolbars",
+                                                                "closeAnimation": "close",
+                                                                "openAnimation": "open"
+                                                            },
+                                                            "dom_method": "rv"
+                                                        },
+                                                        "aux": {
+                                                            "domNode": null,
+                                                            "isOpen": true,
+                                                            "type": "match",
+                                                            "text": "$:/core/ui/ControlPanel/Theme",
+                                                            "closeAnimation": "close",
+                                                            "openAnimation": "open"
+                                                        },
+                                                        "dom_method": "rv"
+                                                    },
+                                                    "aux": {
+                                                        "domNode": null,
+                                                        "isOpen": false,
+                                                        "type": "match",
+                                                        "text": "$:/core/ui/ControlPanel/StoryView",
+                                                        "closeAnimation": "close",
+                                                        "openAnimation": "open"
+                                                    },
+                                                    "dom_method": "rv"
+                                                },
+                                                "aux": {
+                                                    "domNode": null,
+                                                    "isOpen": false,
+                                                    "type": "match",
+                                                    "text": "$:/core/ui/ControlPanel/Palette",
+                                                    "closeAnimation": "close",
+                                                    "openAnimation": "open"
+                                                },
+                                                "dom_method": "rv"
+                                            },
+                                            "aux": {
+                                                "domNode": null,
+                                                "isOpen": true,
+                                                "type": "nomatch",
+                                                "text": "$:/themes/tiddlywiki/vanilla/themetweaks"
+                                            },
+                                            "dom_method": "rv"
+                                        },
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": false,
+                                            "type": "match",
+                                            "text": "$:/themes/tiddlywiki/vanilla/themetweaks"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": true,
+                                        "type": "nomatch",
+                                        "text": "$:/core/ui/ControlPanel/Toolbars"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/ControlPanel/Toolbars"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": false,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/ControlPanel/Theme"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": true,
+                            "type": "match",
+                            "text": "$:/core/ui/ControlPanel/Theme"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/ControlPanel/StoryView"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/ControlPanel/StoryView"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": true,
+                "type": "nomatch",
+                "text": "$:/core/ui/ControlPanel/Palette"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": false,
+            "type": "match",
+            "text": "$:/core/ui/ControlPanel/Palette"
+        },
+        "dom_method": "rv"
+    },
+    "bt48/mtm-click": {
+        "name": "action-sm71",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1963855381",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Palette"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt49/mtm-click": {
+        "name": "action-sm72",
+        "next": {
+            "name": "action-sm73",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1963855381",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/StoryView"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1963855381",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/StoryView"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt50/mtm-click": {
+        "name": "action-sm74",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1963855381",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/StoryView"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt51/mtm-click": {
+        "name": "action-sm75",
+        "next": {
+            "name": "action-sm76",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1963855381",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Theme"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1963855381",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Theme"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt52/mtm-click": {
+        "name": "action-sm77",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1963855381",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Theme"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt53/mtm-click": {
+        "name": "action-sm78",
+        "next": {
+            "name": "action-sm79",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1963855381",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Toolbars"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1963855381",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Toolbars"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt54/mtm-click": {
+        "name": "action-sm80",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1963855381",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Toolbars"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt55/mtm-click": {
+        "name": "action-sm81",
+        "next": {
+            "name": "action-sm82",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1963855381",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/themes/tiddlywiki/vanilla/themetweaks"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1963855381",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/themes/tiddlywiki/vanilla/themetweaks"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt56/mtm-click": {
+        "name": "action-sm83",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1963855381",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/themes/tiddlywiki/vanilla/themetweaks"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt57/mtm-click": {
+        "name": "action-sm84",
+        "next": {
+            "name": "action-sm85",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tabs/controlpanel/toolbars-1345989671",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Toolbars/EditToolbar"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tabs/controlpanel/toolbars-1345989671",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Toolbars/EditToolbar"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tabs/controlpanel/toolbars-1345989671/mtm-compare": {
+        "name": "mreveal79",
+        "next": {
+            "name": "mreveal80",
+            "next": {
+                "name": "mreveal81",
+                "next": {
+                    "name": "mreveal82",
+                    "next": {
+                        "name": "mreveal83",
+                        "next": {
+                            "name": "mreveal84",
+                            "next": {
+                                "name": "mreveal85",
+                                "next": {
+                                    "name": "mreveal86",
+                                    "next": {
+                                        "name": "mreveal87",
+                                        "next": null,
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": true,
+                                            "type": "match",
+                                            "text": "$:/core/ui/ControlPanel/Toolbars/ViewToolbar",
+                                            "closeAnimation": "close",
+                                            "openAnimation": "open"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": false,
+                                        "type": "match",
+                                        "text": "$:/core/ui/ControlPanel/Toolbars/PageControls",
+                                        "closeAnimation": "close",
+                                        "openAnimation": "open"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/ControlPanel/Toolbars/EditToolbar",
+                                    "closeAnimation": "close",
+                                    "openAnimation": "open"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": false,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/ControlPanel/Toolbars/ViewToolbar"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": true,
+                            "type": "match",
+                            "text": "$:/core/ui/ControlPanel/Toolbars/ViewToolbar"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/ControlPanel/Toolbars/PageControls"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/ControlPanel/Toolbars/PageControls"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": true,
+                "type": "nomatch",
+                "text": "$:/core/ui/ControlPanel/Toolbars/EditToolbar"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": false,
+            "type": "match",
+            "text": "$:/core/ui/ControlPanel/Toolbars/EditToolbar"
+        },
+        "dom_method": "rv"
+    },
+    "bt58/mtm-click": {
+        "name": "action-sm86",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tabs/controlpanel/toolbars-1345989671",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Toolbars/EditToolbar"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt59/mtm-click": {
+        "name": "action-sm87",
+        "next": {
+            "name": "action-sm88",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tabs/controlpanel/toolbars-1345989671",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Toolbars/PageControls"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tabs/controlpanel/toolbars-1345989671",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Toolbars/PageControls"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt60/mtm-click": {
+        "name": "action-sm89",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tabs/controlpanel/toolbars-1345989671",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Toolbars/PageControls"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt61/mtm-click": {
+        "name": "action-sm90",
+        "next": {
+            "name": "action-sm91",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tabs/controlpanel/toolbars-1345989671",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Toolbars/ViewToolbar"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tabs/controlpanel/toolbars-1345989671",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Toolbars/ViewToolbar"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt62/mtm-click": {
+        "name": "action-sm92",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tabs/controlpanel/toolbars-1345989671",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Toolbars/ViewToolbar"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt63/mtm-click": {
+        "name": "action-sm93",
+        "next": {
+            "name": "action-sm94",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--86143343",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Plugins/Installed/Plugins"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--86143343",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Plugins/Installed/Plugins"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab--86143343/mtm-compare": {
+        "name": "mreveal92",
+        "next": {
+            "name": "mreveal93",
+            "next": {
+                "name": "mreveal94",
+                "next": {
+                    "name": "mreveal95",
+                    "next": {
+                        "name": "mreveal96",
+                        "next": {
+                            "name": "mreveal97",
+                            "next": {
+                                "name": "mreveal98",
+                                "next": {
+                                    "name": "mreveal99",
+                                    "next": {
+                                        "name": "mreveal100",
+                                        "next": null,
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": false,
+                                            "type": "match",
+                                            "text": "$:/core/ui/ControlPanel/Plugins/Installed/Languages",
+                                            "closeAnimation": "close",
+                                            "openAnimation": "open"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": false,
+                                        "type": "match",
+                                        "text": "$:/core/ui/ControlPanel/Plugins/Installed/Themes",
+                                        "closeAnimation": "close",
+                                        "openAnimation": "open"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": true,
+                                    "type": "match",
+                                    "text": "$:/core/ui/ControlPanel/Plugins/Installed/Plugins",
+                                    "closeAnimation": "close",
+                                    "openAnimation": "open"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": true,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/ControlPanel/Plugins/Installed/Languages"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": false,
+                            "type": "match",
+                            "text": "$:/core/ui/ControlPanel/Plugins/Installed/Languages"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/ControlPanel/Plugins/Installed/Themes"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/ControlPanel/Plugins/Installed/Themes"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": false,
+                "type": "nomatch",
+                "text": "$:/core/ui/ControlPanel/Plugins/Installed/Plugins"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": true,
+            "type": "match",
+            "text": "$:/core/ui/ControlPanel/Plugins/Installed/Plugins"
+        },
+        "dom_method": "rv"
+    },
+    "bt64/mtm-click": {
+        "name": "action-sm95",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--86143343",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Plugins/Installed/Plugins"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt65/mtm-click": {
+        "name": "action-sm96",
+        "next": {
+            "name": "action-sm97",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--86143343",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Plugins/Installed/Themes"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--86143343",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Plugins/Installed/Themes"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt66/mtm-click": {
+        "name": "action-sm98",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--86143343",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Plugins/Installed/Themes"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt67/mtm-click": {
+        "name": "action-sm99",
+        "next": {
+            "name": "action-sm100",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--86143343",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/ControlPanel/Plugins/Installed/Languages"
+                },
+                "tiddlerTitle": "$:/ControlPanel",
+                "storyTiddler": "$:/ControlPanel"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--86143343",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Plugins/Installed/Languages"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt68/mtm-click": {
+        "name": "action-sm101",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--86143343",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/ControlPanel/Plugins/Installed/Languages"
+            },
+            "tiddlerTitle": "$:/ControlPanel",
+            "storyTiddler": "$:/ControlPanel"
+        },
+        "dom_method": "as"
+    },
+    "bt77/mtm-click": {
+        "name": "action-sm114",
+        "next": {
+            "name": "action-sm115",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/sidebar--1835078512",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/SideBar/Open"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Open"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab/sidebar--1835078512/mtm-compare": {
+        "name": "mreveal114",
+        "next": {
+            "name": "mreveal115",
+            "next": {
+                "name": "mreveal116",
+                "next": {
+                    "name": "mreveal117",
+                    "next": {
+                        "name": "mreveal118",
+                        "next": {
+                            "name": "mreveal119",
+                            "next": {
+                                "name": "mreveal120",
+                                "next": {
+                                    "name": "mreveal121",
+                                    "next": {
+                                        "name": "mreveal122",
+                                        "next": {
+                                            "name": "mreveal123",
+                                            "next": {
+                                                "name": "mreveal124",
+                                                "next": {
+                                                    "name": "mreveal125",
+                                                    "next": null,
+                                                    "aux": {
+                                                        "domNode": null,
+                                                        "isOpen": false,
+                                                        "type": "match",
+                                                        "text": "$:/core/ui/SideBar/More",
+                                                        "closeAnimation": "close",
+                                                        "openAnimation": "open"
+                                                    },
+                                                    "dom_method": "rv"
+                                                },
+                                                "aux": {
+                                                    "domNode": null,
+                                                    "isOpen": false,
+                                                    "type": "match",
+                                                    "text": "$:/core/ui/SideBar/Tools",
+                                                    "closeAnimation": "close",
+                                                    "openAnimation": "open"
+                                                },
+                                                "dom_method": "rv"
+                                            },
+                                            "aux": {
+                                                "domNode": null,
+                                                "isOpen": false,
+                                                "type": "match",
+                                                "text": "$:/core/ui/SideBar/Recent",
+                                                "closeAnimation": "close",
+                                                "openAnimation": "open"
+                                            },
+                                            "dom_method": "rv"
+                                        },
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": true,
+                                            "type": "match",
+                                            "text": "$:/core/ui/SideBar/Open",
+                                            "closeAnimation": "close",
+                                            "openAnimation": "open"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": true,
+                                        "type": "nomatch",
+                                        "text": "$:/core/ui/SideBar/More"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/SideBar/More"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": true,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/SideBar/Tools"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": false,
+                            "type": "match",
+                            "text": "$:/core/ui/SideBar/Tools"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/SideBar/Recent"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/SideBar/Recent"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": false,
+                "type": "nomatch",
+                "text": "$:/core/ui/SideBar/Open"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": true,
+            "type": "match",
+            "text": "$:/core/ui/SideBar/Open"
+        },
+        "dom_method": "rv"
+    },
+    "bt78/mtm-click": {
+        "name": "action-sm116",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Open"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt79/mtm-click": {
+        "name": "action-sm117",
+        "next": {
+            "name": "action-sm118",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/sidebar--1835078512",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/SideBar/Recent"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Recent"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt80/mtm-click": {
+        "name": "action-sm119",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Recent"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt81/mtm-click": {
+        "name": "action-sm120",
+        "next": {
+            "name": "action-sm121",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/sidebar--1835078512",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/SideBar/Tools"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Tools"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt82/mtm-click": {
+        "name": "action-sm122",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Tools"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt83/mtm-click": {
+        "name": "action-sm123",
+        "next": {
+            "name": "action-sm124",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/sidebar--1835078512",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/SideBar/More"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/More"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt84/mtm-click": {
+        "name": "action-sm125",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/More"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt85/mtm-click": {
+        "name": "action-sm126",
+        "next": {
+            "name": "action-sm127",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/All"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/All"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab/moresidebar-401116514/mtm-compare": {
+        "name": "mreveal126",
+        "next": {
+            "name": "mreveal127",
+            "next": {
+                "name": "mreveal128",
+                "next": {
+                    "name": "mreveal129",
+                    "next": {
+                        "name": "mreveal130",
+                        "next": {
+                            "name": "mreveal131",
+                            "next": {
+                                "name": "mreveal132",
+                                "next": {
+                                    "name": "mreveal133",
+                                    "next": {
+                                        "name": "mreveal134",
+                                        "next": {
+                                            "name": "mreveal135",
+                                            "next": {
+                                                "name": "mreveal136",
+                                                "next": {
+                                                    "name": "mreveal137",
+                                                    "next": {
+                                                        "name": "mreveal138",
+                                                        "next": {
+                                                            "name": "mreveal139",
+                                                            "next": {
+                                                                "name": "mreveal140",
+                                                                "next": {
+                                                                    "name": "mreveal141",
+                                                                    "next": {
+                                                                        "name": "mreveal142",
+                                                                        "next": {
+                                                                            "name": "mreveal143",
+                                                                            "next": {
+                                                                                "name": "mreveal144",
+                                                                                "next": {
+                                                                                    "name": "mreveal145",
+                                                                                    "next": {
+                                                                                        "name": "mreveal146",
+                                                                                        "next": {
+                                                                                            "name": "mreveal147",
+                                                                                            "next": {
+                                                                                                "name": "mreveal148",
+                                                                                                "next": {
+                                                                                                    "name": "mreveal149",
+                                                                                                    "next": null,
+                                                                                                    "aux": {
+                                                                                                        "domNode": null,
+                                                                                                        "isOpen": false,
+                                                                                                        "type": "match",
+                                                                                                        "text": "$:/core/ui/MoreSideBar/Shadows",
+                                                                                                        "closeAnimation": "close",
+                                                                                                        "openAnimation": "open"
+                                                                                                    },
+                                                                                                    "dom_method": "rv"
+                                                                                                },
+                                                                                                "aux": {
+                                                                                                    "domNode": null,
+                                                                                                    "isOpen": false,
+                                                                                                    "type": "match",
+                                                                                                    "text": "$:/core/ui/MoreSideBar/System",
+                                                                                                    "closeAnimation": "close",
+                                                                                                    "openAnimation": "open"
+                                                                                                },
+                                                                                                "dom_method": "rv"
+                                                                                            },
+                                                                                            "aux": {
+                                                                                                "domNode": null,
+                                                                                                "isOpen": false,
+                                                                                                "type": "match",
+                                                                                                "text": "$:/core/ui/MoreSideBar/Types",
+                                                                                                "closeAnimation": "close",
+                                                                                                "openAnimation": "open"
+                                                                                            },
+                                                                                            "dom_method": "rv"
+                                                                                        },
+                                                                                        "aux": {
+                                                                                            "domNode": null,
+                                                                                            "isOpen": false,
+                                                                                            "type": "match",
+                                                                                            "text": "$:/core/ui/MoreSideBar/Orphans",
+                                                                                            "closeAnimation": "close",
+                                                                                            "openAnimation": "open"
+                                                                                        },
+                                                                                        "dom_method": "rv"
+                                                                                    },
+                                                                                    "aux": {
+                                                                                        "domNode": null,
+                                                                                        "isOpen": false,
+                                                                                        "type": "match",
+                                                                                        "text": "$:/core/ui/MoreSideBar/Drafts",
+                                                                                        "closeAnimation": "close",
+                                                                                        "openAnimation": "open"
+                                                                                    },
+                                                                                    "dom_method": "rv"
+                                                                                },
+                                                                                "aux": {
+                                                                                    "domNode": null,
+                                                                                    "isOpen": true,
+                                                                                    "type": "match",
+                                                                                    "text": "$:/core/ui/MoreSideBar/Tags",
+                                                                                    "closeAnimation": "close",
+                                                                                    "openAnimation": "open"
+                                                                                },
+                                                                                "dom_method": "rv"
+                                                                            },
+                                                                            "aux": {
+                                                                                "domNode": null,
+                                                                                "isOpen": false,
+                                                                                "type": "match",
+                                                                                "text": "$:/core/ui/MoreSideBar/Recent",
+                                                                                "closeAnimation": "close",
+                                                                                "openAnimation": "open"
+                                                                            },
+                                                                            "dom_method": "rv"
+                                                                        },
+                                                                        "aux": {
+                                                                            "domNode": null,
+                                                                            "isOpen": false,
+                                                                            "type": "match",
+                                                                            "text": "$:/core/ui/MoreSideBar/All",
+                                                                            "closeAnimation": "close",
+                                                                            "openAnimation": "open"
+                                                                        },
+                                                                        "dom_method": "rv"
+                                                                    },
+                                                                    "aux": {
+                                                                        "domNode": null,
+                                                                        "isOpen": true,
+                                                                        "type": "nomatch",
+                                                                        "text": "$:/core/ui/MoreSideBar/Shadows"
+                                                                    },
+                                                                    "dom_method": "rv"
+                                                                },
+                                                                "aux": {
+                                                                    "domNode": null,
+                                                                    "isOpen": false,
+                                                                    "type": "match",
+                                                                    "text": "$:/core/ui/MoreSideBar/Shadows"
+                                                                },
+                                                                "dom_method": "rv"
+                                                            },
+                                                            "aux": {
+                                                                "domNode": null,
+                                                                "isOpen": true,
+                                                                "type": "nomatch",
+                                                                "text": "$:/core/ui/MoreSideBar/System"
+                                                            },
+                                                            "dom_method": "rv"
+                                                        },
+                                                        "aux": {
+                                                            "domNode": null,
+                                                            "isOpen": false,
+                                                            "type": "match",
+                                                            "text": "$:/core/ui/MoreSideBar/System"
+                                                        },
+                                                        "dom_method": "rv"
+                                                    },
+                                                    "aux": {
+                                                        "domNode": null,
+                                                        "isOpen": true,
+                                                        "type": "nomatch",
+                                                        "text": "$:/core/ui/MoreSideBar/Types"
+                                                    },
+                                                    "dom_method": "rv"
+                                                },
+                                                "aux": {
+                                                    "domNode": null,
+                                                    "isOpen": false,
+                                                    "type": "match",
+                                                    "text": "$:/core/ui/MoreSideBar/Types"
+                                                },
+                                                "dom_method": "rv"
+                                            },
+                                            "aux": {
+                                                "domNode": null,
+                                                "isOpen": true,
+                                                "type": "nomatch",
+                                                "text": "$:/core/ui/MoreSideBar/Orphans"
+                                            },
+                                            "dom_method": "rv"
+                                        },
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": false,
+                                            "type": "match",
+                                            "text": "$:/core/ui/MoreSideBar/Orphans"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": true,
+                                        "type": "nomatch",
+                                        "text": "$:/core/ui/MoreSideBar/Drafts"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/MoreSideBar/Drafts"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": false,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/MoreSideBar/Tags"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": true,
+                            "type": "match",
+                            "text": "$:/core/ui/MoreSideBar/Tags"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/MoreSideBar/Recent"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/MoreSideBar/Recent"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": true,
+                "type": "nomatch",
+                "text": "$:/core/ui/MoreSideBar/All"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": false,
+            "type": "match",
+            "text": "$:/core/ui/MoreSideBar/All"
+        },
+        "dom_method": "rv"
+    },
+    "bt86/mtm-click": {
+        "name": "action-sm128",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/All"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt87/mtm-click": {
+        "name": "action-sm129",
+        "next": {
+            "name": "action-sm130",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Recent"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Recent"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt88/mtm-click": {
+        "name": "action-sm131",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Recent"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt89/mtm-click": {
+        "name": "action-sm132",
+        "next": {
+            "name": "action-sm133",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Tags"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Tags"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt90/mtm-click": {
+        "name": "action-sm134",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Tags"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt91/mtm-click": {
+        "name": "action-sm135",
+        "next": {
+            "name": "action-sm136",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Drafts"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Drafts"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt92/mtm-click": {
+        "name": "action-sm137",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Drafts"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt93/mtm-click": {
+        "name": "action-sm138",
+        "next": {
+            "name": "action-sm139",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Orphans"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Orphans"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt94/mtm-click": {
+        "name": "action-sm140",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Orphans"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt95/mtm-click": {
+        "name": "action-sm141",
+        "next": {
+            "name": "action-sm142",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Types"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Types"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt96/mtm-click": {
+        "name": "action-sm143",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Types"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt97/mtm-click": {
+        "name": "action-sm144",
+        "next": {
+            "name": "action-sm145",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/System"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/System"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt98/mtm-click": {
+        "name": "action-sm146",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/System"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt99/mtm-click": {
+        "name": "action-sm147",
+        "next": {
+            "name": "action-sm148",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Shadows"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Shadows"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt100/mtm-click": {
+        "name": "action-sm149",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Shadows"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt101/mtm-click": {
+        "name": "action-sm150",
+        "next": {
+            "name": "action-sm151",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1498284803",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/AdvancedSearch/Standard"
+                },
+                "tiddlerTitle": "$:/AdvancedSearch",
+                "storyTiddler": "$:/AdvancedSearch"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Standard"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab--1498284803/mtm-compare": {
+        "name": "mreveal150",
+        "next": {
+            "name": "mreveal151",
+            "next": {
+                "name": "mreveal152",
+                "next": {
+                    "name": "mreveal153",
+                    "next": {
+                        "name": "mreveal154",
+                        "next": {
+                            "name": "mreveal155",
+                            "next": {
+                                "name": "mreveal156",
+                                "next": {
+                                    "name": "mreveal157",
+                                    "next": {
+                                        "name": "mreveal158",
+                                        "next": {
+                                            "name": "mreveal159",
+                                            "next": {
+                                                "name": "mreveal160",
+                                                "next": {
+                                                    "name": "mreveal161",
+                                                    "next": null,
+                                                    "aux": {
+                                                        "domNode": null,
+                                                        "isOpen": false,
+                                                        "type": "match",
+                                                        "text": "$:/core/ui/AdvancedSearch/Filter",
+                                                        "closeAnimation": "close",
+                                                        "openAnimation": "open"
+                                                    },
+                                                    "dom_method": "rv"
+                                                },
+                                                "aux": {
+                                                    "domNode": null,
+                                                    "isOpen": true,
+                                                    "type": "match",
+                                                    "text": "$:/core/ui/AdvancedSearch/Shadows",
+                                                    "closeAnimation": "close",
+                                                    "openAnimation": "open"
+                                                },
+                                                "dom_method": "rv"
+                                            },
+                                            "aux": {
+                                                "domNode": null,
+                                                "isOpen": false,
+                                                "type": "match",
+                                                "text": "$:/core/ui/AdvancedSearch/System",
+                                                "closeAnimation": "close",
+                                                "openAnimation": "open"
+                                            },
+                                            "dom_method": "rv"
+                                        },
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": false,
+                                            "type": "match",
+                                            "text": "$:/core/ui/AdvancedSearch/Standard",
+                                            "closeAnimation": "close",
+                                            "openAnimation": "open"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": true,
+                                        "type": "nomatch",
+                                        "text": "$:/core/ui/AdvancedSearch/Filter"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/AdvancedSearch/Filter"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": false,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/AdvancedSearch/Shadows"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": true,
+                            "type": "match",
+                            "text": "$:/core/ui/AdvancedSearch/Shadows"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/AdvancedSearch/System"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/AdvancedSearch/System"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": true,
+                "type": "nomatch",
+                "text": "$:/core/ui/AdvancedSearch/Standard"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": false,
+            "type": "match",
+            "text": "$:/core/ui/AdvancedSearch/Standard"
+        },
+        "dom_method": "rv"
+    },
+    "bt102/mtm-click": {
+        "name": "action-sm152",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Standard"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt103/mtm-click": {
+        "name": "action-sm153",
+        "next": {
+            "name": "action-sm154",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1498284803",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/AdvancedSearch/System"
+                },
+                "tiddlerTitle": "$:/AdvancedSearch",
+                "storyTiddler": "$:/AdvancedSearch"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/System"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt104/mtm-click": {
+        "name": "action-sm155",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/System"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt105/mtm-click": {
+        "name": "action-sm156",
+        "next": {
+            "name": "action-sm157",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1498284803",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/AdvancedSearch/Shadows"
+                },
+                "tiddlerTitle": "$:/AdvancedSearch",
+                "storyTiddler": "$:/AdvancedSearch"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Shadows"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt106/mtm-click": {
+        "name": "action-sm158",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Shadows"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt107/mtm-click": {
+        "name": "action-sm159",
+        "next": {
+            "name": "action-sm160",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1498284803",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/AdvancedSearch/Filter"
+                },
+                "tiddlerTitle": "$:/AdvancedSearch",
+                "storyTiddler": "$:/AdvancedSearch"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Filter"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt108/mtm-click": {
+        "name": "action-sm161",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Filter"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    }
+}

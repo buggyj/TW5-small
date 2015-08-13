@@ -1,0 +1,1144 @@
+created: 20150809092924964
+draft.of: transientTableEvents
+draft.title: transientTableEvents
+modified: 20150809092923689
+title: Draft of 'transientTableEvents'
+type: text/vnd.tiddlywiki
+
+{
+    "bt27/mtm-click": {
+        "name": "action-sm39",
+        "next": {
+            "name": "action-sm40",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/sidebar--1835078512",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/SideBar/Open"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Open"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab/sidebar--1835078512/mtm-compare": {
+        "name": "mreveal39",
+        "next": {
+            "name": "mreveal40",
+            "next": {
+                "name": "mreveal41",
+                "next": {
+                    "name": "mreveal42",
+                    "next": {
+                        "name": "mreveal43",
+                        "next": {
+                            "name": "mreveal44",
+                            "next": {
+                                "name": "mreveal45",
+                                "next": {
+                                    "name": "mreveal46",
+                                    "next": {
+                                        "name": "mreveal47",
+                                        "next": {
+                                            "name": "mreveal48",
+                                            "next": {
+                                                "name": "mreveal49",
+                                                "next": {
+                                                    "name": "mreveal50",
+                                                    "next": null,
+                                                    "aux": {
+                                                        "domNode": null,
+                                                        "isOpen": false,
+                                                        "type": "match",
+                                                        "text": "$:/core/ui/SideBar/More",
+                                                        "closeAnimation": "close",
+                                                        "openAnimation": "open"
+                                                    },
+                                                    "dom_method": "rv"
+                                                },
+                                                "aux": {
+                                                    "domNode": null,
+                                                    "isOpen": false,
+                                                    "type": "match",
+                                                    "text": "$:/core/ui/SideBar/Tools",
+                                                    "closeAnimation": "close",
+                                                    "openAnimation": "open"
+                                                },
+                                                "dom_method": "rv"
+                                            },
+                                            "aux": {
+                                                "domNode": null,
+                                                "isOpen": false,
+                                                "type": "match",
+                                                "text": "$:/core/ui/SideBar/Recent",
+                                                "closeAnimation": "close",
+                                                "openAnimation": "open"
+                                            },
+                                            "dom_method": "rv"
+                                        },
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": true,
+                                            "type": "match",
+                                            "text": "$:/core/ui/SideBar/Open",
+                                            "closeAnimation": "close",
+                                            "openAnimation": "open"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": true,
+                                        "type": "nomatch",
+                                        "text": "$:/core/ui/SideBar/More"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/SideBar/More"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": true,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/SideBar/Tools"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": false,
+                            "type": "match",
+                            "text": "$:/core/ui/SideBar/Tools"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/SideBar/Recent"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/SideBar/Recent"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": false,
+                "type": "nomatch",
+                "text": "$:/core/ui/SideBar/Open"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": true,
+            "type": "match",
+            "text": "$:/core/ui/SideBar/Open"
+        },
+        "dom_method": "rv"
+    },
+    "bt28/mtm-click": {
+        "name": "action-sm41",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Open"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt29/mtm-click": {
+        "name": "action-sm42",
+        "next": {
+            "name": "action-sm43",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/sidebar--1835078512",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/SideBar/Recent"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Recent"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt30/mtm-click": {
+        "name": "action-sm44",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Recent"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt31/mtm-click": {
+        "name": "action-sm45",
+        "next": {
+            "name": "action-sm46",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/sidebar--1835078512",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/SideBar/Tools"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Tools"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt32/mtm-click": {
+        "name": "action-sm47",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/Tools"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt33/mtm-click": {
+        "name": "action-sm48",
+        "next": {
+            "name": "action-sm49",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/sidebar--1835078512",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/SideBar/More"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/More"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt34/mtm-click": {
+        "name": "action-sm50",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/sidebar--1835078512",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/SideBar/More"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt35/mtm-click": {
+        "name": "action-sm51",
+        "next": {
+            "name": "action-sm52",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/All"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/All"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab/moresidebar-401116514/mtm-compare": {
+        "name": "mreveal51",
+        "next": {
+            "name": "mreveal52",
+            "next": {
+                "name": "mreveal53",
+                "next": {
+                    "name": "mreveal54",
+                    "next": {
+                        "name": "mreveal55",
+                        "next": {
+                            "name": "mreveal56",
+                            "next": {
+                                "name": "mreveal59",
+                                "next": {
+                                    "name": "mreveal60",
+                                    "next": {
+                                        "name": "mreveal61",
+                                        "next": {
+                                            "name": "mreveal62",
+                                            "next": {
+                                                "name": "mreveal63",
+                                                "next": {
+                                                    "name": "mreveal64",
+                                                    "next": {
+                                                        "name": "mreveal65",
+                                                        "next": {
+                                                            "name": "mreveal66",
+                                                            "next": {
+                                                                "name": "mreveal67",
+                                                                "next": {
+                                                                    "name": "mreveal68",
+                                                                    "next": {
+                                                                        "name": "mreveal69",
+                                                                        "next": {
+                                                                            "name": "mreveal70",
+                                                                            "next": {
+                                                                                "name": "mreveal71",
+                                                                                "next": {
+                                                                                    "name": "mreveal73",
+                                                                                    "next": {
+                                                                                        "name": "mreveal74",
+                                                                                        "next": {
+                                                                                            "name": "mreveal75",
+                                                                                            "next": {
+                                                                                                "name": "mreveal76",
+                                                                                                "next": {
+                                                                                                    "name": "mreveal77",
+                                                                                                    "next": null,
+                                                                                                    "aux": {
+                                                                                                        "domNode": null,
+                                                                                                        "isOpen": false,
+                                                                                                        "type": "match",
+                                                                                                        "text": "$:/core/ui/MoreSideBar/Shadows",
+                                                                                                        "closeAnimation": "close",
+                                                                                                        "openAnimation": "open"
+                                                                                                    },
+                                                                                                    "dom_method": "rv"
+                                                                                                },
+                                                                                                "aux": {
+                                                                                                    "domNode": null,
+                                                                                                    "isOpen": false,
+                                                                                                    "type": "match",
+                                                                                                    "text": "$:/core/ui/MoreSideBar/System",
+                                                                                                    "closeAnimation": "close",
+                                                                                                    "openAnimation": "open"
+                                                                                                },
+                                                                                                "dom_method": "rv"
+                                                                                            },
+                                                                                            "aux": {
+                                                                                                "domNode": null,
+                                                                                                "isOpen": false,
+                                                                                                "type": "match",
+                                                                                                "text": "$:/core/ui/MoreSideBar/Types",
+                                                                                                "closeAnimation": "close",
+                                                                                                "openAnimation": "open"
+                                                                                            },
+                                                                                            "dom_method": "rv"
+                                                                                        },
+                                                                                        "aux": {
+                                                                                            "domNode": null,
+                                                                                            "isOpen": false,
+                                                                                            "type": "match",
+                                                                                            "text": "$:/core/ui/MoreSideBar/Orphans",
+                                                                                            "closeAnimation": "close",
+                                                                                            "openAnimation": "open"
+                                                                                        },
+                                                                                        "dom_method": "rv"
+                                                                                    },
+                                                                                    "aux": {
+                                                                                        "domNode": null,
+                                                                                        "isOpen": false,
+                                                                                        "type": "match",
+                                                                                        "text": "$:/core/ui/MoreSideBar/Drafts",
+                                                                                        "closeAnimation": "close",
+                                                                                        "openAnimation": "open"
+                                                                                    },
+                                                                                    "dom_method": "rv"
+                                                                                },
+                                                                                "aux": {
+                                                                                    "domNode": null,
+                                                                                    "isOpen": true,
+                                                                                    "type": "match",
+                                                                                    "text": "$:/core/ui/MoreSideBar/Tags",
+                                                                                    "closeAnimation": "close",
+                                                                                    "openAnimation": "open"
+                                                                                },
+                                                                                "dom_method": "rv"
+                                                                            },
+                                                                            "aux": {
+                                                                                "domNode": null,
+                                                                                "isOpen": false,
+                                                                                "type": "match",
+                                                                                "text": "$:/core/ui/MoreSideBar/Recent",
+                                                                                "closeAnimation": "close",
+                                                                                "openAnimation": "open"
+                                                                            },
+                                                                            "dom_method": "rv"
+                                                                        },
+                                                                        "aux": {
+                                                                            "domNode": null,
+                                                                            "isOpen": false,
+                                                                            "type": "match",
+                                                                            "text": "$:/core/ui/MoreSideBar/All",
+                                                                            "closeAnimation": "close",
+                                                                            "openAnimation": "open"
+                                                                        },
+                                                                        "dom_method": "rv"
+                                                                    },
+                                                                    "aux": {
+                                                                        "domNode": null,
+                                                                        "isOpen": true,
+                                                                        "type": "nomatch",
+                                                                        "text": "$:/core/ui/MoreSideBar/Shadows"
+                                                                    },
+                                                                    "dom_method": "rv"
+                                                                },
+                                                                "aux": {
+                                                                    "domNode": null,
+                                                                    "isOpen": false,
+                                                                    "type": "match",
+                                                                    "text": "$:/core/ui/MoreSideBar/Shadows"
+                                                                },
+                                                                "dom_method": "rv"
+                                                            },
+                                                            "aux": {
+                                                                "domNode": null,
+                                                                "isOpen": true,
+                                                                "type": "nomatch",
+                                                                "text": "$:/core/ui/MoreSideBar/System"
+                                                            },
+                                                            "dom_method": "rv"
+                                                        },
+                                                        "aux": {
+                                                            "domNode": null,
+                                                            "isOpen": false,
+                                                            "type": "match",
+                                                            "text": "$:/core/ui/MoreSideBar/System"
+                                                        },
+                                                        "dom_method": "rv"
+                                                    },
+                                                    "aux": {
+                                                        "domNode": null,
+                                                        "isOpen": true,
+                                                        "type": "nomatch",
+                                                        "text": "$:/core/ui/MoreSideBar/Types"
+                                                    },
+                                                    "dom_method": "rv"
+                                                },
+                                                "aux": {
+                                                    "domNode": null,
+                                                    "isOpen": false,
+                                                    "type": "match",
+                                                    "text": "$:/core/ui/MoreSideBar/Types"
+                                                },
+                                                "dom_method": "rv"
+                                            },
+                                            "aux": {
+                                                "domNode": null,
+                                                "isOpen": true,
+                                                "type": "nomatch",
+                                                "text": "$:/core/ui/MoreSideBar/Orphans"
+                                            },
+                                            "dom_method": "rv"
+                                        },
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": false,
+                                            "type": "match",
+                                            "text": "$:/core/ui/MoreSideBar/Orphans"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": true,
+                                        "type": "nomatch",
+                                        "text": "$:/core/ui/MoreSideBar/Drafts"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/MoreSideBar/Drafts"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": false,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/MoreSideBar/Tags"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": true,
+                            "type": "match",
+                            "text": "$:/core/ui/MoreSideBar/Tags"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/MoreSideBar/Recent"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/MoreSideBar/Recent"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": true,
+                "type": "nomatch",
+                "text": "$:/core/ui/MoreSideBar/All"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": false,
+            "type": "match",
+            "text": "$:/core/ui/MoreSideBar/All"
+        },
+        "dom_method": "rv"
+    },
+    "bt36/mtm-click": {
+        "name": "action-sm53",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/All"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt37/mtm-click": {
+        "name": "action-sm54",
+        "next": {
+            "name": "action-sm55",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Recent"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Recent"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt38/mtm-click": {
+        "name": "action-sm56",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Recent"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt39/mtm-click": {
+        "name": "action-sm57",
+        "next": {
+            "name": "action-sm58",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Tags"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Tags"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt40/mtm-click": {
+        "name": "action-sm59",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Tags"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt43/mtm-click": {
+        "name": "action-sm63",
+        "next": {
+            "name": "action-sm64",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Drafts"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Drafts"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt44/mtm-click": {
+        "name": "action-sm65",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Drafts"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt45/mtm-click": {
+        "name": "action-sm66",
+        "next": {
+            "name": "action-sm67",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Orphans"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Orphans"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt46/mtm-click": {
+        "name": "action-sm68",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Orphans"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt47/mtm-click": {
+        "name": "action-sm69",
+        "next": {
+            "name": "action-sm70",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Types"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Types"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt48/mtm-click": {
+        "name": "action-sm71",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Types"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt49/mtm-click": {
+        "name": "action-sm72",
+        "next": {
+            "name": "action-sm73",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/System"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/System"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt50/mtm-click": {
+        "name": "action-sm74",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/System"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt51/mtm-click": {
+        "name": "action-sm75",
+        "next": {
+            "name": "action-sm76",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab/moresidebar-401116514",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/MoreSideBar/Shadows"
+                },
+                "tiddlerTitle": ""
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Shadows"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt52/mtm-click": {
+        "name": "action-sm77",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab/moresidebar-401116514",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/MoreSideBar/Shadows"
+            },
+            "tiddlerTitle": ""
+        },
+        "dom_method": "as"
+    },
+    "bt53/mtm-click": {
+        "name": "action-sm78",
+        "next": {
+            "name": "action-sm79",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1498284803",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/AdvancedSearch/Standard"
+                },
+                "tiddlerTitle": "$:/AdvancedSearch",
+                "storyTiddler": "$:/AdvancedSearch"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Standard"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "$:/state/tab--1498284803/mtm-compare": {
+        "name": "mreveal78",
+        "next": {
+            "name": "mreveal79",
+            "next": {
+                "name": "mreveal80",
+                "next": {
+                    "name": "mreveal81",
+                    "next": {
+                        "name": "mreveal82",
+                        "next": {
+                            "name": "mreveal83",
+                            "next": {
+                                "name": "mreveal84",
+                                "next": {
+                                    "name": "mreveal85",
+                                    "next": {
+                                        "name": "mreveal86",
+                                        "next": {
+                                            "name": "mreveal87",
+                                            "next": {
+                                                "name": "mreveal88",
+                                                "next": {
+                                                    "name": "mreveal89",
+                                                    "next": null,
+                                                    "aux": {
+                                                        "domNode": null,
+                                                        "isOpen": false,
+                                                        "type": "match",
+                                                        "text": "$:/core/ui/AdvancedSearch/Filter",
+                                                        "closeAnimation": "close",
+                                                        "openAnimation": "open"
+                                                    },
+                                                    "dom_method": "rv"
+                                                },
+                                                "aux": {
+                                                    "domNode": null,
+                                                    "isOpen": true,
+                                                    "type": "match",
+                                                    "text": "$:/core/ui/AdvancedSearch/Shadows",
+                                                    "closeAnimation": "close",
+                                                    "openAnimation": "open"
+                                                },
+                                                "dom_method": "rv"
+                                            },
+                                            "aux": {
+                                                "domNode": null,
+                                                "isOpen": false,
+                                                "type": "match",
+                                                "text": "$:/core/ui/AdvancedSearch/System",
+                                                "closeAnimation": "close",
+                                                "openAnimation": "open"
+                                            },
+                                            "dom_method": "rv"
+                                        },
+                                        "aux": {
+                                            "domNode": null,
+                                            "isOpen": false,
+                                            "type": "match",
+                                            "text": "$:/core/ui/AdvancedSearch/Standard",
+                                            "closeAnimation": "close",
+                                            "openAnimation": "open"
+                                        },
+                                        "dom_method": "rv"
+                                    },
+                                    "aux": {
+                                        "domNode": null,
+                                        "isOpen": true,
+                                        "type": "nomatch",
+                                        "text": "$:/core/ui/AdvancedSearch/Filter"
+                                    },
+                                    "dom_method": "rv"
+                                },
+                                "aux": {
+                                    "domNode": null,
+                                    "isOpen": false,
+                                    "type": "match",
+                                    "text": "$:/core/ui/AdvancedSearch/Filter"
+                                },
+                                "dom_method": "rv"
+                            },
+                            "aux": {
+                                "domNode": null,
+                                "isOpen": false,
+                                "type": "nomatch",
+                                "text": "$:/core/ui/AdvancedSearch/Shadows"
+                            },
+                            "dom_method": "rv"
+                        },
+                        "aux": {
+                            "domNode": null,
+                            "isOpen": true,
+                            "type": "match",
+                            "text": "$:/core/ui/AdvancedSearch/Shadows"
+                        },
+                        "dom_method": "rv"
+                    },
+                    "aux": {
+                        "domNode": null,
+                        "isOpen": true,
+                        "type": "nomatch",
+                        "text": "$:/core/ui/AdvancedSearch/System"
+                    },
+                    "dom_method": "rv"
+                },
+                "aux": {
+                    "domNode": null,
+                    "isOpen": false,
+                    "type": "match",
+                    "text": "$:/core/ui/AdvancedSearch/System"
+                },
+                "dom_method": "rv"
+            },
+            "aux": {
+                "domNode": null,
+                "isOpen": true,
+                "type": "nomatch",
+                "text": "$:/core/ui/AdvancedSearch/Standard"
+            },
+            "dom_method": "rv"
+        },
+        "aux": {
+            "domNode": null,
+            "isOpen": false,
+            "type": "match",
+            "text": "$:/core/ui/AdvancedSearch/Standard"
+        },
+        "dom_method": "rv"
+    },
+    "bt54/mtm-click": {
+        "name": "action-sm80",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Standard"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt55/mtm-click": {
+        "name": "action-sm81",
+        "next": {
+            "name": "action-sm82",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1498284803",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/AdvancedSearch/System"
+                },
+                "tiddlerTitle": "$:/AdvancedSearch",
+                "storyTiddler": "$:/AdvancedSearch"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/System"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt56/mtm-click": {
+        "name": "action-sm83",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/System"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt57/mtm-click": {
+        "name": "action-sm84",
+        "next": {
+            "name": "action-sm85",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1498284803",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/AdvancedSearch/Shadows"
+                },
+                "tiddlerTitle": "$:/AdvancedSearch",
+                "storyTiddler": "$:/AdvancedSearch"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Shadows"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt58/mtm-click": {
+        "name": "action-sm86",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Shadows"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt59/mtm-click": {
+        "name": "action-sm87",
+        "next": {
+            "name": "action-sm88",
+            "next": null,
+            "aux": {
+                "sendId": "$:/state/tab--1498284803",
+                "sendType": "mtm-test",
+                "paramObject": {
+                    "state": "$:/core/ui/AdvancedSearch/Filter"
+                },
+                "tiddlerTitle": "$:/AdvancedSearch",
+                "storyTiddler": "$:/AdvancedSearch"
+            },
+            "dom_method": "as"
+        },
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Filter"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    },
+    "bt60/mtm-click": {
+        "name": "action-sm89",
+        "next": null,
+        "aux": {
+            "sendId": "$:/state/tab--1498284803",
+            "sendType": "mtm-compare",
+            "paramObject": {
+                "state": "$:/core/ui/AdvancedSearch/Filter"
+            },
+            "tiddlerTitle": "$:/AdvancedSearch",
+            "storyTiddler": "$:/AdvancedSearch"
+        },
+        "dom_method": "as"
+    }
+}

@@ -1,0 +1,17 @@
+created: 20150808054347894
+draft.of: btag 1
+draft.title: btag 1
+modified: 20150811170753737
+tags: 
+title: Draft of 'btag 1'
+type: text/html;flexibility=tw5flexbox
+
+<!-- This template is provided for backwards compatibility with older versions of TiddlyWiki -->
+
+<$set name="exportFilter" value="[tag[testtiddlers]]">
+<$set name="exportFilterJson" value="[[$:/temp/__priv__/transientTableEvents]]">
+
+{{$:/mcore/templates/exporters/StaticRiver}}
+
+</$set> 
+</$set> 

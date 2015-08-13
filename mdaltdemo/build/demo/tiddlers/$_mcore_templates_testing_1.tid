@@ -1,0 +1,15 @@
+created: 20150809174752852
+modified: 20150811081520074
+tags: 
+title: $/mcore/templates/testing 1
+type: text/html;flexibility=tw5flexbox
+
+<!-- This template is provided for backwards compatibility with older versions of TiddlyWiki -->
+
+<$set name="exportFilter" value="[tag[testtiddlers]]">
+<$set name="exportFilterJson" value="[[$:/temp/__priv__/transientTableEvents]]">
+
+{{$:/mcore/templates/exporters/StaticRiver}}
+
+</$set> 
+</$set> 

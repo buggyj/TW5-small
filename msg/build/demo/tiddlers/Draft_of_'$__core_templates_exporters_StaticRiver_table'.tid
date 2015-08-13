@@ -1,0 +1,9 @@
+created: 20150812102243657
+draft.of: $:/core/templates/exporters/StaticRiver/table
+draft.title: $:/core/templates/exporters/StaticRiver/table
+modified: 20150812102242329
+title: Draft of '$:/core/templates/exporters/StaticRiver/table'
+type: text/vnd.tiddlywiki
+
+<$msgexport tiddler="$:/temp/__priv__/transientTableEvents"/>
+<$tablereset/>

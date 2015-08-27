@@ -26,7 +26,7 @@ Inherit from the base widget class
 RevealWidget.prototype = new Widget();
 
 
-RevealWidget.prototype.handler = "py";
+RevealWidget.prototype.handler = "al";
 
 RevealWidget.prototype.wtype = intra;
 

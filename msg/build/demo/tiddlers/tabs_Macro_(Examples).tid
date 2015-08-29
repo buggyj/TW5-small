@@ -1,10 +1,10 @@
 created: 20150221211317000
-modified: 20150812104341000
+modified: 20150829070918001
 tags: [[tabs Macro]] [[Macro Examples]] testtiddlers
 title: tabs Macro (Examples)
 type: text/vnd.tiddlywiki
 
-<<tabs "SampleTabOne SampleTabTwo SampleTabThree SampleTabFour" "SampleTabOne" "$:/state/tab1">>
+<<tabs2 "SampleTabOne SampleTabTwo SampleTabThree SampleTabFour" "SampleTabOne" "$:/state/tab1">>
 
 <<tabs "SampleTabOne SampleTabTwo" "SampleTabTwo" "$:/state/tab2" "tc-vertical">>
 

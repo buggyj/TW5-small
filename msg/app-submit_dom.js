@@ -7,6 +7,6 @@ module-type: dom_method
 exports["do-submit"] = function(upstream,here) {
 	
 	var vals = $tw.domextra.serialize(upstream.domNode, upstream.e);
-	alert(JSON.stringify(vals))//$tw.wiki.setTiddlerData (here.tiddler,vals);
+	//alert(JSON.stringify(vals))//$tw.wiki.setTiddlerData (here.tiddler,vals);
 };
 })();

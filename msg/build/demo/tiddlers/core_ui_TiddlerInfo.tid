@@ -1,6 +1,0 @@
-created: 20150725042244794
-modified: 20150812103853729
-title: core/ui/TiddlerInfo
-type: text/vnd.tiddlywiki
-
-<$macrocall $name="tabs2" tabsList="[all[shadows+tiddlers]tag[$:/tags/TiddlerInfo]!has[draft.of]]" default={{$:/config/TiddlerInfo/Default}}/>

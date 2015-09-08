@@ -1,0 +1,12 @@
+title: $:/plugins/bj/wysihtml/readme
+
+
+the tiddler
+`
+$:/plugin/bj/wysihtml/includelib
+`
+needs to contain the location of the ckeditor lib. The default is
+
+`
+<script src="file:///path/to/wysihtml.js"></script>
+`
